@@ -48,6 +48,13 @@ namespace HippieDog_BanhoTosa
         private void FormAgenda_Load(object sender, EventArgs e)
         {
             dgvAgenda.DataSource = ObjNeg.ListaAgenda();
+            dgvAgenda.Columns["ID_Agenda"].Visible = false;
+            dgvAgenda.Columns["Telefone"].Visible = false;
+            dgvAgenda.Columns["Detalhes"].Visible = false;
+            dgvAgenda.Columns["Data"].Visible = false;
+            dgvAgenda.Columns["Hora"].Visible = false;
+            dgvAgenda.Columns["Faltou"].Visible = false;
+            dgvAgenda.AutoSize = true;
 
         }
 

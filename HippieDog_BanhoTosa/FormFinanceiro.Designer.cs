@@ -35,7 +35,7 @@
             this.lblBanhosMes = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tbxRendaSemanal = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbxRendaMensal = new System.Windows.Forms.TextBox();
             this.tbxBanhosSemanais = new System.Windows.Forms.TextBox();
             this.tbxBanhosMensais = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -103,12 +103,12 @@
             this.tbxRendaSemanal.Size = new System.Drawing.Size(150, 20);
             this.tbxRendaSemanal.TabIndex = 7;
             // 
-            // textBox3
+            // tbxRendaMensal
             // 
-            this.textBox3.Location = new System.Drawing.Point(56, 238);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(150, 20);
-            this.textBox3.TabIndex = 8;
+            this.tbxRendaMensal.Location = new System.Drawing.Point(56, 238);
+            this.tbxRendaMensal.Name = "tbxRendaMensal";
+            this.tbxRendaMensal.Size = new System.Drawing.Size(150, 20);
+            this.tbxRendaMensal.TabIndex = 8;
             // 
             // tbxBanhosSemanais
             // 
@@ -160,7 +160,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbxBanhosSemanais);
             this.Controls.Add(this.tbxBanhosMensais);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tbxRendaMensal);
             this.Controls.Add(this.tbxRendaSemanal);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblBanhosMes);
@@ -187,7 +187,7 @@
         private System.Windows.Forms.Label lblBanhosMes;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox tbxRendaSemanal;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbxRendaMensal;
         private System.Windows.Forms.TextBox tbxBanhosSemanais;
         private System.Windows.Forms.TextBox tbxBanhosMensais;
         private System.Windows.Forms.Panel panel1;

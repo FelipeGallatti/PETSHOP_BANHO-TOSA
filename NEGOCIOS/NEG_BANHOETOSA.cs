@@ -106,5 +106,31 @@ namespace NEGOCIOS
                 throw new Exception(ex.Message.ToString());
             }
         }
+
+        public int BanhosMensais(DateTime dataInicio, DateTime dataFinal)
+        {
+            try
+            {
+                return objdad_Agenda.BanhosMensais(dataInicio, dataFinal);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public decimal GanhosMensal(DateTime dataInicio, DateTime DataFinal)
+        {
+            try
+            {
+               return objdad_Agenda.GanhosMensal(dataInicio, DataFinal);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
     }
 }

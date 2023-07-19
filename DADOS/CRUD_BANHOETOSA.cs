@@ -5,6 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -161,18 +162,46 @@ namespace DADOS
                 throw new Exception(ex.Message.ToString());
             }
         }
-        public decimal BanhosSemanais(DateTime dataInicio, DateTime DataFinal)
+
+        public decimal GanhosMensal(DateTime dataInicio, DateTime DataFinal)
         {
             try
             {
                 using (var DB = new conexao(connectionString))
                 {
-                    List<ENTIDADES.TBL_AGENDA> calcularGanho = (from ganhos in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                                                where ganhos.DATA >= dataInicio && ganhos.DATA <= DataFinal
-                                                                select ganhos).ToList();
+                    List<ENTIDADES.TBL_AGENDA> calcularGanhos = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                                                 where  tbl.DATA >= dataInicio && tbl.DATA <= DataFinal
+                                                                 select tbl).ToList();
+
+                    decimal somaTotal = 0;
+
+                    foreach (var item in calcularGanhos)
+                    {
+                        somaTotal += item.VALOR;
+                    }
+
+                    return somaTotal;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+        public int BanhosSemanais(DateTime dataInicio, DateTime DataFinal)
+        {
+            try
+            {
+                using (var DB = new conexao(connectionString))
+                {
+                    List<ENTIDADES.TBL_AGENDA> banhosSemanais = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                                                where tbl.DATA >= dataInicio && tbl.DATA <= DataFinal
+                                                                select tbl).ToList();
 
 
-                    return calcularGanho.Count;
+                    return banhosSemanais.Count;
                 }
 
             }
@@ -183,6 +212,24 @@ namespace DADOS
             }
         }
 
+        public int BanhosMensais(DateTime dataInicio, DateTime dataFinal)
+        {
+            try
+            {
+                using (var DB = new conexao(connectionString))
+                {
+                    List<ENTIDADES.TBL_AGENDA> banhosMensais = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                                          where tbl.DATA >= dataInicio && tbl.DATA <= dataFinal && tbl.FALTOU == false
+                                                          select tbl).ToList();
+                    return banhosMensais.Count;
+                }
 
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
     }
 }

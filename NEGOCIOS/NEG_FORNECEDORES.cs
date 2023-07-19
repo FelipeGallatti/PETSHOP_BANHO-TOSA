@@ -36,6 +36,19 @@ namespace NEGOCIOS
             }
         }
 
+        public void AlterarFornecedor(ENTIDADES.TBL_FORNECEDORES ent)
+        {
+            try
+            {
+                Objdad_fornecedores.AlterarFornecedor(ent);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public void ExcluirFornecedor(ENTIDADES.TBL_FORNECEDORES ent)
         {
             try
