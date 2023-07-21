@@ -110,15 +110,22 @@ namespace HippieDog_BanhoTosa
 
                 if (e.RowIndex >= 0)
                 {
+                    try
+                    {
+                        DataGridViewRow row = dgvFornecedores.Rows[e.RowIndex];
+                        lblID.Text = row.Cells["Id_Fornecedor"].Value.ToString();
+                        tbxNome.Text = row.Cells["Nome"].Value.ToString();
+                        tbxEmail.Text = row.Cells["Email"].Value.ToString();
+                        tbxEndereco.Text = row.Cells["Endereco"].Value.ToString();
+                        tbxTelefone.Text = row.Cells["Telefone"].Value.ToString();
+                        tbxTelefoneOpcional.Text = row.Cells["TelefoneOpcional"].Value.ToString();
+                        tbxProduto.Text = row.Cells["Produto"].Value.ToString();
+                    }
+                    catch (Exception ex)
+                    {
 
-                    DataGridViewRow row = dgvFornecedores.Rows[e.RowIndex];
-                    lblID.Text = row.Cells["Id_Fornecedor"].Value.ToString();
-                    tbxNome.Text = row.Cells["Nome"].Value.ToString();
-                    tbxEmail.Text = row.Cells["Email"].Value.ToString();
-                    tbxEndereco.Text = row.Cells["Endereco"].Value.ToString();
-                    tbxTelefone.Text = row.Cells["Telefone"].Value.ToString();
-                    tbxTelefoneOpcional.Text = row.Cells["TelefoneOpcional"].Value.ToString();
-                    tbxProduto.Text = row.Cells["Produto"].Value.ToString();
+                        throw new Exception(ex.Message.ToString());
+                    }
                 }
             }
             catch (Exception ex)
@@ -220,24 +227,32 @@ namespace HippieDog_BanhoTosa
             }
             else
             {
-         
+
                 DialogResult = MessageBox.Show("Você tem certeza que deseja alterar?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (DialogResult == DialogResult.Yes)
                 {
-                    ENTIDADES.TBL_FORNECEDORES ent = new ENTIDADES.TBL_FORNECEDORES();
-                    MontarEntidades();
-                    ent.Id_Fornecedor = Objent.Id_Fornecedor;
-                    ent.Nome = Objent.Nome;
-                    ent.Email = Objent.Email;
-                    ent.Endereco = Objent.Endereco;
-                    ent.Telefone = Objent.Telefone;
-                    ent.TelefoneOpcional = Objent.TelefoneOpcional;
-                    ent.Produto = Objent.Produto;
-                    ObjNeg_Fornecedores.AlterarFornecedor(ent);
-                    MessageBox.Show("A alteração foi realizada com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgvFornecedores.DataSource = null;
-                    dgvFornecedores.DataSource = ObjNeg_Fornecedores.ListarFornecedores();
+                    try
+                    {
+                        ENTIDADES.TBL_FORNECEDORES ent = new ENTIDADES.TBL_FORNECEDORES();
+                        MontarEntidades();
+                        ent.Id_Fornecedor = Objent.Id_Fornecedor;
+                        ent.Nome = Objent.Nome;
+                        ent.Email = Objent.Email;
+                        ent.Endereco = Objent.Endereco;
+                        ent.Telefone = Objent.Telefone;
+                        ent.TelefoneOpcional = Objent.TelefoneOpcional;
+                        ent.Produto = Objent.Produto;
+                        ObjNeg_Fornecedores.AlterarFornecedor(ent);
+                        MessageBox.Show("A alteração foi realizada com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dgvFornecedores.DataSource = null;
+                        dgvFornecedores.DataSource = ObjNeg_Fornecedores.ListarFornecedores();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        throw new Exception(ex.Message.ToString());
+                    }
                 }
 
             }

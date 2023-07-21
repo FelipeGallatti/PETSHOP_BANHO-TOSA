@@ -33,7 +33,8 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnAgendarBanho = new System.Windows.Forms.ToolStripButton();
             this.btnFinanceiro = new System.Windows.Forms.ToolStripButton();
-            this.btnFornecedores = new System.Windows.Forms.ToolStripButton();
+            this.btnContasPagar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +47,8 @@
             this.toolStripButton1,
             this.btnAgendarBanho,
             this.btnFinanceiro,
-            this.btnFornecedores});
+            this.toolStripButton2,
+            this.btnContasPagar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(150, 450);
@@ -86,16 +88,26 @@
             this.btnFinanceiro.Text = "FINANCEIRO";
             this.btnFinanceiro.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // btnFornecedores
+            // btnContasPagar
             // 
-            this.btnFornecedores.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnFornecedores.ForeColor = System.Drawing.Color.White;
-            this.btnFornecedores.Image = ((System.Drawing.Image)(resources.GetObject("btnFornecedores.Image")));
-            this.btnFornecedores.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFornecedores.Name = "btnFornecedores";
-            this.btnFornecedores.Size = new System.Drawing.Size(148, 20);
-            this.btnFornecedores.Text = "FORNECEDORES";
-            this.btnFornecedores.Click += new System.EventHandler(this.btnFornecedores_Click);
+            this.btnContasPagar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnContasPagar.ForeColor = System.Drawing.Color.White;
+            this.btnContasPagar.Image = ((System.Drawing.Image)(resources.GetObject("btnContasPagar.Image")));
+            this.btnContasPagar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContasPagar.Name = "btnContasPagar";
+            this.btnContasPagar.Size = new System.Drawing.Size(148, 20);
+            this.btnContasPagar.Text = "CONTAS A PAGAR";
+            this.btnContasPagar.Click += new System.EventHandler(this.btnFornecedores_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolStripButton2.ForeColor = System.Drawing.Color.White;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(148, 20);
+            this.toolStripButton2.Text = "FORNECEDORES";
             // 
             // Form1
             // 
@@ -119,7 +131,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton btnFinanceiro;
         private System.Windows.Forms.ToolStripButton btnAgendarBanho;
-        private System.Windows.Forms.ToolStripButton btnFornecedores;
+        private System.Windows.Forms.ToolStripButton btnContasPagar;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 
