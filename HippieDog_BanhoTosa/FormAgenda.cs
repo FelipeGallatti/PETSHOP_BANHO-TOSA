@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Channels;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Telerik.WinControls.UI;
 
 namespace HippieDog_BanhoTosa
 {
@@ -21,12 +13,12 @@ namespace HippieDog_BanhoTosa
             InitializeComponent();
         }
 
-        private void PreenchercamposDgv(DataGridViewCellEventArgs e)
+        private void PreenchercamposDgv(GridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 // Obtenha a linha selecionada
-                DataGridViewRow row = dgvAgenda.Rows[e.RowIndex];
+                var row = rgvAgenda.Rows[e.RowIndex];
 
                 //txtNomeTarefa.Text = row.Cells["Nome_Tarefa"].Value.ToString();
                 tbxDono.Text = row.Cells["DONO"].Value.ToString();
@@ -40,21 +32,35 @@ namespace HippieDog_BanhoTosa
                 lblID.Text = row.Cells["ID_AGENDA"].Value.ToString();
             }
         }
-        private void dgvAgenda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-                PreenchercamposDgv(e);
-        }
+        //private void rgvAgenda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //        PreenchercamposDgv(e);
+        //}
 
         private void FormAgenda_Load(object sender, EventArgs e)
         {
-            dgvAgenda.DataSource = ObjNeg.ListaAgenda();
-            dgvAgenda.Columns["ID_Agenda"].Visible = false;
-            dgvAgenda.Columns["Telefone"].Visible = false;
-            dgvAgenda.Columns["Detalhes"].Visible = false;
-            dgvAgenda.Columns["Data"].Visible = false;
-            dgvAgenda.Columns["Hora"].Visible = false;
-            dgvAgenda.Columns["Faltou"].Visible = false;
-            dgvAgenda.AutoSize = true;
+            rgvAgenda.DataSource = ObjNeg.ListaAgenda();
+            rgvAgenda.Columns["ID_Agenda"].IsVisible = false;
+            rgvAgenda.Columns["Telefone"].IsVisible = false;
+            rgvAgenda.Columns["Detalhes"].IsVisible = false;
+            rgvAgenda.Columns["Data"].IsVisible = false;
+            rgvAgenda.Columns["Hora"].IsVisible = false;
+            rgvAgenda.Columns["Faltou"].IsVisible = false;
+
+            rgvAgenda.Columns["Servico"].Width = 150;
+            rgvAgenda.Columns["Dono"].Width = 150;
+            rgvAgenda.Columns["Pet"].Width = 150;
+            rgvAgenda.Columns["Valor"].Width = 70;
+
+            rgvAgenda.Columns["Servico"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            rgvAgenda.Columns["Dono"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            rgvAgenda.Columns["Pet"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            rgvAgenda.Columns["Valor"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+
+
+
+
+            rgvAgenda.AutoSize = true;
 
         }
 
@@ -67,6 +73,13 @@ namespace HippieDog_BanhoTosa
                 ent.FALTOU = true;
                 ObjNeg.AtualizarFalta(ent);
             }
+        }
+
+
+
+        private void rgvAgenda_CellClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            PreenchercamposDgv(e);
         }
     }
 }

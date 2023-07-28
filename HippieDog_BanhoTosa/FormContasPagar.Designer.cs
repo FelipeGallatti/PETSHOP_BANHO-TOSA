@@ -30,22 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormContasPagar));
             this.lblDataVencimento = new System.Windows.Forms.Label();
-            this.tbxPet = new System.Windows.Forms.TextBox();
+            this.tbxValor = new System.Windows.Forms.TextBox();
             this.lblValor = new System.Windows.Forms.Label();
-            this.tbxTelefone = new System.Windows.Forms.TextBox();
+            this.tbxDescricao = new System.Windows.Forms.TextBox();
             this.lblDescricao = new System.Windows.Forms.Label();
-            this.cbServico = new System.Windows.Forms.ComboBox();
+            this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dtVencimento = new System.Windows.Forms.DateTimePicker();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.lblHistoricoBanhos = new System.Windows.Forms.Label();
-            this.dgvHistBanhos = new System.Windows.Forms.DataGridView();
+            this.dgvContasPagar = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnContasPagas = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPagar = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHistBanhos)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContasPagar)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,12 +59,12 @@
             this.lblDataVencimento.TabIndex = 44;
             this.lblDataVencimento.Text = "Data de Vencimento";
             // 
-            // tbxPet
+            // tbxValor
             // 
-            this.tbxPet.Location = new System.Drawing.Point(46, 220);
-            this.tbxPet.Name = "tbxPet";
-            this.tbxPet.Size = new System.Drawing.Size(119, 20);
-            this.tbxPet.TabIndex = 40;
+            this.tbxValor.Location = new System.Drawing.Point(46, 220);
+            this.tbxValor.Name = "tbxValor";
+            this.tbxValor.Size = new System.Drawing.Size(119, 20);
+            this.tbxValor.TabIndex = 40;
             // 
             // lblValor
             // 
@@ -74,12 +75,12 @@
             this.lblValor.TabIndex = 39;
             this.lblValor.Text = "Valor";
             // 
-            // tbxTelefone
+            // tbxDescricao
             // 
-            this.tbxTelefone.Location = new System.Drawing.Point(46, 88);
-            this.tbxTelefone.Name = "tbxTelefone";
-            this.tbxTelefone.Size = new System.Drawing.Size(241, 20);
-            this.tbxTelefone.TabIndex = 38;
+            this.tbxDescricao.Location = new System.Drawing.Point(46, 88);
+            this.tbxDescricao.Name = "tbxDescricao";
+            this.tbxDescricao.Size = new System.Drawing.Size(241, 20);
+            this.tbxDescricao.TabIndex = 38;
             // 
             // lblDescricao
             // 
@@ -90,13 +91,19 @@
             this.lblDescricao.TabIndex = 37;
             this.lblDescricao.Text = "Descrição";
             // 
-            // cbServico
+            // cbCategoria
             // 
-            this.cbServico.FormattingEnabled = true;
-            this.cbServico.Location = new System.Drawing.Point(46, 132);
-            this.cbServico.Name = "cbServico";
-            this.cbServico.Size = new System.Drawing.Size(241, 21);
-            this.cbServico.TabIndex = 36;
+            this.cbCategoria.FormattingEnabled = true;
+            this.cbCategoria.Items.AddRange(new object[] {
+            "Água",
+            "Luz",
+            "Eletricidade",
+            "Fornecedor",
+            "Outros"});
+            this.cbCategoria.Location = new System.Drawing.Point(46, 132);
+            this.cbCategoria.Name = "cbCategoria";
+            this.cbCategoria.Size = new System.Drawing.Size(241, 21);
+            this.cbCategoria.TabIndex = 36;
             // 
             // lblCategoria
             // 
@@ -107,23 +114,24 @@
             this.lblCategoria.TabIndex = 35;
             this.lblCategoria.Text = "Categoria";
             // 
-            // dateTimePicker1
+            // dtVencimento
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(46, 176);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(241, 20);
-            this.dateTimePicker1.TabIndex = 45;
+            this.dtVencimento.Location = new System.Drawing.Point(46, 176);
+            this.dtVencimento.Name = "dtVencimento";
+            this.dtVencimento.Size = new System.Drawing.Size(241, 20);
+            this.dtVencimento.TabIndex = 45;
             // 
-            // comboBox1
+            // cbStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
             "Pendente",
+            "Paga",
             "Atrasada"});
-            this.comboBox1.Location = new System.Drawing.Point(168, 219);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(119, 21);
-            this.comboBox1.TabIndex = 46;
+            this.cbStatus.Location = new System.Drawing.Point(168, 219);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(119, 21);
+            this.cbStatus.TabIndex = 46;
             // 
             // lblHistoricoBanhos
             // 
@@ -135,33 +143,35 @@
             this.lblHistoricoBanhos.TabIndex = 48;
             this.lblHistoricoBanhos.Text = "Contas a Pagar";
             // 
-            // dgvHistBanhos
+            // dgvContasPagar
             // 
-            this.dgvHistBanhos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHistBanhos.Location = new System.Drawing.Point(311, 88);
-            this.dgvHistBanhos.Name = "dgvHistBanhos";
-            this.dgvHistBanhos.Size = new System.Drawing.Size(362, 262);
-            this.dgvHistBanhos.TabIndex = 47;
+            this.dgvContasPagar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContasPagar.Location = new System.Drawing.Point(311, 88);
+            this.dgvContasPagar.Name = "dgvContasPagar";
+            this.dgvContasPagar.Size = new System.Drawing.Size(362, 262);
+            this.dgvContasPagar.TabIndex = 47;
+            this.dgvContasPagar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContasPagar_CellClick);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.btnContasPagas});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(745, 25);
             this.toolStrip1.TabIndex = 49;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // btnContasPagas
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(82, 22);
-            this.toolStripButton1.Text = "Contas Pagas";
-            this.toolStripButton1.ToolTipText = "toolStripButn1";
+            this.btnContasPagas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnContasPagas.Image = ((System.Drawing.Image)(resources.GetObject("btnContasPagas.Image")));
+            this.btnContasPagas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnContasPagas.Name = "btnContasPagas";
+            this.btnContasPagas.Size = new System.Drawing.Size(82, 22);
+            this.btnContasPagas.Text = "Contas Pagas";
+            this.btnContasPagas.ToolTipText = "toolStripButn1";
+            this.btnContasPagas.Click += new System.EventHandler(this.btnContasPagas_Click);
             // 
             // button1
             // 
@@ -171,15 +181,17 @@
             this.button1.TabIndex = 50;
             this.button1.Text = "Adicionar Conta";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnPagar
             // 
-            this.button2.Location = new System.Drawing.Point(168, 268);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 47);
-            this.button2.TabIndex = 51;
-            this.button2.Text = "Pagar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPagar.Location = new System.Drawing.Point(168, 268);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(119, 47);
+            this.btnPagar.TabIndex = 51;
+            this.btnPagar.Text = "Pagar";
+            this.btnPagar.UseVisualStyleBackColor = true;
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // lblStatus
             // 
@@ -190,29 +202,40 @@
             this.lblStatus.TabIndex = 52;
             this.lblStatus.Text = "Status";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 410);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "label1";
+            // 
             // FormContasPagar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPagar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lblHistoricoBanhos);
-            this.Controls.Add(this.dgvHistBanhos);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dgvContasPagar);
+            this.Controls.Add(this.cbStatus);
+            this.Controls.Add(this.dtVencimento);
             this.Controls.Add(this.lblDataVencimento);
-            this.Controls.Add(this.tbxPet);
+            this.Controls.Add(this.tbxValor);
             this.Controls.Add(this.lblValor);
-            this.Controls.Add(this.tbxTelefone);
+            this.Controls.Add(this.tbxDescricao);
             this.Controls.Add(this.lblDescricao);
-            this.Controls.Add(this.cbServico);
+            this.Controls.Add(this.cbCategoria);
             this.Controls.Add(this.lblCategoria);
             this.Name = "FormContasPagar";
             this.Text = "FormContasPagar";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHistBanhos)).EndInit();
+            this.Load += new System.EventHandler(this.FormContasPagar_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContasPagar)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -223,20 +246,21 @@
         #endregion
 
         private System.Windows.Forms.Label lblDataVencimento;
-        private System.Windows.Forms.TextBox tbxPet;
+        private System.Windows.Forms.TextBox tbxValor;
         private System.Windows.Forms.Label lblValor;
-        private System.Windows.Forms.TextBox tbxTelefone;
+        private System.Windows.Forms.TextBox tbxDescricao;
         private System.Windows.Forms.Label lblDescricao;
-        private System.Windows.Forms.ComboBox cbServico;
+        private System.Windows.Forms.ComboBox cbCategoria;
         private System.Windows.Forms.Label lblCategoria;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dtVencimento;
+        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label lblHistoricoBanhos;
-        private System.Windows.Forms.DataGridView dgvHistBanhos;
+        private System.Windows.Forms.DataGridView dgvContasPagar;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnContasPagas;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label label1;
     }
 }

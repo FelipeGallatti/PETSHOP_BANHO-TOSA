@@ -18,38 +18,44 @@ namespace HippieDog_BanhoTosa
             InitializeComponent();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnAgenda_Click(object sender, EventArgs e)
+        {
+            FormAgenda formAgenda = new FormAgenda();
+            formAgenda.MdiParent = this;
+            formAgenda.Show();
+        }
+
+        private void btnAgendarBanho_Click(object sender, EventArgs e)
+        {
+            FormAgendar_Banho formAgendarBanho = new FormAgendar_Banho();
+            formAgendarBanho.MdiParent = this;
+            formAgendarBanho.Show();
+        }
+
+        private void btnFinanceiro_Click(object sender, EventArgs e)
         {
             FormFinanceiro formFinanceiro = new FormFinanceiro();
             formFinanceiro.MdiParent = this;
             formFinanceiro.Show();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void btnContasPagar_Click(object sender, EventArgs e)
         {
-            FormAgenda formAgenda = new FormAgenda();
-            formAgenda.MdiParent = this;
-            formAgenda.Show();
-
+            FormContasPagar formContasPagar = new FormContasPagar();
+            formContasPagar.MdiParent = this;
+            formContasPagar.Show();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnPacotes_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            FormAgendar_Banho formAgendar = new FormAgendar_Banho();
-            formAgendar.MdiParent = this;
-            formAgendar.Show();
-        }
-
-        private void btnFornecedores_Click(object sender, EventArgs e)
-        {
-            FormFornecedores formFornecedores = new FormFornecedores();
-            formFornecedores.MdiParent= this;
-            formFornecedores.Show();
+            FormPacotes formPacotes = new FormPacotes();
+            formPacotes.MdiParent = this;
+            formPacotes.Show();
         }
     }
 }

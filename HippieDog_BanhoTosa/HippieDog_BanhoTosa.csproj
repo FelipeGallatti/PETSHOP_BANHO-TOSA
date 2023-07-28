@@ -44,6 +44,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="TelerikCommon, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormAgenda.cs">
@@ -70,6 +74,12 @@
     <Compile Include="FormContasPagar.Designer.cs">
       <DependentUpon>FormContasPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormContasPagas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormContasPagas.Designer.cs">
+      <DependentUpon>FormContasPagas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormFinanceiro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +91,12 @@
     </Compile>
     <Compile Include="FormFornecedores.Designer.cs">
       <DependentUpon>FormFornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPacotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPacotes.Designer.cs">
+      <DependentUpon>FormPacotes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,12 +112,19 @@
     <EmbeddedResource Include="FormContasPagar.resx">
       <DependentUpon>FormContasPagar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormContasPagas.resx">
+      <DependentUpon>FormContasPagas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFinanceiro.resx">
       <DependentUpon>FormFinanceiro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFornecedores.resx">
       <DependentUpon>FormFornecedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPacotes.resx">
+      <DependentUpon>FormPacotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

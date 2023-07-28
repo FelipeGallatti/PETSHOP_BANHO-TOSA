@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvAgenda = new System.Windows.Forms.DataGridView();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.lblValor = new System.Windows.Forms.Label();
             this.tbxValor = new System.Windows.Forms.TextBox();
             this.dtHora = new System.Windows.Forms.DateTimePicker();
@@ -47,17 +47,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.lblID = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).BeginInit();
+            this.rgvAgenda = new Telerik.WinControls.UI.RadGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvAgenda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvAgenda.MasterTemplate)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvAgenda
-            // 
-            this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAgenda.Location = new System.Drawing.Point(44, 308);
-            this.dgvAgenda.Name = "dgvAgenda";
-            this.dgvAgenda.Size = new System.Drawing.Size(552, 146);
-            this.dgvAgenda.TabIndex = 0;
-            this.dgvAgenda.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgenda_CellDoubleClick);
             // 
             // lblValor
             // 
@@ -210,11 +203,24 @@
             this.lblID.TabIndex = 37;
             this.lblID.Text = "0";
             // 
+            // rgvAgenda
+            // 
+            this.rgvAgenda.Location = new System.Drawing.Point(44, 308);
+            // 
+            // 
+            // 
+            this.rgvAgenda.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.rgvAgenda.Name = "rgvAgenda";
+            this.rgvAgenda.Size = new System.Drawing.Size(481, 76);
+            this.rgvAgenda.TabIndex = 38;
+            this.rgvAgenda.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgvAgenda_CellClick);
+            // 
             // FormAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 479);
+            this.Controls.Add(this.rgvAgenda);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lblValor);
@@ -233,22 +239,20 @@
             this.Controls.Add(this.dtData);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvAgenda);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAgenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormAgenda";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormAgenda_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvAgenda.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvAgenda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvAgenda;
         private System.Windows.Forms.Label lblValor;
         private System.Windows.Forms.TextBox tbxValor;
         private System.Windows.Forms.DateTimePicker dtHora;
@@ -267,5 +271,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblID;
+        private Telerik.WinControls.UI.RadGridView rgvAgenda;
     }
 }

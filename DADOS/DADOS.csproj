@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="conexao.cs" />
     <Compile Include="CRUD_BANHOETOSA.cs" />
+    <Compile Include="CRUD_CONTASPAGAR.cs" />
     <Compile Include="CRUD_FORNECEDORES.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

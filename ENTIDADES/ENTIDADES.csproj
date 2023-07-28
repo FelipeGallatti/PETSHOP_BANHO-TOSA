@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TBL_CONTASPAGAR.cs" />
     <Compile Include="TBL_FORNECEDORES .cs" />
     <Compile Include="TBL_AGENDA.cs" />
   </ItemGroup>
