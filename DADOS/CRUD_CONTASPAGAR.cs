@@ -98,5 +98,32 @@ namespace DADOS
 			}
 		}
 
+        public decimal GanhosTotal()
+        {
+            try
+            {
+                using (var db = new conexao(connectionString))
+                {
+                    var lista = (from tbl in db.GetTable<ENTIDADES.TBL_AGENDA>()
+                                 where tbl.FALTOU == false
+                                 select tbl).ToList();
+
+                    decimal total = 0;
+
+                    foreach (var item in lista)
+                    {
+                        total += item.VALOR;
+                    }
+
+                    return total;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
     }
 }

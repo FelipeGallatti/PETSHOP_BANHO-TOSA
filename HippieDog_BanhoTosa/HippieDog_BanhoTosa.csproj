@@ -68,6 +68,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCadastrar_Pet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadastrar_Pet.Designer.cs">
+      <DependentUpon>FormCadastrar_Pet.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormContasPagar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgendar_Banho.resx">
       <DependentUpon>FormAgendar_Banho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadastrar_Pet.resx">
+      <DependentUpon>FormCadastrar_Pet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormContasPagar.resx">
       <DependentUpon>FormContasPagar.cs</DependentUpon>

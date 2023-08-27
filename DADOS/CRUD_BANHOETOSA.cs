@@ -49,6 +49,7 @@ namespace DADOS
         {
             try
             {
+                ENTIDADES.TBL_FORNECEDORES tbl_fornecedores = new TBL_FORNECEDORES();
                 using (var DB = new conexao(connectionString))
                 {
                     DB.GetTable<TBL_AGENDA>().InsertOnSubmit(ent);
@@ -135,6 +136,8 @@ namespace DADOS
                 throw new Exception(ex.Message.ToString());
             }
         }
+
+
 
         public decimal GanhosSemanais(DateTime dataInicio, DateTime DataFinal)
         {

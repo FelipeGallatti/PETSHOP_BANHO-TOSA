@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormContasPagar));
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.lblDataVencimento = new System.Windows.Forms.Label();
             this.tbxValor = new System.Windows.Forms.TextBox();
             this.lblValor = new System.Windows.Forms.Label();
@@ -39,15 +40,16 @@
             this.dtVencimento = new System.Windows.Forms.DateTimePicker();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.lblHistoricoBanhos = new System.Windows.Forms.Label();
-            this.dgvContasPagar = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnContasPagas = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPagar = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContasPagar)).BeginInit();
+            this.RgvContasPagar = new Telerik.WinControls.UI.RadGridView();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RgvContasPagar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RgvContasPagar.MasterTemplate)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDataVencimento
@@ -143,15 +145,6 @@
             this.lblHistoricoBanhos.TabIndex = 48;
             this.lblHistoricoBanhos.Text = "Contas a Pagar";
             // 
-            // dgvContasPagar
-            // 
-            this.dgvContasPagar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContasPagar.Location = new System.Drawing.Point(311, 88);
-            this.dgvContasPagar.Name = "dgvContasPagar";
-            this.dgvContasPagar.Size = new System.Drawing.Size(362, 262);
-            this.dgvContasPagar.TabIndex = 47;
-            this.dgvContasPagar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContasPagar_CellClick);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -191,7 +184,6 @@
             this.btnPagar.TabIndex = 51;
             this.btnPagar.Text = "Pagar";
             this.btnPagar.UseVisualStyleBackColor = true;
-            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // lblStatus
             // 
@@ -211,18 +203,30 @@
             this.label1.TabIndex = 53;
             this.label1.Text = "label1";
             // 
+            // RgvContasPagar
+            // 
+            this.RgvContasPagar.Location = new System.Drawing.Point(318, 88);
+            // 
+            // 
+            // 
+            this.RgvContasPagar.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.RgvContasPagar.Name = "RgvContasPagar";
+            this.RgvContasPagar.Size = new System.Drawing.Size(376, 227);
+            this.RgvContasPagar.TabIndex = 54;
+            this.RgvContasPagar.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.RgvContasPagar_CellClick);
+            // 
             // FormContasPagar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 450);
+            this.Controls.Add(this.RgvContasPagar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnPagar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lblHistoricoBanhos);
-            this.Controls.Add(this.dgvContasPagar);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.dtVencimento);
             this.Controls.Add(this.lblDataVencimento);
@@ -235,9 +239,10 @@
             this.Name = "FormContasPagar";
             this.Text = "FormContasPagar";
             this.Load += new System.EventHandler(this.FormContasPagar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContasPagar)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RgvContasPagar.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RgvContasPagar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,12 +260,12 @@
         private System.Windows.Forms.DateTimePicker dtVencimento;
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label lblHistoricoBanhos;
-        private System.Windows.Forms.DataGridView dgvContasPagar;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnContasPagas;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label label1;
+        private Telerik.WinControls.UI.RadGridView RgvContasPagar;
     }
 }

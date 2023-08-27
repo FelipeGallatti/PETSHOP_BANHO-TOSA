@@ -49,6 +49,7 @@ namespace HippieDog_BanhoTosa
             FormContasPagar formContasPagar = new FormContasPagar();
             formContasPagar.MdiParent = this;
             formContasPagar.Show();
+            
         }
 
         private void btnPacotes_Click(object sender, EventArgs e)
@@ -56,6 +57,13 @@ namespace HippieDog_BanhoTosa
             FormPacotes formPacotes = new FormPacotes();
             formPacotes.MdiParent = this;
             formPacotes.Show();
+        }
+
+        private void btnCadastrarPet_Click(object sender, EventArgs e)
+        {
+            FormCadastrar_Pet formCadastrar = new FormCadastrar_Pet();
+            formCadastrar.MdiParent = this;
+            formCadastrar.Show();
         }
     }
 }

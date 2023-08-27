@@ -36,6 +36,7 @@
             this.btnFornecedores = new System.Windows.Forms.ToolStripButton();
             this.btnContasPagar = new System.Windows.Forms.ToolStripButton();
             this.btnPacotes = new System.Windows.Forms.ToolStripButton();
+            this.btnCadastrarPet = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@
             this.btnFinanceiro,
             this.btnFornecedores,
             this.btnContasPagar,
-            this.btnPacotes});
+            this.btnPacotes,
+            this.btnCadastrarPet});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(150, 450);
@@ -122,6 +124,17 @@
             this.btnPacotes.Text = "PACOTES BANHOS";
             this.btnPacotes.Click += new System.EventHandler(this.btnPacotes_Click);
             // 
+            // btnCadastrarPet
+            // 
+            this.btnCadastrarPet.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCadastrarPet.ForeColor = System.Drawing.Color.White;
+            this.btnCadastrarPet.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarPet.Image")));
+            this.btnCadastrarPet.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCadastrarPet.Name = "btnCadastrarPet";
+            this.btnCadastrarPet.Size = new System.Drawing.Size(148, 20);
+            this.btnCadastrarPet.Text = "CADASTRAR PET";
+            this.btnCadastrarPet.Click += new System.EventHandler(this.btnCadastrarPet_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +161,7 @@
         private System.Windows.Forms.ToolStripButton btnPacotes;
         private System.Windows.Forms.ToolStripButton btnFornecedores;
         private System.Windows.Forms.ToolStripButton btnContasPagar;
+        private System.Windows.Forms.ToolStripButton btnCadastrarPet;
     }
 }
 

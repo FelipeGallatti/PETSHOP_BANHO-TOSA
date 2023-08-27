@@ -28,7 +28,7 @@ namespace NEGOCIOS
         {
             try
             {
-               return ObjDad_ContasPagar.ListarContas_Pagas();
+                return ObjDad_ContasPagar.ListarContas_Pagas();
             }
             catch (Exception ex)
             {
@@ -55,6 +55,19 @@ namespace NEGOCIOS
             try
             {
                 return ObjDad_ContasPagar.PagarConta(Ent);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public decimal GanhosTotal()
+        {
+            try
+            {
+                return ObjDad_ContasPagar.GanhosTotal();
             }
             catch (Exception ex)
             {

@@ -43,9 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TBL_CONTASPAGAR.cs" />
-    <Compile Include="TBL_FORNECEDORES .cs" />
-    <Compile Include="TBL_AGENDA.cs" />
+    <Compile Include="ENTIDADES\TBL_CADASTRAR_PET.cs" />
+    <Compile Include="ENTIDADES\TBL_CONTASPAGAR.cs" />
+    <Compile Include="ENTIDADES\TBL_FORNECEDORES .cs" />
+    <Compile Include="ENTIDADES\TBL_AGENDA.cs" />
+    <Compile Include="ENTIDADES\TBL_RACA_GRANDE.cs" />
+    <Compile Include="ENTIDADES\TBL_RACA_MEDIA.cs" />
+    <Compile Include="ENTIDADES\TBL_RACA_PEQUENA.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

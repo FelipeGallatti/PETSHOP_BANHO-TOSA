@@ -37,42 +37,72 @@ namespace HippieDog_BanhoTosa
         //        PreenchercamposDgv(e);
         //}
 
+
+        private void LAYOUT_GRID_AGENDA()
+        {
+            try
+            {
+                rgvAgenda.Columns["ID_Agenda"].IsVisible = false;
+                rgvAgenda.Columns["Telefone"].IsVisible = false;
+                rgvAgenda.Columns["Detalhes"].IsVisible = false;
+                rgvAgenda.Columns["Data"].IsVisible = false;
+                rgvAgenda.Columns["Hora"].IsVisible = false;
+                rgvAgenda.Columns["Faltou"].IsVisible = false;
+
+                rgvAgenda.Columns["Servico"].Width = 150;
+                rgvAgenda.Columns["Dono"].Width = 150;
+                rgvAgenda.Columns["Pet"].Width = 150;
+                rgvAgenda.Columns["Valor"].Width = 70;
+
+                rgvAgenda.Columns["Servico"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                rgvAgenda.Columns["Dono"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                rgvAgenda.Columns["Pet"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                rgvAgenda.Columns["Valor"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+
+                rgvAgenda.AutoSize = true;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+
         private void FormAgenda_Load(object sender, EventArgs e)
         {
-            rgvAgenda.DataSource = ObjNeg.ListaAgenda();
-            rgvAgenda.Columns["ID_Agenda"].IsVisible = false;
-            rgvAgenda.Columns["Telefone"].IsVisible = false;
-            rgvAgenda.Columns["Detalhes"].IsVisible = false;
-            rgvAgenda.Columns["Data"].IsVisible = false;
-            rgvAgenda.Columns["Hora"].IsVisible = false;
-            rgvAgenda.Columns["Faltou"].IsVisible = false;
-
-            rgvAgenda.Columns["Servico"].Width = 150;
-            rgvAgenda.Columns["Dono"].Width = 150;
-            rgvAgenda.Columns["Pet"].Width = 150;
-            rgvAgenda.Columns["Valor"].Width = 70;
-
-            rgvAgenda.Columns["Servico"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            rgvAgenda.Columns["Dono"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            rgvAgenda.Columns["Pet"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            rgvAgenda.Columns["Valor"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-
-
-
-
-            rgvAgenda.AutoSize = true;
+            try
+            {
+                rgvAgenda.DataSource = ObjNeg.ListaAgenda();
+                LAYOUT_GRID_AGENDA();
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+            
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ENTIDADES.TBL_AGENDA ent = new ENTIDADES.TBL_AGENDA();
-            if (Convert.ToInt32(lblID.Text) > 0)
+            try
             {
-                ent.ID_AGENDA = Convert.ToInt32(lblID.Text);
-                ent.FALTOU = true;
-                ObjNeg.AtualizarFalta(ent);
+                ENTIDADES.TBL_AGENDA ent = new ENTIDADES.TBL_AGENDA();
+                if (Convert.ToInt32(lblID.Text) > 0)
+                {
+                    ent.ID_AGENDA = Convert.ToInt32(lblID.Text);
+                    ent.FALTOU = true;
+                    ObjNeg.AtualizarFalta(ent);
+                }
             }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+
         }
 
 

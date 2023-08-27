@@ -29,6 +29,10 @@ namespace HippieDog_BanhoTosa
             ObjEnt.TELEFONE = tbxTelefone.Text;
             ObjEnt.SERVICO = cbServico.Text;
             ObjEnt.TELEFONE = tbxTelefone.Text;
+            if (tbxValor.Text == string.Empty)
+            {
+                tbxValor.Text = "0";
+            }
             ObjEnt.VALOR = Convert.ToInt32(tbxValor.Text);
             
         }
@@ -49,7 +53,7 @@ namespace HippieDog_BanhoTosa
                     ent.TELEFONE = ObjEnt.TELEFONE;
                     ent.SERVICO = ObjEnt.SERVICO;
                     ent.TELEFONE = ObjEnt.TELEFONE;
-                    ent.VALOR = Convert.ToInt32(tbxValor.Text);    
+                    ent.VALOR = Convert.ToInt32(tbxValor.Text);  
                  
 
                     ObjNeg.AgendarBanho(ent);

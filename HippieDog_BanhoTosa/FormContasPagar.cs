@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace HippieDog_BanhoTosa
 {
@@ -21,11 +22,20 @@ namespace HippieDog_BanhoTosa
 
         public void MontarEntidade()
         {
-            ObjEnt_ContasPagar.Descricao = tbxDescricao.Text;
-            ObjEnt_ContasPagar.Categoria = cbCategoria.Text;
-            ObjEnt_ContasPagar.Status = cbStatus.Text;
-            ObjEnt_ContasPagar.Data_Vencimento = dtVencimento.Value;
-            ObjEnt_ContasPagar.Valor = Convert.ToInt32(tbxValor.Text);
+            try
+            {
+                ObjEnt_ContasPagar.Descricao = tbxDescricao.Text;
+                ObjEnt_ContasPagar.Categoria = cbCategoria.Text;
+                ObjEnt_ContasPagar.Status = cbStatus.Text;
+                ObjEnt_ContasPagar.Data_Vencimento = dtVencimento.Value;
+                ObjEnt_ContasPagar.Valor = Convert.ToInt32(tbxValor.Text);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public void LimparCampos()
@@ -67,8 +77,8 @@ namespace HippieDog_BanhoTosa
                         ObjNeg_ContasPagar.IncluirConta(ObjEnt_ContasPagar);
                         LimparCampos();
                         MessageBox.Show("Conta Adicionada com Sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvContasPagar.DataSource = null;
-                        dgvContasPagar.DataSource = ObjNeg_ContasPagar.ListarContas_Pendentes();
+                        RgvContasPagar.DataSource = null;
+                        RgvContasPagar.DataSource = ObjNeg_ContasPagar.ListarContas_Pendentes();
                     }
                 }
             }
@@ -81,74 +91,85 @@ namespace HippieDog_BanhoTosa
 
         private void FormContasPagar_Load(object sender, EventArgs e)
         {
-            dgvContasPagar.DataSource = ObjNeg_ContasPagar.ListarContas_Pendentes();
+            RgvContasPagar.DataSource = ObjNeg_ContasPagar.ListarContas_Pendentes();
+
         }
 
         private void dgvContasPagar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-
-
-            if (e.RowIndex >= 0)
-            {
-
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = dgvContasPagar.Rows[e.RowIndex];
-
-                    label1.Text = row.Cells["Id_CP"].Value.ToString();
-                }
-            }
-        }
-
-
-
-        private void btnPagar_Click(object sender, EventArgs e)
-        {
             try
             {
-                ENTIDADES.TBL_CONTASPAGAR ent = new ENTIDADES.TBL_CONTASPAGAR();
-                if (dgvContasPagar.SelectedCells.Count > 0)
+                if (e.RowIndex >= 0)
                 {
-                    int rowIndex = dgvContasPagar.SelectedCells[0].RowIndex;
-                    DataGridViewRow row = dgvContasPagar.Rows[rowIndex];
 
-                    // Verifique o valor da coluna "Pagamento" na linha selecionada
-                    if (!Convert.ToBoolean(row.Cells["Pagamento"].Value))
+                    if (e.RowIndex >= 0)
                     {
-                        row.Cells["Pagamento"].Value = 1;
-                        DialogResult result = MessageBox.Show("Você já pagou essa conta?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
-                        {
-                            ObjEnt_ContasPagar.ID_CP = Convert.ToInt32(label1.Text);
-                            ObjEnt_ContasPagar.Pagamento =Convert.ToBoolean(row.Cells["Pagamento"].Value);
-                            ent.ID_CP = ObjEnt_ContasPagar.ID_CP;
-                            ent.Pagamento = ObjEnt_ContasPagar.Pagamento;
+                        var row = RgvContasPagar.Rows[e.RowIndex];
 
-
-
-                            ObjNeg_ContasPagar.PagarConta(ent);
-                            MessageBox.Show("A conta está paga", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                            dgvContasPagar.DataSource = null;
-                            dgvContasPagar.DataSource = ObjNeg_ContasPagar.ListarContas_Pendentes();
-                        }
-                        else
-                        {
-                            return;
-                        }
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("deu errado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        label1.Text = row.Cells["Id_CP"].Value.ToString();
                     }
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                throw new Exception(ex.Message.ToString());
             }
+
         }
+
+
+
+        //private void btnPagar_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        ENTIDADES.TBL_CONTASPAGAR ent = new ENTIDADES.TBL_CONTASPAGAR();
+        //        if (RgvContasPagar.SelectedCells.Count > 0)
+        //        {
+        //            int rowIndex = RgvContasPagar.SelectedCells[0].RowIndex;
+        //            int rowIndex = RgvContasPagar.SelectedCells[0]
+
+        //            var row = RgvContasPagar.Rows[rowIndex];
+
+        //            // Verifique o valor da coluna "Pagamento" na linha selecionada
+        //            if (!Convert.ToBoolean(row.Cells["Pagamento"].Value))
+        //            {
+        //                row.Cells["Pagamento"].Value = 1;
+        //                DialogResult result = MessageBox.Show("Você já pagou essa conta?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        //                if (result == DialogResult.Yes)
+        //                {
+        //                    ObjEnt_ContasPagar.ID_CP = Convert.ToInt32(label1.Text);
+        //                    ObjEnt_ContasPagar.Pagamento = Convert.ToBoolean(row.Cells["Pagamento"].Value);
+        //                    ent.ID_CP = ObjEnt_ContasPagar.ID_CP;
+        //                    ent.Pagamento = ObjEnt_ContasPagar.Pagamento;
+
+
+
+        //                    ObjNeg_ContasPagar.PagarConta(ent);
+        //                    MessageBox.Show("A conta está paga", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        //                    RgvContasPagar.DataSource = null;
+        //                    RgvContasPagar.DataSource = ObjNeg_ContasPagar.ListarContas_Pendentes();
+        //                }
+        //                else
+        //                {
+        //                    return;
+        //                }
+
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("deu errado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void btnContasPagas_Click(object sender, EventArgs e)
         {
@@ -163,6 +184,31 @@ namespace HippieDog_BanhoTosa
 
                 throw new Exception(ex.Message.ToString());
             }
+        }
+
+        private void RgvContasPagar_CellClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    // Obtenha a linha selecionada
+                    var row = RgvContasPagar.Rows[e.RowIndex];
+
+                    //txtNomeTarefa.Text = row.Cells["Nome_Tarefa"].Value.ToString();
+                    tbxDescricao.Text = row.Cells["Descricao"].Value.ToString();
+                    tbxValor.Text = row.Cells["Valor"].Value.ToString();
+                    cbCategoria.Text = row.Cells["Categoria"].Value.ToString();
+                    cbStatus.Text = row.Cells["Status"].Value.ToString();
+                    dtVencimento.Text = row.Cells["Data_Vencimento"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+
         }
     }
 }

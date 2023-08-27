@@ -41,6 +41,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvHistBanhos = new System.Windows.Forms.DataGridView();
             this.lblHistoricoBanhos = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistBanhos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,11 +151,21 @@
             this.lblHistoricoBanhos.TabIndex = 14;
             this.lblHistoricoBanhos.Text = "Historico de Banhos";
             // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(162, 44);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(27, 13);
+            this.lblTotal.TabIndex = 15;
+            this.lblTotal.Text = "total";
+            // 
             // FormFinanceiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 440);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblHistoricoBanhos);
             this.Controls.Add(this.dgvHistBanhos);
             this.Controls.Add(this.panel1);
@@ -193,5 +204,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvHistBanhos;
         private System.Windows.Forms.Label lblHistoricoBanhos;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
