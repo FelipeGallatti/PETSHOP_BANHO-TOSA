@@ -32,10 +32,13 @@ namespace ENTIDADES
         public string HORA { get; set; }
 
         [Column(Name = "VALOR")]
-        public int VALOR { get; set; }
+        public decimal VALOR { get; set; }
 
         [Column(Name = "FALTOU")]
         public bool FALTOU { get; set; }
+
+        [Column(Name = "RACA")]
+        public int RACA{ get; set; }
     }
 }
 

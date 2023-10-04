@@ -15,6 +15,24 @@ namespace DADOS
     {
         private string connectionString = @"Data Source=DESKTOP-ECFLCP7\SQLEXPRESS;integrated security=SSPI;Initial Catalog=HippeDog";
 
+        public List<TBL_RACAS> ListarRacas()
+        {
+            try
+            {
+                using (var DB = new conexao(connectionString))
+                {
+                    var lista = (from tbl in DB.GetTable<TBL_RACAS>()
+                                 select tbl).Distinct().ToList();
+
+                    return lista;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
         public List<ENTIDADES.TBL_AGENDA> ListaAgenda()
         {
             try
@@ -45,13 +63,23 @@ namespace DADOS
         }
 
 
-        public void AgendarBanho(ENTIDADES.TBL_AGENDA ent)
+        public void AgendarBanho(string dono, string telefone, string servico, string pet, string detalhes, DateTime data, string hora, decimal valor, int raca)
         {
             try
             {
-                ENTIDADES.TBL_FORNECEDORES tbl_fornecedores = new TBL_FORNECEDORES();
+                ENTIDADES.TBL_AGENDA ent = new TBL_AGENDA();
                 using (var DB = new conexao(connectionString))
                 {
+                    ent.DONO = dono;
+                    ent.TELEFONE = telefone;
+                    ent.SERVICO = servico;
+                    ent.PET = pet;
+                    ent.DETALHES = detalhes;
+                    ent.DATA = data;
+                    ent.HORA = hora;
+                    ent.VALOR = valor;
+                    ent.RACA = raca;
+
                     DB.GetTable<TBL_AGENDA>().InsertOnSubmit(ent);
                     DB.SubmitChanges();
 

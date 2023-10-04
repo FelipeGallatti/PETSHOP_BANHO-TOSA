@@ -49,7 +49,7 @@
     <Compile Include="ENTIDADES\TBL_AGENDA.cs" />
     <Compile Include="ENTIDADES\TBL_RACA_GRANDE.cs" />
     <Compile Include="ENTIDADES\TBL_RACA_MEDIA.cs" />
-    <Compile Include="ENTIDADES\TBL_RACA_PEQUENA.cs" />
+    <Compile Include="ENTIDADES\TBL_RACAS.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

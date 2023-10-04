@@ -40,9 +40,9 @@ namespace HippieDog_BanhoTosa
         {
             try
             {
-                if (chkPequena.Checked) { cbRaca.DataSource = ObjNeg_CadastrarPet.ListarRacasPequenas();
-                    CarregarComboRaca();
-                }
+                //if (chkPequena.Checked) { cbRaca.DataSource = ObjNeg_CadastrarPet.ListarRacasPequenas();
+                //    CarregarComboRaca();
+                //}
 
             }
             catch (Exception ex)
@@ -57,9 +57,9 @@ namespace HippieDog_BanhoTosa
         {
             try
             {
-                if (chkMedio.Checked) { cbRaca.DataSource = ObjNeg_CadastrarPet.ListarRacasMedia();
-                    CarregarComboRaca();
-                }
+                //if (chkMedio.Checked) { cbRaca.DataSource = ObjNeg_CadastrarPet.ListarRacasMedia();
+                //    CarregarComboRaca();
+                //}
 
             }
             catch (Exception ex)
@@ -74,9 +74,9 @@ namespace HippieDog_BanhoTosa
         {
             try
             {
-                if (chkGrande.Checked) { cbRaca.DataSource = ObjNeg_CadastrarPet.ListarRacasGrandes();
-                    CarregarComboRaca();
-                }
+                //if (chkGrande.Checked) { cbRaca.DataSource = ObjNeg_CadastrarPet.ListarRacasGrandes();
+                //    CarregarComboRaca();
+                //}
             }
             catch (Exception ex)
             {

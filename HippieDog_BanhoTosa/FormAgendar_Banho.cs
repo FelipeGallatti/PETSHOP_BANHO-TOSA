@@ -18,24 +18,7 @@ namespace HippieDog_BanhoTosa
         {
             InitializeComponent();
         }
-        public void MontarEntidades()
-        {
-            TimeSpan selectedTime = new TimeSpan(dtHora.Value.Hour, dtHora.Value.Minute, 0);
-            ObjEnt.DATA = dtData.Value;
-            ObjEnt.HORA = selectedTime.ToString();
-            ObjEnt.DETALHES = tbxDetalhes.Text;
-            ObjEnt.PET = tbxPet.Text;
-            ObjEnt.DONO = tbxDono.Text;
-            ObjEnt.TELEFONE = tbxTelefone.Text;
-            ObjEnt.SERVICO = cbServico.Text;
-            ObjEnt.TELEFONE = tbxTelefone.Text;
-            if (tbxValor.Text == string.Empty)
-            {
-                tbxValor.Text = "0";
-            }
-            ObjEnt.VALOR = Convert.ToInt32(tbxValor.Text);
-            
-        }
+
         public void AgendarBanho()
         {
             DialogResult result = MessageBox.Show("Você tem certeza que deseja agendar o banho?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -43,20 +26,16 @@ namespace HippieDog_BanhoTosa
             {
                 try
                 {
-                    ENTIDADES.TBL_AGENDA ent = new ENTIDADES.TBL_AGENDA();
-                    MontarEntidades();
-                    ent.DATA = ObjEnt.DATA;
-                    ent.HORA = ObjEnt.HORA;
-                    ent.DETALHES = ObjEnt.DETALHES;
-                    ent.PET = ObjEnt.PET;
-                    ent.DONO = ObjEnt.DONO;
-                    ent.TELEFONE = ObjEnt.TELEFONE;
-                    ent.SERVICO = ObjEnt.SERVICO;
-                    ent.TELEFONE = ObjEnt.TELEFONE;
-                    ent.VALOR = Convert.ToInt32(tbxValor.Text);  
-                 
+                        TimeSpan selectedTime = new TimeSpan(dtHora.Value.Hour, dtHora.Value.Minute, 0);
 
-                    ObjNeg.AgendarBanho(ent);
+                        if (tbxValor.Text == string.Empty)
+                        {
+                            tbxValor.Text = "0";
+                        }
+
+
+
+                    ObjNeg.AgendarBanho(tbxDono.Text, tbxTelefone.Text, cbServico.Text, tbxPet.Text, tbxDetalhes.Text, dtData.Value, selectedTime.ToString(),Convert.ToDecimal(tbxValor.Text),Convert.ToInt32(cbRaca.SelectedValue));
                     MessageBox.Show("O banho foi agendado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -87,7 +66,9 @@ namespace HippieDog_BanhoTosa
 
         private void FormAgendar_Banho_Load(object sender, EventArgs e)
         {
-
+            cbRaca.DataSource = ObjNeg.ListarRacas();
+            cbRaca.ValueMember = "ID_RACA";
+            cbRaca.DisplayMember = "NOME";
         }
 
         private void btnAgendar_Click(object sender, EventArgs e)

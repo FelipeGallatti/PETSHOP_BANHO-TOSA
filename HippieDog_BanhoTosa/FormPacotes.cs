@@ -20,24 +20,24 @@ namespace HippieDog_BanhoTosa
 
         private void CarregarComboBox()
         {
-            cboRacasPequenas.DataSource = Objneg_Cadastrar.ListarRacasPequenas();
-            cboRacasMedia.DataSource = Objneg_Cadastrar.ListarRacasMedia();
-            cboRacasGrande.DataSource = Objneg_Cadastrar.ListarRacasGrandes();
+            //cboRacasPequenas.DataSource = Objneg_Cadastrar.ListarRacasPequenas();
+            //cboRacasMedia.DataSource = Objneg_Cadastrar.ListarRacasMedia();
+            //cboRacasGrande.DataSource = Objneg_Cadastrar.ListarRacasGrandes();
 
-            //Combo raças pequenas
-            cboRacasPequenas.ValueMember = "ID_RACA";
-            cboRacasPequenas.DisplayMember = "NOME";
-            cboRacasPequenas.SelectedIndex = -1;
+            ////Combo raças pequenas
+            //cboRacasPequenas.ValueMember = "ID_RACA";
+            //cboRacasPequenas.DisplayMember = "NOME";
+            //cboRacasPequenas.SelectedIndex = -1;
 
-            //Combo raças pequenas
-            cboRacasMedia.ValueMember = "ID_RACA";
-            cboRacasMedia.DisplayMember = "NOME";
-            cboRacasMedia.SelectedIndex = -1;
+            ////Combo raças pequenas
+            //cboRacasMedia.ValueMember = "ID_RACA";
+            //cboRacasMedia.DisplayMember = "NOME";
+            //cboRacasMedia.SelectedIndex = -1;
 
-            //Combo raças pequenas
-            cboRacasGrande.ValueMember = "ID_RACA";
-            cboRacasGrande.DisplayMember = "NOME";
-            cboRacasGrande.SelectedIndex = -1;
+            ////Combo raças pequenas
+            //cboRacasGrande.ValueMember = "ID_RACA";
+            //cboRacasGrande.DisplayMember = "NOME";
+            //cboRacasGrande.SelectedIndex = -1;
         }
 
         private void CalcularValorPacote_Pequeno()
@@ -128,10 +128,10 @@ namespace HippieDog_BanhoTosa
 
         private void levaTrazPq_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboRacasPequenas.DataSource == Objneg_Cadastrar.ListarRacasPequenas())
-            {
-                MessageBox.Show("certo", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //if (cboRacasPequenas.DataSource == Objneg_Cadastrar.ListarRacasPequenas())
+            //{
+            //    MessageBox.Show("certo", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)

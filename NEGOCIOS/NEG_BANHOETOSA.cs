@@ -1,4 +1,5 @@
 ﻿using DADOS;
+using ENTIDADES;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,20 @@ namespace NEGOCIOS
     public class NEG_BANHOETOSA
     {
         DADOS.CRUD_BANHOETOSA objdad_Agenda = new DADOS.CRUD_BANHOETOSA();
+
+
+        public List<TBL_RACAS> ListarRacas()
+        {
+            try
+            {
+                return objdad_Agenda.ListarRacas();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
 
         public List<ENTIDADES.TBL_AGENDA> ListaAgenda()
         {
@@ -24,11 +39,11 @@ namespace NEGOCIOS
             }
         }
 
-        public void AgendarBanho(ENTIDADES.TBL_AGENDA ent)
+        public void AgendarBanho(string dono, string telefone, string servico, string pet, string detalhes, DateTime data, string hora, decimal valor, int raca)
         {
             try
             {
-               objdad_Agenda.AgendarBanho(ent);
+               objdad_Agenda.AgendarBanho(dono,telefone,servico,pet,detalhes,data,hora,valor, raca);
             }
             catch (Exception ex)
             {
