@@ -93,6 +93,7 @@
             this.cbServico.Name = "cbServico";
             this.cbServico.Size = new System.Drawing.Size(311, 21);
             this.cbServico.TabIndex = 5;
+            this.cbServico.SelectedIndexChanged += new System.EventHandler(this.cbServico_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -209,6 +210,7 @@
             this.cbRaca.Name = "cbRaca";
             this.cbRaca.Size = new System.Drawing.Size(150, 21);
             this.cbRaca.TabIndex = 19;
+            this.cbRaca.SelectedIndexChanged += new System.EventHandler(this.cbRaca_SelectedIndexChanged);
             // 
             // label8
             // 

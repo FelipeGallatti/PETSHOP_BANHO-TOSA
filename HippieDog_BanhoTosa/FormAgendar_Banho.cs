@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls.UI;
 
 namespace HippieDog_BanhoTosa
 {
@@ -17,6 +18,43 @@ namespace HippieDog_BanhoTosa
         public FormAgendar_Banho()
         {
             InitializeComponent();
+        }
+
+        private void CarregarComboRaca()
+        {
+            cbRaca.DisplayMember = "NOME";
+            cbRaca.ValueMember = "PORTE";
+            cbRaca.DataSource = ObjNeg.ListarRacas();
+            cbRaca.SelectedIndex = -1;
+        }
+
+        private void LimparCampos()
+        {
+            try
+            {
+                dtData.Value = DateTime.Today;
+                dtHora.Value = DateTime.Now;
+                tbxDono.Text = string.Empty;
+                tbxPet.Text = string.Empty;
+                tbxTelefone.Text = string.Empty;
+                tbxValor.Text = string.Empty;
+                tbxDetalhes.Text = string.Empty;
+                cbRaca.SelectedIndex = -1;
+                cbServico.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        private void CarregarComboServicos()
+        {
+            cbServico.DisplayMember = "NOME_SERVICO";
+            cbServico.ValueMember = "ID_SERVICO";
+            cbServico.DataSource = ObjNeg.ListarServicos();
+            cbServico.SelectedIndex = -1;
         }
 
         public void AgendarBanho()
@@ -37,6 +75,7 @@ namespace HippieDog_BanhoTosa
 
                     ObjNeg.AgendarBanho(tbxDono.Text, tbxTelefone.Text, cbServico.Text, tbxPet.Text, tbxDetalhes.Text, dtData.Value, selectedTime.ToString(),Convert.ToDecimal(tbxValor.Text),Convert.ToInt32(cbRaca.SelectedValue));
                     MessageBox.Show("O banho foi agendado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
 
                 }
 
@@ -53,7 +92,6 @@ namespace HippieDog_BanhoTosa
         }
 
 
-
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
 
@@ -66,14 +104,38 @@ namespace HippieDog_BanhoTosa
 
         private void FormAgendar_Banho_Load(object sender, EventArgs e)
         {
-            cbRaca.DataSource = ObjNeg.ListarRacas();
-            cbRaca.ValueMember = "ID_RACA";
-            cbRaca.DisplayMember = "NOME";
+            CarregarComboRaca();
+            CarregarComboServicos();
         }
 
         private void btnAgendar_Click(object sender, EventArgs e)
         {
             AgendarBanho();
+        }
+
+        private void cbRaca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int idtiposervico = Convert.ToInt32(cbServico.SelectedValue); // Mantenha cbServico
+                int idporte = Convert.ToInt32(cbRaca.SelectedValue);
+
+                tbxValor.Text = Convert.ToString(ObjNeg.CalcularValorServico(idtiposervico, idporte));
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        private void cbServico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idtiposervico = Convert.ToInt32(cbServico.SelectedValue); // Mantenha cbServico
+            int idporte = Convert.ToInt32(cbRaca.SelectedValue);
+
+            tbxValor.Text = Convert.ToString(ObjNeg.CalcularValorServico(idtiposervico, idporte));
         }
     }
 }

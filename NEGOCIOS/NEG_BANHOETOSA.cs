@@ -39,11 +39,37 @@ namespace NEGOCIOS
             }
         }
 
+        public List<ENTIDADES.TBL_SERVICOS> ListarServicos()
+        {
+            try
+            {
+               return objdad_Agenda.ListarServicos();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public void AgendarBanho(string dono, string telefone, string servico, string pet, string detalhes, DateTime data, string hora, decimal valor, int raca)
         {
             try
             {
                objdad_Agenda.AgendarBanho(dono,telefone,servico,pet,detalhes,data,hora,valor, raca);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public int CalcularValorServico(int idservico, int porteraca)
+        {
+            try
+            {
+               return objdad_Agenda.CalcularValorServico(idservico,porteraca);
             }
             catch (Exception ex)
             {

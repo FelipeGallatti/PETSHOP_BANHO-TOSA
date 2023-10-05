@@ -68,12 +68,30 @@ namespace HippieDog_BanhoTosa
             }
         }
 
+        public void CarregarComboServico()
+        {
+            try
+            {
+                cbServico.ValueMember = "ID_SERVICO";
+                cbServico.DisplayMember = "NOME_SERVICO";
+                cbServico.DataSource = ObjNeg.ListarServicos();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
 
         private void FormAgenda_Load(object sender, EventArgs e)
         {
             try
             {
+
                 rgvAgenda.DataSource = ObjNeg.ListaAgenda();
+                CarregarComboServico();
                 LAYOUT_GRID_AGENDA();
                 
             }

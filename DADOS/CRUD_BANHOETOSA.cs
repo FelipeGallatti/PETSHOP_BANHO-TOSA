@@ -15,7 +15,7 @@ namespace DADOS
     {
         private string connectionString = @"Data Source=DESKTOP-ECFLCP7\SQLEXPRESS;integrated security=SSPI;Initial Catalog=HippeDog";
 
-        public List<TBL_RACAS> ListarRacas()
+        public List<ENTIDADES.TBL_RACAS> ListarRacas()
         {
             try
             {
@@ -39,9 +39,69 @@ namespace DADOS
             {
                 using (var DB = new conexao(connectionString))
                 {
-                    List<ENTIDADES.TBL_AGENDA> lista = (from tbl_agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                                        select tbl_agenda).ToList();
+                    List<ENTIDADES.TBL_AGENDA> lista = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                                        select tbl).ToList();
                     return lista;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public int CalcularValorServico(int idservico, int porteraca)
+        {
+            try
+            {
+                int valor = 0;
+
+                if (idservico == 1 && porteraca == 1)
+                {
+                    valor = 20;
+                }
+                else if (idservico == 2 && porteraca == 1)
+                {
+                    valor = 25;
+                }
+                else if (idservico == 3 && porteraca == 1)
+                {
+                    valor = 60;
+                }
+                else if (idservico == 4 && porteraca == 1)
+                {
+                    valor = 40;
+                }
+                else if (idservico == 5 && porteraca == 1)
+                {
+                    valor = 40;
+                }
+                else if (idservico == 6 && porteraca == 1)
+                {
+                    valor = 35;
+                }
+
+                return valor;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+
+        public List<ENTIDADES.TBL_SERVICOS> ListarServicos()
+        {
+            try
+            {
+                using (var db = new conexao(connectionString))
+                {
+                    var listaServicos = (from tbl in db.GetTable<ENTIDADES.TBL_SERVICOS>()
+                                         select tbl).ToList();
+
+                    return listaServicos;
                 }
             }
             catch (Exception ex)

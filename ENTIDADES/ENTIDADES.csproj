@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ENTIDADES\TBL_SERVICOS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ENTIDADES\TBL_CADASTRAR_PET.cs" />
     <Compile Include="ENTIDADES\TBL_CONTASPAGAR.cs" />
