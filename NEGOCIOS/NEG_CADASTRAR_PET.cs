@@ -12,11 +12,6 @@ namespace NEGOCIOS
     {
         DADOS.CRUD_CADASTRAR_PET objDad_CadastrarPet = new CRUD_CADASTRAR_PET();
 
-
-       
-
-       
-
         public void InserirPet(TBL_CADASTRAR_PET ent)
         {
             try
@@ -29,5 +24,6 @@ namespace NEGOCIOS
                 throw new Exception(ex.Message.ToString());
             }
         }
+
     }
 }

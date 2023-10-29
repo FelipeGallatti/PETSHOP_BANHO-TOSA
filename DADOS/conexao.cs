@@ -1,4 +1,5 @@
-﻿using System.Data.Linq;
+﻿using Microsoft.Extensions.Options;
+using System.Data.Linq;
 using System.Data.SqlClient;
 
 namespace DADOS
@@ -11,6 +12,7 @@ namespace DADOS
         public conexao(string connectionString) : base(connectionString)
         {
             cn = new SqlConnection(connectionString);
+
         }
 
         public SqlConnection Conectar()

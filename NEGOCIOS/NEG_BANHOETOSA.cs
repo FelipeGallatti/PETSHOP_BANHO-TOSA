@@ -26,11 +26,24 @@ namespace NEGOCIOS
             }
         }
 
-        public List<ENTIDADES.TBL_AGENDA> ListaAgenda()
+        public List<object> ListaAgenda()
         {
             try
             {
-                return objdad_Agenda.ListaAgenda();
+               return objdad_Agenda.ListaAgenda();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public List<object> ListarHistoricoFalta()
+        {
+            try
+            {
+                return objdad_Agenda.ListarHistoricoFalta();
             }
             catch (Exception ex)
             {
@@ -78,11 +91,37 @@ namespace NEGOCIOS
             }
         }
 
-        public void AtualizarFalta(ENTIDADES.TBL_AGENDA ent)
+        public void AdicionarFalta(bool falta, int idAgenda)
         {
             try
             {
-                objdad_Agenda.AtualizarFalta(ent);
+                objdad_Agenda.AdicionarFalta(falta, idAgenda);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public void RemoverFalta(bool falta, int idAgenda)
+        {
+            try
+            {
+                 objdad_Agenda.RemoverFalta(falta, idAgenda);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public object ValorTotalFaltas()
+        {
+            try
+            {
+               return objdad_Agenda.ValorTotalFaltas();
             }
             catch (Exception ex)
             {

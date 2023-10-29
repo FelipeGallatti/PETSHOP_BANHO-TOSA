@@ -29,248 +29,196 @@
         private void InitializeComponent()
         {
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
+            this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.lblDono = new System.Windows.Forms.Label();
+            this.lblPet = new System.Windows.Forms.Label();
+            this.lblraca = new System.Windows.Forms.Label();
+            this.lblServico = new System.Windows.Forms.Label();
             this.lblValor = new System.Windows.Forms.Label();
-            this.tbxValor = new System.Windows.Forms.TextBox();
-            this.dtHora = new System.Windows.Forms.DateTimePicker();
-            this.tbxDetalhes = new System.Windows.Forms.RichTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbxDono = new System.Windows.Forms.TextBox();
-            this.tbxPet = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbxTelefone = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbServico = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtData = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblID = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.lblData = new System.Windows.Forms.Label();
+            this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
             this.rgvAgenda = new Telerik.WinControls.UI.RadGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).BeginInit();
+            this.radSplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
+            this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).BeginInit();
+            this.splitPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgvAgenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvAgenda.MasterTemplate)).BeginInit();
             this.SuspendLayout();
             // 
+            // radSplitContainer1
+            // 
+            this.radSplitContainer1.Controls.Add(this.splitPanel1);
+            this.radSplitContainer1.Location = new System.Drawing.Point(9, 77);
+            this.radSplitContainer1.Name = "radSplitContainer1";
+            // 
+            // 
+            // 
+            this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.radSplitContainer1.Size = new System.Drawing.Size(615, 285);
+            this.radSplitContainer1.SplitterWidth = 8;
+            this.radSplitContainer1.TabIndex = 39;
+            this.radSplitContainer1.TabStop = false;
+            // 
+            // radPanel1
+            // 
+            this.radPanel1.Controls.Add(this.lblData);
+            this.radPanel1.Controls.Add(this.lblHora);
+            this.radPanel1.Controls.Add(this.lblValor);
+            this.radPanel1.Controls.Add(this.lblServico);
+            this.radPanel1.Controls.Add(this.lblraca);
+            this.radPanel1.Controls.Add(this.lblPet);
+            this.radPanel1.Controls.Add(this.lblDono);
+            this.radPanel1.Controls.Add(this.radButton1);
+            this.radPanel1.Location = new System.Drawing.Point(9, 365);
+            this.radPanel1.Name = "radPanel1";
+            this.radPanel1.Size = new System.Drawing.Size(615, 44);
+            this.radPanel1.TabIndex = 40;
+            // 
+            // radButton1
+            // 
+            this.radButton1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.radButton1.Location = new System.Drawing.Point(505, 0);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(110, 44);
+            this.radButton1.TabIndex = 0;
+            this.radButton1.Text = "FALTOU";
+            // 
+            // lblDono
+            // 
+            this.lblDono.AutoSize = true;
+            this.lblDono.Location = new System.Drawing.Point(20, 13);
+            this.lblDono.Name = "lblDono";
+            this.lblDono.Size = new System.Drawing.Size(36, 13);
+            this.lblDono.TabIndex = 1;
+            this.lblDono.Text = "Dono";
+            // 
+            // lblPet
+            // 
+            this.lblPet.AutoSize = true;
+            this.lblPet.Location = new System.Drawing.Point(64, 13);
+            this.lblPet.Name = "lblPet";
+            this.lblPet.Size = new System.Drawing.Size(23, 13);
+            this.lblPet.TabIndex = 2;
+            this.lblPet.Text = "Pet";
+            // 
+            // lblraca
+            // 
+            this.lblraca.AutoSize = true;
+            this.lblraca.Location = new System.Drawing.Point(95, 13);
+            this.lblraca.Name = "lblraca";
+            this.lblraca.Size = new System.Drawing.Size(31, 13);
+            this.lblraca.TabIndex = 3;
+            this.lblraca.Text = "Raça";
+            // 
+            // lblServico
+            // 
+            this.lblServico.AutoSize = true;
+            this.lblServico.Location = new System.Drawing.Point(134, 13);
+            this.lblServico.Name = "lblServico";
+            this.lblServico.Size = new System.Drawing.Size(43, 13);
+            this.lblServico.TabIndex = 4;
+            this.lblServico.Text = "Serviço";
+            // 
             // lblValor
             // 
             this.lblValor.AutoSize = true;
-            this.lblValor.Location = new System.Drawing.Point(395, 261);
+            this.lblValor.Location = new System.Drawing.Point(264, 13);
             this.lblValor.Name = "lblValor";
-            this.lblValor.Size = new System.Drawing.Size(31, 13);
-            this.lblValor.TabIndex = 34;
+            this.lblValor.Size = new System.Drawing.Size(33, 13);
+            this.lblValor.TabIndex = 5;
             this.lblValor.Text = "Valor";
             // 
-            // tbxValor
+            // lblHora
             // 
-            this.tbxValor.Location = new System.Drawing.Point(432, 258);
-            this.tbxValor.Name = "tbxValor";
-            this.tbxValor.Size = new System.Drawing.Size(164, 20);
-            this.tbxValor.TabIndex = 33;
+            this.lblHora.AutoSize = true;
+            this.lblHora.Location = new System.Drawing.Point(224, 13);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(32, 13);
+            this.lblHora.TabIndex = 6;
+            this.lblHora.Text = "Hora";
             // 
-            // dtHora
+            // lblData
             // 
-            this.dtHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtHora.Location = new System.Drawing.Point(292, 72);
-            this.dtHora.Name = "dtHora";
-            this.dtHora.Size = new System.Drawing.Size(63, 20);
-            this.dtHora.TabIndex = 32;
-            this.dtHora.Value = new System.DateTime(2023, 7, 6, 18, 9, 0, 0);
+            this.lblData.AutoSize = true;
+            this.lblData.Location = new System.Drawing.Point(185, 13);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(31, 13);
+            this.lblData.TabIndex = 7;
+            this.lblData.Text = "Data";
             // 
-            // tbxDetalhes
+            // splitPanel1
             // 
-            this.tbxDetalhes.Location = new System.Drawing.Point(391, 54);
-            this.tbxDetalhes.Name = "tbxDetalhes";
-            this.tbxDetalhes.Size = new System.Drawing.Size(205, 198);
-            this.tbxDetalhes.TabIndex = 31;
-            this.tbxDetalhes.Text = "";
+            this.splitPanel1.Controls.Add(this.rgvAgenda);
+            this.splitPanel1.Location = new System.Drawing.Point(0, 0);
+            this.splitPanel1.Name = "splitPanel1";
             // 
-            // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(388, 38);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "Detalhes";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 242);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 13);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Dono | Cliente";
-            // 
-            // tbxDono
-            // 
-            this.tbxDono.Location = new System.Drawing.Point(44, 258);
-            this.tbxDono.Name = "tbxDono";
-            this.tbxDono.Size = new System.Drawing.Size(150, 20);
-            this.tbxDono.TabIndex = 28;
-            // 
-            // tbxPet
-            // 
-            this.tbxPet.Location = new System.Drawing.Point(205, 197);
-            this.tbxPet.Name = "tbxPet";
-            this.tbxPet.Size = new System.Drawing.Size(150, 20);
-            this.tbxPet.TabIndex = 27;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(202, 181);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 13);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Pet";
-            // 
-            // tbxTelefone
-            // 
-            this.tbxTelefone.Location = new System.Drawing.Point(44, 197);
-            this.tbxTelefone.Name = "tbxTelefone";
-            this.tbxTelefone.Size = new System.Drawing.Size(150, 20);
-            this.tbxTelefone.TabIndex = 25;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 181);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Telefone";
-            // 
-            // cbServico
-            // 
-            this.cbServico.FormattingEnabled = true;
-            this.cbServico.Location = new System.Drawing.Point(44, 130);
-            this.cbServico.Name = "cbServico";
-            this.cbServico.Size = new System.Drawing.Size(311, 21);
-            this.cbServico.TabIndex = 23;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Serviço";
-            // 
-            // dtData
-            // 
-            this.dtData.Location = new System.Drawing.Point(44, 72);
-            this.dtData.Name = "dtData";
-            this.dtData.Size = new System.Drawing.Size(213, 20);
-            this.dtData.TabIndex = 21;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(289, 57);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Hora";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 57);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Data";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(205, 257);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 21);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "FALTOU";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(43, 37);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(13, 13);
-            this.lblID.TabIndex = 37;
-            this.lblID.Text = "0";
+            this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.splitPanel1.Size = new System.Drawing.Size(615, 285);
+            this.splitPanel1.TabIndex = 0;
+            this.splitPanel1.TabStop = false;
+            this.splitPanel1.Text = "splitPanel1";
             // 
             // rgvAgenda
             // 
-            this.rgvAgenda.Location = new System.Drawing.Point(44, 308);
+            this.rgvAgenda.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rgvAgenda.Location = new System.Drawing.Point(0, 0);
             // 
             // 
             // 
+            this.rgvAgenda.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.rgvAgenda.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.rgvAgenda.Name = "rgvAgenda";
-            this.rgvAgenda.Size = new System.Drawing.Size(481, 76);
-            this.rgvAgenda.TabIndex = 38;
-            this.rgvAgenda.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgvAgenda_CellClick);
+            this.rgvAgenda.Size = new System.Drawing.Size(615, 285);
+            this.rgvAgenda.TabIndex = 0;
             // 
             // FormAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 479);
-            this.Controls.Add(this.rgvAgenda);
-            this.Controls.Add(this.lblID);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.lblValor);
-            this.Controls.Add(this.tbxValor);
-            this.Controls.Add(this.dtHora);
-            this.Controls.Add(this.tbxDetalhes);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.tbxDono);
-            this.Controls.Add(this.tbxPet);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.tbxTelefone);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbServico);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dtData);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.radPanel1);
+            this.Controls.Add(this.radSplitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAgenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormAgenda";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormAgenda_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).EndInit();
+            this.radSplitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
+            this.radPanel1.ResumeLayout(false);
+            this.radPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).EndInit();
+            this.splitPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rgvAgenda.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvAgenda)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
+        private Telerik.WinControls.UI.RadSplitContainer radSplitContainer1;
+        private Telerik.WinControls.UI.RadPanel radPanel1;
+        private System.Windows.Forms.Label lblraca;
+        private System.Windows.Forms.Label lblPet;
+        private System.Windows.Forms.Label lblDono;
+        private Telerik.WinControls.UI.RadButton radButton1;
+        private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Label lblValor;
-        private System.Windows.Forms.TextBox tbxValor;
-        private System.Windows.Forms.DateTimePicker dtHora;
-        private System.Windows.Forms.RichTextBox tbxDetalhes;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbxDono;
-        private System.Windows.Forms.TextBox tbxPet;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbxTelefone;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbServico;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtData;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Label lblServico;
+        private Telerik.WinControls.UI.SplitPanel splitPanel1;
         private Telerik.WinControls.UI.RadGridView rgvAgenda;
     }
 }

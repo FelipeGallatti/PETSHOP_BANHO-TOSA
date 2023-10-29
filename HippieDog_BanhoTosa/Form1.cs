@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HippieDog_BanhoTosa.User_Control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,24 +26,22 @@ namespace HippieDog_BanhoTosa
 
         private void btnAgenda_Click(object sender, EventArgs e)
         {
-            FormAgenda formAgenda = new FormAgenda();
-            formAgenda.MdiParent = this;
-            formAgenda.Show();
+            UC_Agenda ucAgenda = new UC_Agenda();
+
+            // Remove o UserControl atual, se houver algum
+            if (splitPanel1.Controls.Count > 0)
+            {
+                splitPanel1.Controls[0].Dispose();
+            }
+
+            splitPanel1.Controls.Add(ucAgenda);
+            ucAgenda.Dock = DockStyle.Fill;
+            ucAgenda.Show();
         }
 
-        private void btnAgendarBanho_Click(object sender, EventArgs e)
-        {
-            FormAgendar_Banho formAgendarBanho = new FormAgendar_Banho();
-            formAgendarBanho.MdiParent = this;
-            formAgendarBanho.Show();
-        }
 
-        private void btnFinanceiro_Click(object sender, EventArgs e)
-        {
-            FormFinanceiro formFinanceiro = new FormFinanceiro();
-            formFinanceiro.MdiParent = this;
-            formFinanceiro.Show();
-        }
+
+
 
         private void btnContasPagar_Click(object sender, EventArgs e)
         {
@@ -64,6 +63,36 @@ namespace HippieDog_BanhoTosa
             FormCadastrar_Pet formCadastrar = new FormCadastrar_Pet();
             formCadastrar.MdiParent = this;
             formCadastrar.Show();
+        }
+
+        private void btnAgendaFaltas_Click(object sender, EventArgs e)
+        {
+            UC_AgendaFaltas ucAgendaFaltas = new UC_AgendaFaltas();
+
+            // Remove o UserControl atual, se houver algum
+            if (splitPanel1.Controls.Count > 0)
+            {
+                splitPanel1.Controls[0].Dispose();
+            }
+
+            splitPanel1.Controls.Add(ucAgendaFaltas);
+            ucAgendaFaltas.Dock = DockStyle.Fill;
+            ucAgendaFaltas.Show();
+        }
+
+        private void btnHisBanho_Click(object sender, EventArgs e)
+        {
+            UC_HistBanho ucHistoricoBanhos = new UC_HistBanho();
+
+            // Remove o UserControl atual, se houver algum
+            if (splitPanel1.Controls.Count > 0)
+            {
+                splitPanel1.Controls[0].Dispose();
+            }
+
+            splitPanel1.Controls.Add(ucHistoricoBanhos);
+            ucHistoricoBanhos.Dock = DockStyle.Fill;
+            ucHistoricoBanhos.Show();
         }
     }
 }

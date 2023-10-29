@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HippieDog_BanhoTosa", "HippieDog_BanhoTosa\HippieDog_BanhoTosa.csproj", "{B7146F95-EC84-40BC-8213-DA93B7E24D7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PETSHOP_BANHO&TOSA", "HippieDog_BanhoTosa\PETSHOP_BANHO&TOSA.csproj", "{B7146F95-EC84-40BC-8213-DA93B7E24D7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENTIDADES", "ENTIDADES\ENTIDADES.csproj", "{F7B19D4F-CCA2-49A0-A6F2-961903BDDC37}"
 EndProject

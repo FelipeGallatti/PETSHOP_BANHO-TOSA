@@ -21,15 +21,12 @@ namespace HippieDog_BanhoTosa
                 var row = rgvAgenda.Rows[e.RowIndex];
 
                 //txtNomeTarefa.Text = row.Cells["Nome_Tarefa"].Value.ToString();
-                tbxDono.Text = row.Cells["DONO"].Value.ToString();
-                tbxTelefone.Text = row.Cells["TELEFONE"].Value.ToString();
-                cbServico.Text = row.Cells["SERVICO"].Value.ToString();
-                tbxPet.Text = row.Cells["PET"].Value.ToString();
-                dtData.Value = Convert.ToDateTime(row.Cells["DATA"].Value);
-                dtHora.Value = Convert.ToDateTime(row.Cells["HORA"].Value);
-                tbxDetalhes.Text = row.Cells["DETALHES"].Value.ToString();
-                tbxValor.Text = row.Cells["VALOR"].Value.ToString();
-                lblID.Text = row.Cells["ID_AGENDA"].Value.ToString();
+                lblDono.Text = row.Cells["DONO"].Value.ToString();
+                lblServico.Text = row.Cells["SERVICO"].Value.ToString();
+                lblPet.Text = row.Cells["PET"].Value.ToString();
+                lblData.Text = Convert.ToDateTime(row.Cells["DATA"].Value).ToString("dd/MM/yyyy");
+                lblHora.Text = Convert.ToDateTime(row.Cells["HORA"].Value).ToString("f");
+                lblValor.Text = row.Cells["VALOR"].Value.ToString();
             }
         }
         //private void rgvAgenda_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -68,21 +65,7 @@ namespace HippieDog_BanhoTosa
             }
         }
 
-        public void CarregarComboServico()
-        {
-            try
-            {
-                cbServico.ValueMember = "ID_SERVICO";
-                cbServico.DisplayMember = "NOME_SERVICO";
-                cbServico.DataSource = ObjNeg.ListarServicos();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message.ToString());
-            }
-        }
+       
 
 
         private void FormAgenda_Load(object sender, EventArgs e)
@@ -90,8 +73,6 @@ namespace HippieDog_BanhoTosa
             try
             {
 
-                rgvAgenda.DataSource = ObjNeg.ListaAgenda();
-                CarregarComboServico();
                 LAYOUT_GRID_AGENDA();
                 
             }
@@ -107,13 +88,13 @@ namespace HippieDog_BanhoTosa
         {
             try
             {
-                ENTIDADES.TBL_AGENDA ent = new ENTIDADES.TBL_AGENDA();
-                if (Convert.ToInt32(lblID.Text) > 0)
-                {
-                    ent.ID_AGENDA = Convert.ToInt32(lblID.Text);
-                    ent.FALTOU = true;
-                    ObjNeg.AtualizarFalta(ent);
-                }
+                //ENTIDADES.TBL_AGENDA ent = new ENTIDADES.TBL_AGENDA();
+                //if (Convert.ToInt32(lblID.Text) > 0)
+                //{
+                //    ent.ID_AGENDA = Convert.ToInt32(lblID.Text);
+                //    ent.FALTOU = true;
+                //    ObjNeg.AtualizarFalta(ent);
+                //}
             }
             catch (Exception ex)
             {

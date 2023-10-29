@@ -33,15 +33,63 @@ namespace DADOS
                 throw new Exception(ex.Message.ToString());
             }
         }
-        public List<ENTIDADES.TBL_AGENDA> ListaAgenda()
+        public List<object> ListaAgenda()
         {
             try
             {
                 using (var DB = new conexao(connectionString))
                 {
-                    List<ENTIDADES.TBL_AGENDA> lista = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                                        select tbl).ToList();
-                    return lista;
+                    var lista = from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                join raca in DB.GetTable<ENTIDADES.TBL_RACAS>()
+                                on tbl.RACA equals raca.ID_RACA
+                                where tbl.FALTOU == false
+                                 select new
+                                 {
+                                    ID_AGENDA = tbl.ID_AGENDA,
+                                    DONO = tbl.DONO,
+                                    PET = tbl.PET,
+                                    RACA = raca.NOME,
+                                    DATA = tbl.DATA,
+                                    HORA =  tbl.HORA,
+                                    VALOR = tbl.VALOR,
+                                    SERVICO = tbl.SERVICO,
+                                    PRESENCA = tbl.FALTOU
+                                 };
+
+                    return lista.ToList<object>();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public List<object> ListarHistoricoFalta()
+        {
+            try
+            {
+                using (var db = new conexao(connectionString))
+                {
+                    var historico = (from agenda in db.GetTable<TBL_AGENDA>()
+                                     join raca in db.GetTable<TBL_RACAS>()
+                                     on agenda.RACA equals raca.ID_RACA
+                                     where agenda.FALTOU == true
+                                     select new
+                                     {
+                                         ID_AGENDA = agenda.ID_AGENDA,
+                                         DONO = agenda.DONO,
+                                         PET = agenda.PET,
+                                         RACA = raca.NOME,
+                                         DATA = agenda.DATA,
+                                         HORA = agenda.HORA,
+                                         VALOR = agenda.VALOR,
+                                         SERVICO = agenda.SERVICO,
+                                         PRESENCA = agenda.FALTOU
+                                     }).ToList();
+
+                    return historico.ToList<object>();
                 }
             }
             catch (Exception ex)
@@ -152,23 +200,23 @@ namespace DADOS
             }
         }
 
-        public void AtualizarFalta(ENTIDADES.TBL_AGENDA ent)
+        public void AdicionarFalta(bool falta, int idAgenda)
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var db = new conexao(connectionString))
                 {
-                    var lista = (from tbl_agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                 where tbl_agenda.ID_AGENDA == ent.ID_AGENDA
-                                 select tbl_agenda).FirstOrDefault();
-                    if (lista != null)
+                    TBL_AGENDA AtualizarFalta = (from agenda in db.GetTable<TBL_AGENDA>()
+                                          where agenda.ID_AGENDA == idAgenda
+                                          select agenda).FirstOrDefault();
+
+                    if (AtualizarFalta != null)
                     {
-                        lista.FALTOU = ent.FALTOU;
-                        DB.GetTable<ENTIDADES.TBL_AGENDA>().Context.SubmitChanges();
+                        AtualizarFalta.FALTOU = falta;
                     }
+                    db.GetTable<TBL_AGENDA>().Context.SubmitChanges();
 
                 }
-
             }
             catch (Exception ex)
             {
@@ -177,6 +225,30 @@ namespace DADOS
             }
         }
 
+        public void RemoverFalta(bool falta, int idAgenda)
+        {
+            try
+            {
+                using (var db = new conexao(connectionString))
+                {
+                    TBL_AGENDA lista = (from agenda in db.GetTable<TBL_AGENDA>()
+                                 where agenda.ID_AGENDA == idAgenda
+                                 select agenda).FirstOrDefault();
+
+                    if (lista != null)
+                    {
+                        lista.FALTOU = falta;
+                    }
+
+                    db.GetTable<TBL_AGENDA>().Context.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
 
 
         public decimal GanhosDiarios()
@@ -225,7 +297,35 @@ namespace DADOS
             }
         }
 
+        public object ValorTotalFaltas()
+        {
+            try
+            {
+                using (var db = new conexao(connectionString))
+                {
+                    //var lista = (from agenda in db.GetTable<TBL_AGENDA>()
+                    //             where agenda.FALTOU == false
+                    //             select new
+                    //             {
+                    //                 v = db.GetTable<TBL_AGENDA>().Sum(item => item.VALOR)
+                    //             }).FirstOrDefault();
 
+
+                    var lista = (from agenda in db.GetTable<TBL_AGENDA>()
+                                 where agenda.FALTOU == true
+                                 select agenda
+                                 //= db.GetTable<TBL_AGENDA>().Sum(item => item.VALOR)
+                                 ).Sum(item => item.VALOR);
+
+                    return lista;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
 
         public decimal GanhosSemanais(DateTime dataInicio, DateTime DataFinal)
         {

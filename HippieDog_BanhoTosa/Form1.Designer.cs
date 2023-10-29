@@ -31,13 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAgenda = new System.Windows.Forms.ToolStripButton();
-            this.btnAgendarBanho = new System.Windows.Forms.ToolStripButton();
-            this.btnFinanceiro = new System.Windows.Forms.ToolStripButton();
+            this.btnAgendaFaltas = new System.Windows.Forms.ToolStripButton();
+            this.btnHisBanho = new System.Windows.Forms.ToolStripButton();
             this.btnFornecedores = new System.Windows.Forms.ToolStripButton();
             this.btnContasPagar = new System.Windows.Forms.ToolStripButton();
             this.btnPacotes = new System.Windows.Forms.ToolStripButton();
             this.btnCadastrarPet = new System.Windows.Forms.ToolStripButton();
+            this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
+            this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).BeginInit();
+            this.radSplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -47,8 +52,8 @@
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgenda,
-            this.btnAgendarBanho,
-            this.btnFinanceiro,
+            this.btnAgendaFaltas,
+            this.btnHisBanho,
             this.btnFornecedores,
             this.btnContasPagar,
             this.btnPacotes,
@@ -70,27 +75,27 @@
             this.btnAgenda.Text = "AGENDA";
             this.btnAgenda.Click += new System.EventHandler(this.btnAgenda_Click);
             // 
-            // btnAgendarBanho
+            // btnAgendaFaltas
             // 
-            this.btnAgendarBanho.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAgendarBanho.ForeColor = System.Drawing.Color.White;
-            this.btnAgendarBanho.Image = ((System.Drawing.Image)(resources.GetObject("btnAgendarBanho.Image")));
-            this.btnAgendarBanho.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAgendarBanho.Name = "btnAgendarBanho";
-            this.btnAgendarBanho.Size = new System.Drawing.Size(148, 20);
-            this.btnAgendarBanho.Text = "AGENDAR BANHO";
-            this.btnAgendarBanho.Click += new System.EventHandler(this.btnAgendarBanho_Click);
+            this.btnAgendaFaltas.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAgendaFaltas.ForeColor = System.Drawing.Color.White;
+            this.btnAgendaFaltas.Image = ((System.Drawing.Image)(resources.GetObject("btnAgendaFaltas.Image")));
+            this.btnAgendaFaltas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAgendaFaltas.Name = "btnAgendaFaltas";
+            this.btnAgendaFaltas.Size = new System.Drawing.Size(148, 20);
+            this.btnAgendaFaltas.Text = "AGENDA DE FALTAS";
+            this.btnAgendaFaltas.Click += new System.EventHandler(this.btnAgendaFaltas_Click);
             // 
-            // btnFinanceiro
+            // btnHisBanho
             // 
-            this.btnFinanceiro.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnFinanceiro.ForeColor = System.Drawing.Color.White;
-            this.btnFinanceiro.Image = ((System.Drawing.Image)(resources.GetObject("btnFinanceiro.Image")));
-            this.btnFinanceiro.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFinanceiro.Name = "btnFinanceiro";
-            this.btnFinanceiro.Size = new System.Drawing.Size(148, 20);
-            this.btnFinanceiro.Text = "FINANCEIRO";
-            this.btnFinanceiro.Click += new System.EventHandler(this.btnFinanceiro_Click);
+            this.btnHisBanho.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnHisBanho.ForeColor = System.Drawing.Color.White;
+            this.btnHisBanho.Image = ((System.Drawing.Image)(resources.GetObject("btnHisBanho.Image")));
+            this.btnHisBanho.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnHisBanho.Name = "btnHisBanho";
+            this.btnHisBanho.Size = new System.Drawing.Size(148, 20);
+            this.btnHisBanho.Text = "HISTORICO BANHOS";
+            this.btnHisBanho.Click += new System.EventHandler(this.btnHisBanho_Click);
             // 
             // btnFornecedores
             // 
@@ -135,19 +140,50 @@
             this.btnCadastrarPet.Text = "CADASTRAR PET";
             this.btnCadastrarPet.Click += new System.EventHandler(this.btnCadastrarPet_Click);
             // 
+            // radSplitContainer1
+            // 
+            this.radSplitContainer1.Controls.Add(this.splitPanel1);
+            this.radSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radSplitContainer1.Location = new System.Drawing.Point(150, 0);
+            this.radSplitContainer1.Name = "radSplitContainer1";
+            // 
+            // 
+            // 
+            this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.radSplitContainer1.Size = new System.Drawing.Size(650, 450);
+            this.radSplitContainer1.SplitterWidth = 8;
+            this.radSplitContainer1.TabIndex = 1;
+            this.radSplitContainer1.TabStop = false;
+            // 
+            // splitPanel1
+            // 
+            this.splitPanel1.Location = new System.Drawing.Point(0, 0);
+            this.splitPanel1.Name = "splitPanel1";
+            // 
+            // 
+            // 
+            this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.splitPanel1.Size = new System.Drawing.Size(650, 450);
+            this.splitPanel1.TabIndex = 0;
+            this.splitPanel1.TabStop = false;
+            this.splitPanel1.Text = "splitPanel1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.radSplitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.IsMdiContainer = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).EndInit();
+            this.radSplitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -156,12 +192,14 @@
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnAgenda;
-        private System.Windows.Forms.ToolStripButton btnFinanceiro;
-        private System.Windows.Forms.ToolStripButton btnAgendarBanho;
+        private System.Windows.Forms.ToolStripButton btnHisBanho;
+        private System.Windows.Forms.ToolStripButton btnAgendaFaltas;
         private System.Windows.Forms.ToolStripButton btnPacotes;
         private System.Windows.Forms.ToolStripButton btnFornecedores;
         private System.Windows.Forms.ToolStripButton btnContasPagar;
         private System.Windows.Forms.ToolStripButton btnCadastrarPet;
+        private Telerik.WinControls.UI.RadSplitContainer radSplitContainer1;
+        private Telerik.WinControls.UI.SplitPanel splitPanel1;
     }
 }
 
