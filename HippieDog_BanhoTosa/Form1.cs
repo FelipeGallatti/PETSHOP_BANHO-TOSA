@@ -94,5 +94,20 @@ namespace HippieDog_BanhoTosa
             ucHistoricoBanhos.Dock = DockStyle.Fill;
             ucHistoricoBanhos.Show();
         }
+
+        private void btnFornecedores_Click(object sender, EventArgs e)
+        {
+            UC_Fornecedores ucFornecedores = new UC_Fornecedores();
+
+            // Remove o UserControl atual, se houver algum
+            if (splitPanel1.Controls.Count > 0)
+            {
+                splitPanel1.Controls[0].Dispose();
+            }
+
+            splitPanel1.Controls.Add(ucFornecedores);
+            ucFornecedores.Dock = DockStyle.Fill;
+            ucFornecedores.Show();
+        }
     }
 }

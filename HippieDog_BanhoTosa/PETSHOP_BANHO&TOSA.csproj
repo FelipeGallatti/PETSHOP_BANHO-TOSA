@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.WinControls, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.GridView, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Light, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="TelerikCommon, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
@@ -99,6 +100,12 @@
     <Compile Include="FormFornecedores.Designer.cs">
       <DependentUpon>FormFornecedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormInfoFornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInfoFornecedores.Designer.cs">
+      <DependentUpon>FormInfoFornecedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPacotes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +114,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\Query.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Query.resx</DependentUpon>
+    </Compile>
     <Compile Include="User_Control\UC_Agenda.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,6 +130,12 @@
     </Compile>
     <Compile Include="User_Control\UC_AgendaFaltas.Designer.cs">
       <DependentUpon>UC_AgendaFaltas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_Control\UC_Fornecedores.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_Control\UC_Fornecedores.Designer.cs">
+      <DependentUpon>UC_Fornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="User_Control\UC_HistBanho.cs">
       <SubType>UserControl</SubType>
@@ -149,6 +167,9 @@
     <EmbeddedResource Include="FormFornecedores.resx">
       <DependentUpon>FormFornecedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormInfoFornecedores.resx">
+      <DependentUpon>FormInfoFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPacotes.resx">
       <DependentUpon>FormPacotes.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,11 +183,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Queries\Query.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Query.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="User_Control\UC_Agenda.resx">
       <DependentUpon>UC_Agenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Control\UC_AgendaFaltas.resx">
       <DependentUpon>UC_AgendaFaltas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Control\UC_Fornecedores.resx">
+      <DependentUpon>UC_Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Control\UC_HistBanho.resx">
       <DependentUpon>UC_HistBanho.cs</DependentUpon>
@@ -193,6 +221,9 @@
       <Project>{d2875c53-3e0a-4173-9e99-430f8d2a6fdf}</Project>
       <Name>NEGOCIOS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Queries\ListaAgenda.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,8 +30,8 @@
         {
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.btnBanhoRealizado = new Telerik.WinControls.UI.RadButton();
             this.lblHora = new System.Windows.Forms.Label();
-            this.lblValor = new System.Windows.Forms.Label();
             this.lblraca = new System.Windows.Forms.Label();
             this.lblPet = new System.Windows.Forms.Label();
             this.lblDono = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBanhoRealizado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFaltou)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTitulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
@@ -57,8 +58,8 @@
             // 
             // radPanel1
             // 
+            this.radPanel1.Controls.Add(this.btnBanhoRealizado);
             this.radPanel1.Controls.Add(this.lblHora);
-            this.radPanel1.Controls.Add(this.lblValor);
             this.radPanel1.Controls.Add(this.lblraca);
             this.radPanel1.Controls.Add(this.lblPet);
             this.radPanel1.Controls.Add(this.lblDono);
@@ -67,6 +68,19 @@
             this.radPanel1.Name = "radPanel1";
             this.radPanel1.Size = new System.Drawing.Size(615, 44);
             this.radPanel1.TabIndex = 42;
+            // 
+            // btnBanhoRealizado
+            // 
+            this.btnBanhoRealizado.BackColor = System.Drawing.Color.Green;
+            this.btnBanhoRealizado.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnBanhoRealizado.Font = new System.Drawing.Font("Poppins Medium", 8.25F);
+            this.btnBanhoRealizado.ForeColor = System.Drawing.Color.White;
+            this.btnBanhoRealizado.Location = new System.Drawing.Point(395, 0);
+            this.btnBanhoRealizado.Name = "btnBanhoRealizado";
+            this.btnBanhoRealizado.Size = new System.Drawing.Size(110, 44);
+            this.btnBanhoRealizado.TabIndex = 7;
+            this.btnBanhoRealizado.Text = "Banho Realizado";
+            this.btnBanhoRealizado.Click += new System.EventHandler(this.btnBanhoRealizado_Click);
             // 
             // lblHora
             // 
@@ -77,16 +91,6 @@
             this.lblHora.Size = new System.Drawing.Size(35, 19);
             this.lblHora.TabIndex = 6;
             this.lblHora.Text = "Hora";
-            // 
-            // lblValor
-            // 
-            this.lblValor.AutoSize = true;
-            this.lblValor.Font = new System.Drawing.Font("Poppins Medium", 8.25F);
-            this.lblValor.Location = new System.Drawing.Point(403, 13);
-            this.lblValor.Name = "lblValor";
-            this.lblValor.Size = new System.Drawing.Size(38, 19);
-            this.lblValor.TabIndex = 5;
-            this.lblValor.Text = "Valor";
             // 
             // lblraca
             // 
@@ -120,7 +124,7 @@
             // 
             // btnFaltou
             // 
-            this.btnFaltou.BackColor = System.Drawing.Color.Black;
+            this.btnFaltou.BackColor = System.Drawing.Color.DarkRed;
             this.btnFaltou.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnFaltou.ForeColor = System.Drawing.Color.White;
             this.btnFaltou.Location = new System.Drawing.Point(505, 0);
@@ -192,7 +196,11 @@
             // 
             // 
             // 
+            this.rgvAgenda.MasterTemplate.AllowAddNewRow = false;
+            this.rgvAgenda.MasterTemplate.AllowDeleteRow = false;
+            this.rgvAgenda.MasterTemplate.AllowEditRow = false;
             this.rgvAgenda.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            this.rgvAgenda.MasterTemplate.EnableGrouping = false;
             this.rgvAgenda.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.rgvAgenda.Name = "rgvAgenda";
             this.rgvAgenda.Size = new System.Drawing.Size(615, 259);
@@ -215,6 +223,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             this.radPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBanhoRealizado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFaltou)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTitulo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
@@ -233,7 +242,6 @@
 
         private Telerik.WinControls.UI.RadPanel radPanel1;
         private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.Label lblValor;
         private System.Windows.Forms.Label lblraca;
         private System.Windows.Forms.Label lblPet;
         private System.Windows.Forms.Label lblDono;
@@ -245,5 +253,6 @@
         private Telerik.WinControls.UI.RadButton btnRemover;
         private Telerik.WinControls.UI.RadGridView rgvAgenda;
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme1;
+        private Telerik.WinControls.UI.RadButton btnBanhoRealizado;
     }
 }

@@ -26,11 +26,25 @@ namespace NEGOCIOS
             }
         }
 
+        public List<ENTIDADES.ENT_APOIO.ListaAgenda> ListaAgenda1()
+        {
+            try
+            {
+
+                return objdad_Agenda.ListaAgenda1();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public List<object> ListaAgenda()
         {
             try
             {
-               return objdad_Agenda.ListaAgenda();
+                return objdad_Agenda.ListaAgenda();
             }
             catch (Exception ex)
             {
@@ -56,7 +70,7 @@ namespace NEGOCIOS
         {
             try
             {
-               return objdad_Agenda.ListarServicos();
+                return objdad_Agenda.ListarServicos();
             }
             catch (Exception ex)
             {
@@ -69,7 +83,20 @@ namespace NEGOCIOS
         {
             try
             {
-               objdad_Agenda.AgendarBanho(dono,telefone,servico,pet,detalhes,data,hora,valor, raca);
+                objdad_Agenda.AgendarBanho(dono, telefone, servico, pet, detalhes, data, hora, valor, raca);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public void ConfirmarBanho(int idAgenda)
+        {
+            try
+            {
+                objdad_Agenda.ConfirmarBanho(idAgenda);
             }
             catch (Exception ex)
             {
@@ -82,7 +109,7 @@ namespace NEGOCIOS
         {
             try
             {
-               return objdad_Agenda.CalcularValorServico(idservico,porteraca);
+                return objdad_Agenda.CalcularValorServico(idservico, porteraca);
             }
             catch (Exception ex)
             {
@@ -108,7 +135,7 @@ namespace NEGOCIOS
         {
             try
             {
-                 objdad_Agenda.RemoverFalta(falta, idAgenda);
+                objdad_Agenda.RemoverFalta(falta, idAgenda);
             }
             catch (Exception ex)
             {
@@ -121,7 +148,7 @@ namespace NEGOCIOS
         {
             try
             {
-               return objdad_Agenda.ValorTotalFaltas();
+                return objdad_Agenda.ValorTotalFaltas();
             }
             catch (Exception ex)
             {
@@ -130,16 +157,36 @@ namespace NEGOCIOS
             }
         }
 
-        public List<ENTIDADES.TBL_AGENDA> ListarHistorico()
+        public List<object> ListarHistorico()
         {
-           return objdad_Agenda.ListarHistorico();
+            return objdad_Agenda.ListarHistorico();
+        }
+
+        public List<object> ListarHistoricoMensal()
+        {
+            return objdad_Agenda.ListarHistoricoMensal();
+        }
+
+        public decimal RetornarValorMensal()
+        {
+           return objdad_Agenda.RetornarValorMensal();
+        }
+
+        public List<object> ListarHistoricoSemanal()
+        {
+            return objdad_Agenda.ListarHistoricoSemanal();
+        }
+
+        public decimal RetornarValorSemanal()
+        {
+           return objdad_Agenda.RetornarValorSemanal();
         }
 
         public decimal BanhosDiarios()
         {
             try
             {
-              return objdad_Agenda.BanhosDiarios();
+                return objdad_Agenda.BanhosDiarios();
             }
             catch (Exception ex)
             {
@@ -165,7 +212,7 @@ namespace NEGOCIOS
         {
             try
             {
-               return objdad_Agenda.GanhosSemanais(dataInicio, DataFinal);
+                return objdad_Agenda.GanhosSemanais(dataInicio, DataFinal);
             }
             catch (Exception ex)
             {
@@ -204,7 +251,7 @@ namespace NEGOCIOS
         {
             try
             {
-               return objdad_Agenda.GanhosMensal(dataInicio, DataFinal);
+                return objdad_Agenda.GanhosMensal(dataInicio, DataFinal);
             }
             catch (Exception ex)
             {

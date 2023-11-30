@@ -13,7 +13,7 @@ namespace DADOS
 {
     public class CRUD_BANHOETOSA
     {
-        private string connectionString = @"Data Source=DESKTOP-ECFLCP7\SQLEXPRESS;integrated security=SSPI;Initial Catalog=HippeDog";
+        private string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
 
         public List<ENTIDADES.TBL_RACAS> ListarRacas()
         {
@@ -42,21 +42,41 @@ namespace DADOS
                     var lista = from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                 join raca in DB.GetTable<ENTIDADES.TBL_RACAS>()
                                 on tbl.RACA equals raca.ID_RACA
-                                where tbl.FALTOU == false
-                                 select new
-                                 {
+                                where tbl.FALTOU == false &&
+                                tbl.BANHO_REALIZADO == false
+                                select new
+                                {
                                     ID_AGENDA = tbl.ID_AGENDA,
                                     DONO = tbl.DONO,
                                     PET = tbl.PET,
                                     RACA = raca.NOME,
                                     DATA = tbl.DATA,
-                                    HORA =  tbl.HORA,
+                                    HORA = tbl.HORA,
                                     VALOR = tbl.VALOR,
                                     SERVICO = tbl.SERVICO,
                                     PRESENCA = tbl.FALTOU
-                                 };
+                                };
 
                     return lista.ToList<object>();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public List<ENTIDADES.ENT_APOIO.ListaAgenda> ListaAgenda1()
+        {
+            try
+            {
+
+                using (var DB = new conexao(connectionString))
+                {
+                    string query = string.Format(Queries.Query.ListaAgenda);
+                    List<ENTIDADES.ENT_APOIO.ListaAgenda> mov = new conexao(connectionString).ExecuteQuery<ENTIDADES.ENT_APOIO.ListaAgenda>(query).ToList();
+                    return mov;
                 }
             }
             catch (Exception ex)
@@ -159,14 +179,156 @@ namespace DADOS
             }
         }
 
-        public List<ENTIDADES.TBL_AGENDA> ListarHistorico()
+        public List<object> ListarHistorico()
         {
             using (var DB = new conexao(connectionString))
             {
-                List<ENTIDADES.TBL_AGENDA> historicoBanho = (from list_hist in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                                             where list_hist.FALTOU == false
-                                                             select list_hist).ToList();
+                List<object> historicoBanho = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                               where agenda.FALTOU == false &&
+                                               agenda.BANHO_REALIZADO == true
+                                               join raca in DB.GetTable<TBL_RACAS>() on
+                                               agenda.RACA equals raca.ID_RACA
+                                               select new
+                                               {
+                                                   ID_AGENDA = agenda.ID_AGENDA,
+                                                   DONO = agenda.DONO,
+                                                   PET = agenda.PET,
+                                                   RACA = raca.NOME,
+                                                   DATA = agenda.DATA,
+                                                   VALOR = agenda.VALOR,
+                                               }).ToList<object>();
                 return historicoBanho;
+            }
+        }
+
+        public List<object> ListarHistoricoMensal()
+        {
+            // Obtém a data atual
+            var dataAtual = DateTime.Now;
+
+            // Obtém a data do início do mês
+            var dataInicioMes = dataAtual.AddDays(-dataAtual.Day);
+
+            // Obtém a data do final do mês
+            var dataFimMes = dataAtual.AddDays(-1);
+
+            using (var DB = new conexao(connectionString))
+            {
+                List<object> historicoBanho = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                               where agenda.FALTOU == false &&
+                                               agenda.BANHO_REALIZADO == true &&
+                                               agenda.DATA >= dataInicioMes && agenda.DATA <= dataFimMes
+                                               join raca in DB.GetTable<TBL_RACAS>() on
+                                               agenda.RACA equals raca.ID_RACA
+                                               select new
+                                               {
+                                                   ID_AGENDA = agenda.ID_AGENDA,
+                                                   DONO = agenda.DONO,
+                                                   PET = agenda.PET,
+                                                   RACA = raca.NOME,
+                                                   DATA = agenda.DATA,
+                                                   VALOR = agenda.VALOR,
+                                               }).ToList<object>();
+                return historicoBanho;
+            }
+        }
+
+        public decimal RetornarValorMensal()
+        {
+            // Obtém a data atual
+            var dataAtual = DateTime.Now;
+
+            // Obtém a data do início do mês
+            var dataInicioMes = dataAtual.AddDays(-dataAtual.Day);
+
+            // Obtém a data do final do mês
+            var dataFimMes = dataAtual.AddDays(-1);
+
+            using (var DB = new conexao(connectionString))
+            {
+                List<ENTIDADES.TBL_AGENDA> valorMensal = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                               where agenda.FALTOU == false &&
+                                               agenda.BANHO_REALIZADO == true &&
+                                               agenda.DATA >= dataInicioMes && agenda.DATA <= dataFimMes
+                                               join raca in DB.GetTable<TBL_RACAS>() on
+                                               agenda.RACA equals raca.ID_RACA
+                                               select agenda).ToList();
+                decimal somaTotal = 0;
+
+                foreach (var item in valorMensal)
+                {
+                    somaTotal += item.VALOR;
+                }
+
+                return somaTotal;
+            }
+        }
+
+        public List<object> ListarHistoricoSemanal()
+        {
+            // Obtém a data atual
+            var dataAtual = DateTime.Now;
+
+            // Obtém a data do início da semana
+            var dataInicioSemana = dataAtual.AddDays(-(int)dataAtual.DayOfWeek);
+
+            // Obtém a data do fim da semana
+            var dataFimSemana = dataInicioSemana.AddDays(6);
+            using (var DB = new conexao(connectionString))
+            {
+
+                // Filtra os resultados para que estejam entre as datas
+                List<object> historicoBanho = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                               where agenda.FALTOU == false &&
+                                               agenda.BANHO_REALIZADO == true &&
+                                               agenda.DATA >= dataInicioSemana && agenda.DATA <= dataFimSemana
+                                               join raca in DB.GetTable<TBL_RACAS>() on
+                                               agenda.RACA equals raca.ID_RACA
+                                               select new
+                                               {
+                                                   ID_AGENDA = agenda.ID_AGENDA,
+                                                   DONO = agenda.DONO,
+                                                   PET = agenda.PET,
+                                                   RACA = raca.NOME,
+                                                   DATA = agenda.DATA,
+                                                   VALOR = agenda.VALOR,
+                                               }).ToList<object>();
+                return historicoBanho;
+            }
+        }
+
+        public decimal RetornarValorSemanal()
+        {
+            // Obtém a data atual
+            var dataAtual = DateTime.Now;
+
+            // Obtém a data do início da semana
+            var dataInicioSemana = dataAtual.AddDays(-(int)dataAtual.DayOfWeek);
+
+            // Obtém a data do fim da semana
+            var dataFimSemana = dataInicioSemana.AddDays(6);
+            using (var DB = new conexao(connectionString))
+            {
+
+                // Filtra os resultados para que estejam entre as datas
+                List<TBL_AGENDA> ValorBanhos = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                            where agenda.FALTOU == false &&
+                                            agenda.BANHO_REALIZADO == true &&
+                                            agenda.DATA >= dataInicioSemana && agenda.DATA <= dataFimSemana
+                                            join raca in DB.GetTable<TBL_RACAS>() on
+                                            agenda.RACA equals raca.ID_RACA
+                                            select agenda).ToList();
+                decimal somaTotal = 0;
+                foreach (var item in ValorBanhos)
+                {
+                    somaTotal += item.VALOR;
+                }
+
+                return somaTotal;
+
+
+
+             
             }
         }
 
@@ -200,6 +362,34 @@ namespace DADOS
             }
         }
 
+        public void ConfirmarBanho(int idAgenda)
+        {
+            try
+            {
+                bool confirmarBanho = true;
+
+                using (var db = new conexao(connectionString))
+                {
+                    TBL_AGENDA lista = (from agenda in db.GetTable<ENTIDADES.TBL_AGENDA>()
+                                        where agenda.ID_AGENDA == idAgenda &&
+                                        agenda.FALTOU == false
+                                        select agenda).FirstOrDefault();
+
+                    if (lista != null)
+                    {
+                        lista.BANHO_REALIZADO = confirmarBanho;
+                    }
+
+                    db.GetTable<TBL_AGENDA>().Context.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public void AdicionarFalta(bool falta, int idAgenda)
         {
             try
@@ -207,8 +397,8 @@ namespace DADOS
                 using (var db = new conexao(connectionString))
                 {
                     TBL_AGENDA AtualizarFalta = (from agenda in db.GetTable<TBL_AGENDA>()
-                                          where agenda.ID_AGENDA == idAgenda
-                                          select agenda).FirstOrDefault();
+                                                 where agenda.ID_AGENDA == idAgenda
+                                                 select agenda).FirstOrDefault();
 
                     if (AtualizarFalta != null)
                     {
@@ -232,8 +422,8 @@ namespace DADOS
                 using (var db = new conexao(connectionString))
                 {
                     TBL_AGENDA lista = (from agenda in db.GetTable<TBL_AGENDA>()
-                                 where agenda.ID_AGENDA == idAgenda
-                                 select agenda).FirstOrDefault();
+                                        where agenda.ID_AGENDA == idAgenda
+                                        select agenda).FirstOrDefault();
 
                     if (lista != null)
                     {
@@ -361,7 +551,7 @@ namespace DADOS
                 using (var DB = new conexao(connectionString))
                 {
                     List<ENTIDADES.TBL_AGENDA> calcularGanhos = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                                                 where  tbl.DATA >= dataInicio && tbl.DATA <= DataFinal
+                                                                 where tbl.DATA >= dataInicio && tbl.DATA <= DataFinal
                                                                  select tbl).ToList();
 
                     decimal somaTotal = 0;
@@ -388,8 +578,8 @@ namespace DADOS
                 using (var DB = new conexao(connectionString))
                 {
                     List<ENTIDADES.TBL_AGENDA> banhosSemanais = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                                                where tbl.DATA >= dataInicio && tbl.DATA <= DataFinal
-                                                                select tbl).ToList();
+                                                                 where tbl.DATA >= dataInicio && tbl.DATA <= DataFinal
+                                                                 select tbl).ToList();
 
 
                     return banhosSemanais.Count;
@@ -410,8 +600,8 @@ namespace DADOS
                 using (var DB = new conexao(connectionString))
                 {
                     List<ENTIDADES.TBL_AGENDA> banhosMensais = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                                          where tbl.DATA >= dataInicio && tbl.DATA <= dataFinal && tbl.FALTOU == false
-                                                          select tbl).ToList();
+                                                                where tbl.DATA >= dataInicio && tbl.DATA <= dataFinal && tbl.FALTOU == false
+                                                                select tbl).ToList();
                     return banhosMensais.Count;
                 }
 

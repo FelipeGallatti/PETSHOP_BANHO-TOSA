@@ -9,7 +9,7 @@ namespace DADOS
 {
     public class CRUD_FORNECEDORES
     {
-        private string connectionString = @"Data Source=DESKTOP-ECFLCP7\SQLEXPRESS;integrated security=SSPI;Initial Catalog=HippeDog";
+        private string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
 
 
         public List<ENTIDADES.TBL_FORNECEDORES> ListarFornecedores()

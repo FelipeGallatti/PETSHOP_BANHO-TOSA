@@ -106,6 +106,7 @@
             this.btnFornecedores.Name = "btnFornecedores";
             this.btnFornecedores.Size = new System.Drawing.Size(148, 20);
             this.btnFornecedores.Text = "FORNECEDORES";
+            this.btnFornecedores.Click += new System.EventHandler(this.btnFornecedores_Click);
             // 
             // btnContasPagar
             // 

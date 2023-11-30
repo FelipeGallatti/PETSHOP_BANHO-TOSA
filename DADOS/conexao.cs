@@ -6,7 +6,7 @@ namespace DADOS
 {
     public class conexao : DataContext
     {
-        string connectionString = @"Data Source=DESKTOP-ECFLCP7\SQLEXPRESS;integrated security=SSPI;Initial Catalog=HippieDog";
+        string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
         private SqlConnection cn;
 
         public conexao(string connectionString) : base(connectionString)

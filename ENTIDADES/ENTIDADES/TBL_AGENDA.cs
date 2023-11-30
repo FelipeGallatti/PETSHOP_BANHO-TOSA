@@ -39,6 +39,11 @@ namespace ENTIDADES
 
         [Column(Name = "RACA")]
         public int RACA{ get; set; }
+
+        [Column(Name = "BANHO_REALIZADO")]
+        public bool BANHO_REALIZADO { get; set; }
+
+        
     }
 }
 

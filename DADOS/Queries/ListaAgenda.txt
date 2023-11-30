@@ -1,0 +1,17 @@
+﻿SELECT
+    ag.ID_AGENDA,
+    ag.DONO,
+    ag.PET,
+    ra.NOME AS RACA,
+    ag.DATA,
+    ag.HORA,
+    ag.VALOR,
+    ag.SERVICO,
+    ag.FALTOU AS PRESENCA
+FROM
+    TBL_AGENDA ag
+INNER JOIN
+    TBL_RACAS ra ON ag.RACA = ra.ID_RACA
+WHERE
+    ag.FALTOU = 0
+    AND ag.BANHO_REALIZADO = 0

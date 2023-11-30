@@ -9,7 +9,7 @@ namespace DADOS
 {
     public class CRUD_CADASTRAR_PET
     {
-        private string connectionString = @"Data Source=DESKTOP-ECFLCP7\SQLEXPRESS;integrated security=SSPI;Initial Catalog=HippeDog";
+        private string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
 
 
 
