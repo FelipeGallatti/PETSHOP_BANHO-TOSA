@@ -10,11 +10,12 @@ namespace NEGOCIOS
     public class NEG_FORNECEDORES
     {
         DADOS.CRUD_FORNECEDORES Objdad_fornecedores = new CRUD_FORNECEDORES();
-        public void CadastrarFornecedor(ENTIDADES.TBL_FORNECEDORES ent)
+
+        public void CadastrarFornecedor(ENTIDADES.TBL_FORNECEDORES ent, string nomeFornecedor, string emailFornecedor, string enderecoFornecedor, string telefoneFornecedor, string telefoneOpcional, string Produto)
         {
             try
             {
-                Objdad_fornecedores.CadastrarFornecedor(ent);
+                Objdad_fornecedores.CadastrarFornecedor(ent, nomeFornecedor, emailFornecedor, enderecoFornecedor, telefoneFornecedor, telefoneOpcional, Produto);
             }
             catch (Exception ex)
             {
@@ -49,11 +50,11 @@ namespace NEGOCIOS
             }
         }
 
-        public void ExcluirFornecedor(ENTIDADES.TBL_FORNECEDORES ent)
+        public void ExcluirFornecedor(int idFornecedor)
         {
             try
             {
-                Objdad_fornecedores.ExcluirFornecedor(ent);
+                Objdad_fornecedores.ExcluirFornecedor(idFornecedor);
             }
             catch (Exception ex)
             {

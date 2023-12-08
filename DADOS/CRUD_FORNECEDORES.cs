@@ -31,12 +31,40 @@ namespace DADOS
             }
         }
 
-        public void CadastrarFornecedor(ENTIDADES.TBL_FORNECEDORES ent)
+        //public void CadastrarFornecedor(ENTIDADES.TBL_FORNECEDORES ent)
+        //{
+        //    try
+        //    {
+        //        using (var DB = new conexao(connectionString))
+        //        {
+        //            DB.GetTable<ENTIDADES.TBL_FORNECEDORES>().InsertOnSubmit(ent);
+        //            DB.SubmitChanges();
+
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw new Exception(ex.Message.ToString());
+        //    }
+        //}
+
+        public void CadastrarFornecedor(ENTIDADES.TBL_FORNECEDORES ent, string nomeFornecedor, string emailFornecedor, string enderecoFornecedor, string telefoneFornecedor, string telefoneOpcional, string Produto)
         {
             try
             {
                 using (var DB = new conexao(connectionString))
                 {
+
+                    ent.Nome = nomeFornecedor;
+                    ent.Email = emailFornecedor;
+                    ent.Endereco = enderecoFornecedor;
+                    ent.Telefone = telefoneFornecedor;
+                    ent.TelefoneOpcional = telefoneOpcional;
+                    ent.Produto = Produto;
+
+
                     DB.GetTable<ENTIDADES.TBL_FORNECEDORES>().InsertOnSubmit(ent);
                     DB.SubmitChanges();
 
@@ -79,14 +107,15 @@ namespace DADOS
             }
         }
 
-        public void ExcluirFornecedor(ENTIDADES.TBL_FORNECEDORES ent)
+        public void ExcluirFornecedor(int idFornecedor) 
         {
             try
             {
                 using (var DB = new conexao(connectionString))
                 {
+                   
                     ENTIDADES.TBL_FORNECEDORES listaDeletar = (from tbl in DB.GetTable<ENTIDADES.TBL_FORNECEDORES>()
-                                                               where tbl.Id_Fornecedor == ent.Id_Fornecedor
+                                                               where tbl.Id_Fornecedor == idFornecedor
                                                                select tbl).FirstOrDefault();
                     if (listaDeletar != null)
                     {

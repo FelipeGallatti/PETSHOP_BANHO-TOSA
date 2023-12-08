@@ -20,7 +20,9 @@ namespace HippieDog_BanhoTosa
             CarregarInformacoesForm(idFornecedor, nomeFornecedor, emailFornecedor, telefoneFornecedor, telefoneOpcional, Produto, Endereco);
 
         }
-
+        NEGOCIOS.NEG_FORNECEDORES ObjNegFornecedores = new NEGOCIOS.NEG_FORNECEDORES();
+        int IDFornecedor;
+        string NOMEFornecedor;
 
         public void CarregarInformacoesForm(int idFornecedor, string nomeFornecedor, string emailFornecedor, string telefoneFornecedor, string telefoneOpcional, string Produto, string Endereco)
         {
@@ -33,11 +35,33 @@ namespace HippieDog_BanhoTosa
                 lblTelefoneOpcional.Text = telefoneOpcional;
                 lblProduto.Text = Produto;
                 lblEndereco.Text = Endereco;
+                IDFornecedor = idFornecedor;
+                NOMEFornecedor = nomeFornecedor;
             }
             catch (Exception)
             {
 
                 throw;
+            }
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                DialogResult result = MessageBox.Show($"Você tem certeza que deseja remover o {NOMEFornecedor} ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    ObjNegFornecedores.ExcluirFornecedor(IDFornecedor);
+                    MessageBox.Show($"{NOMEFornecedor} removido com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
             }
         }
     }

@@ -35,6 +35,7 @@
             this.lblTelefoneOpcional = new Telerik.WinControls.UI.RadLabel();
             this.lblProduto = new Telerik.WinControls.UI.RadLabel();
             this.lblEndereco = new Telerik.WinControls.UI.RadLabel();
+            this.btnRemover = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.lblIdFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTelefoneFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblEmailFornecedor)).BeginInit();
@@ -42,6 +43,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblTelefoneOpcional)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblEndereco)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRemover)).BeginInit();
             this.SuspendLayout();
             // 
             // lblIdFornecedor
@@ -78,7 +80,7 @@
             // 
             // lblTelefoneOpcional
             // 
-            this.lblTelefoneOpcional.Location = new System.Drawing.Point(12, 119);
+            this.lblTelefoneOpcional.Location = new System.Drawing.Point(181, 95);
             this.lblTelefoneOpcional.Name = "lblTelefoneOpcional";
             this.lblTelefoneOpcional.Size = new System.Drawing.Size(97, 18);
             this.lblTelefoneOpcional.TabIndex = 4;
@@ -100,11 +102,23 @@
             this.lblEndereco.TabIndex = 6;
             this.lblEndereco.Text = "Endereço";
             // 
+            // btnRemover
+            // 
+            this.btnRemover.BackColor = System.Drawing.Color.DarkRed;
+            this.btnRemover.ForeColor = System.Drawing.Color.White;
+            this.btnRemover.Location = new System.Drawing.Point(12, 127);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(469, 44);
+            this.btnRemover.TabIndex = 7;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+            // 
             // FormInfoFornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 183);
+            this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.lblEndereco);
             this.Controls.Add(this.lblProduto);
             this.Controls.Add(this.lblTelefoneOpcional);
@@ -122,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblTelefoneOpcional)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblEndereco)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRemover)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +151,6 @@
         private Telerik.WinControls.UI.RadLabel lblNomeFornecedor;
         private Telerik.WinControls.UI.RadLabel lblProduto;
         private Telerik.WinControls.UI.RadLabel lblEndereco;
+        private Telerik.WinControls.UI.RadButton btnRemover;
     }
 }

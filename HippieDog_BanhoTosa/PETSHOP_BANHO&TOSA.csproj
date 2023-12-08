@@ -70,6 +70,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAlterarFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlterarFornecedor.Designer.cs">
+      <DependentUpon>FormAlterarFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCadastrar_Fornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadastrar_Fornecedor.Designer.cs">
+      <DependentUpon>FormCadastrar_Fornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCadastrar_Pet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +163,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgendar_Banho.resx">
       <DependentUpon>FormAgendar_Banho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlterarFornecedor.resx">
+      <DependentUpon>FormAlterarFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadastrar_Fornecedor.resx">
+      <DependentUpon>FormCadastrar_Fornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCadastrar_Pet.resx">
       <DependentUpon>FormCadastrar_Pet.cs</DependentUpon>
