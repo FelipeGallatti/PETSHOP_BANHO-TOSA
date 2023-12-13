@@ -162,7 +162,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Poppins Medium", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 172);
+            this.label7.Location = new System.Drawing.Point(19, 172);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(175, 26);
             this.label7.TabIndex = 18;

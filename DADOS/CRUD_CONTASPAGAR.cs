@@ -51,6 +51,25 @@ namespace DADOS
 			}
 		}
 
+		public List<ENTIDADES.TBL_CONTASPAGAR_SERV> ListarCategoriaServicos()
+		{
+			try
+			{
+				using (var db = new conexao(connectionString))
+				{
+					List<ENTIDADES.TBL_CONTASPAGAR_SERV> lista = (from tblcp in db.GetTable<ENTIDADES.TBL_CONTASPAGAR_SERV>()
+																  select tblcp).ToList();
+
+					return lista;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message.ToString());
+			}
+		}
+
         public void IncluirConta(ENTIDADES.TBL_CONTASPAGAR ent)
         {
 			try

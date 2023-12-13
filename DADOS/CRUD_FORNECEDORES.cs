@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -78,34 +79,36 @@ namespace DADOS
             }
         }
 
-        public void AlterarFornecedor(ENTIDADES.TBL_FORNECEDORES ent)
+
+        public void AlterarFornecedor(int idFornecedor, string nomeFornecedor, string emailFornecedor, string enderecoFornecedor, string telefoneFornecedor, string telefoneOpcional, string Produto)
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var db = new conexao(connectionString))
                 {
-                    ENTIDADES.TBL_FORNECEDORES listaAtualizar = (from tbl in DB.GetTable<ENTIDADES.TBL_FORNECEDORES>()
-                                                                 where tbl.Id_Fornecedor == ent.Id_Fornecedor
-                                                                 select tbl).FirstOrDefault();
-                    if (listaAtualizar != null)
+                    ENTIDADES.TBL_FORNECEDORES updateList = (from tbl in db.GetTable<ENTIDADES.TBL_FORNECEDORES>()
+                                                             where tbl.Id_Fornecedor == idFornecedor
+                                                             select tbl).FirstOrDefault();
+
+                    if (updateList != null)
                     {
-                        listaAtualizar.Nome = ent.Nome;
-                        listaAtualizar.Email = ent.Email;
-                        listaAtualizar.Endereco = ent.Endereco;
-                        listaAtualizar.Telefone = ent.Telefone;
-                        listaAtualizar.TelefoneOpcional = ent.TelefoneOpcional;
-                        listaAtualizar.Produto = ent.Produto;
-                        DB.GetTable<ENTIDADES.TBL_FORNECEDORES>().Context.SubmitChanges();
+                        updateList.Nome = nomeFornecedor;
+                        updateList.Email = emailFornecedor;
+                        updateList.Endereco = enderecoFornecedor;
+                        updateList.Telefone = telefoneFornecedor;
+                        updateList.TelefoneOpcional = telefoneOpcional;
+                        updateList.Produto = Produto;
+
+                        db.SubmitChanges(); // Salva as alterações no banco de dados
                     }
                 }
-
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message.ToString());
             }
         }
+
 
         public void ExcluirFornecedor(int idFornecedor) 
         {

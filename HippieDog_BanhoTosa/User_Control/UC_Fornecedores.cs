@@ -51,18 +51,18 @@ namespace HippieDog_BanhoTosa.User_Control
         {
             try
             {
-                radGridView1.Columns["Id_Fornecedor"].IsVisible = false;
-                radGridView1.Columns["Telefone"].IsVisible = false;
-                radGridView1.Columns["TelefoneOpcional"].IsVisible = false;
-                radGridView1.Columns["Endereco"].IsVisible = false;
-                radGridView1.Columns["Email"].IsVisible = false;
-                radGridView1.Columns["Nome"].TextAlignment = ContentAlignment.MiddleCenter;
-                radGridView1.Columns["Nome"].TextAlignment = ContentAlignment.MiddleCenter;
-                radGridView1.Columns["Produto"].TextAlignment = ContentAlignment.MiddleCenter;
-                radGridView1.Columns["Nome"].Width = 148;
-                radGridView1.Columns["Produto"].Width = 400;
+                rgvFornecedores.Columns["Id_Fornecedor"].IsVisible = false;
+                rgvFornecedores.Columns["Telefone"].IsVisible = false;
+                rgvFornecedores.Columns["TelefoneOpcional"].IsVisible = false;
+                rgvFornecedores.Columns["Endereco"].IsVisible = false;
+                rgvFornecedores.Columns["Email"].IsVisible = false;
+                rgvFornecedores.Columns["Nome"].TextAlignment = ContentAlignment.MiddleCenter;
+                rgvFornecedores.Columns["Nome"].TextAlignment = ContentAlignment.MiddleCenter;
+                rgvFornecedores.Columns["Produto"].TextAlignment = ContentAlignment.MiddleCenter;
+                rgvFornecedores.Columns["Nome"].Width = 148;
+                rgvFornecedores.Columns["Produto"].Width = 400;
 
-                foreach (GridViewColumn column in radGridView1.Columns)
+                foreach (GridViewColumn column in rgvFornecedores.Columns)
                 {
                     // Verifica o nome das colunas e define ReadOnly conforme necessário (Para eu conseguir selecionar minha checkbox sem ter que editar o texto do radgridview).
                     if (column.Name == "Nome" || column.Name == "Produto")
@@ -102,7 +102,7 @@ namespace HippieDog_BanhoTosa.User_Control
         private void UC_Fornecedores_Load(object sender, EventArgs e)
         {
             //rgvFornecedores.DataSource = ObjNegFornecedores.ListarFornecedores();
-            radGridView1.DataSource = ObjNegFornecedores.ListarFornecedores();
+            rgvFornecedores.DataSource = ObjNegFornecedores.ListarFornecedores();
             LAYOUT_GRID();
             //var cadastroFornecedor = new FormCadastrar_Fornecedor();
             //cadastroFornecedor.FornecedorCadastradoComSucesso += CadastroFornecedor_FornecedorCadastradoComSucesso;
@@ -114,7 +114,7 @@ namespace HippieDog_BanhoTosa.User_Control
             {
                 if (e.RowIndex >= 0)
                 {
-                    var clickedRow = radGridView1.Rows[e.RowIndex];
+                    var clickedRow = rgvFornecedores.Rows[e.RowIndex];
 
                     // Obtém as informações da linha clicada que deseja passar para o novo formulário
                     string informacaoLinha = clickedRow.Cells[1].Value.ToString(); // Supondo que a informação está na primeira coluna
@@ -142,7 +142,7 @@ namespace HippieDog_BanhoTosa.User_Control
         {
             try
             {
-                foreach (var row in radGridView1.Rows)
+                foreach (var row in rgvFornecedores.Rows)
                 {
                     Telerik.WinControls.UI.GridViewCellInfo chk = (GridViewCellInfo)row.Cells["chk"];
 

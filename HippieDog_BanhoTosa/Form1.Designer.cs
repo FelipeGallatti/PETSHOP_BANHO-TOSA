@@ -66,78 +66,85 @@
             // 
             // btnAgenda
             // 
+            this.btnAgenda.AutoSize = false;
             this.btnAgenda.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAgenda.ForeColor = System.Drawing.Color.White;
             this.btnAgenda.Image = ((System.Drawing.Image)(resources.GetObject("btnAgenda.Image")));
             this.btnAgenda.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgenda.Name = "btnAgenda";
-            this.btnAgenda.Size = new System.Drawing.Size(148, 20);
+            this.btnAgenda.Size = new System.Drawing.Size(148, 50);
             this.btnAgenda.Text = "AGENDA";
             this.btnAgenda.Click += new System.EventHandler(this.btnAgenda_Click);
             // 
             // btnAgendaFaltas
             // 
+            this.btnAgendaFaltas.AutoSize = false;
             this.btnAgendaFaltas.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAgendaFaltas.ForeColor = System.Drawing.Color.White;
             this.btnAgendaFaltas.Image = ((System.Drawing.Image)(resources.GetObject("btnAgendaFaltas.Image")));
             this.btnAgendaFaltas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgendaFaltas.Name = "btnAgendaFaltas";
-            this.btnAgendaFaltas.Size = new System.Drawing.Size(148, 20);
+            this.btnAgendaFaltas.Size = new System.Drawing.Size(148, 50);
             this.btnAgendaFaltas.Text = "AGENDA DE FALTAS";
             this.btnAgendaFaltas.Click += new System.EventHandler(this.btnAgendaFaltas_Click);
             // 
             // btnHisBanho
             // 
+            this.btnHisBanho.AutoSize = false;
             this.btnHisBanho.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnHisBanho.ForeColor = System.Drawing.Color.White;
             this.btnHisBanho.Image = ((System.Drawing.Image)(resources.GetObject("btnHisBanho.Image")));
             this.btnHisBanho.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnHisBanho.Name = "btnHisBanho";
-            this.btnHisBanho.Size = new System.Drawing.Size(148, 20);
+            this.btnHisBanho.Size = new System.Drawing.Size(148, 50);
             this.btnHisBanho.Text = "HISTORICO BANHOS";
             this.btnHisBanho.Click += new System.EventHandler(this.btnHisBanho_Click);
             // 
             // btnFornecedores
             // 
+            this.btnFornecedores.AutoSize = false;
             this.btnFornecedores.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnFornecedores.ForeColor = System.Drawing.Color.White;
             this.btnFornecedores.Image = ((System.Drawing.Image)(resources.GetObject("btnFornecedores.Image")));
             this.btnFornecedores.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFornecedores.Name = "btnFornecedores";
-            this.btnFornecedores.Size = new System.Drawing.Size(148, 20);
+            this.btnFornecedores.Size = new System.Drawing.Size(148, 50);
             this.btnFornecedores.Text = "FORNECEDORES";
             this.btnFornecedores.Click += new System.EventHandler(this.btnFornecedores_Click);
             // 
             // btnContasPagar
             // 
+            this.btnContasPagar.AutoSize = false;
             this.btnContasPagar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnContasPagar.ForeColor = System.Drawing.Color.White;
             this.btnContasPagar.Image = ((System.Drawing.Image)(resources.GetObject("btnContasPagar.Image")));
             this.btnContasPagar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnContasPagar.Name = "btnContasPagar";
-            this.btnContasPagar.Size = new System.Drawing.Size(148, 20);
+            this.btnContasPagar.Size = new System.Drawing.Size(148, 50);
             this.btnContasPagar.Text = "CONTAS A PAGAR";
             this.btnContasPagar.Click += new System.EventHandler(this.btnContasPagar_Click);
             // 
             // btnPacotes
             // 
+            this.btnPacotes.AutoSize = false;
             this.btnPacotes.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnPacotes.ForeColor = System.Drawing.Color.White;
             this.btnPacotes.Image = ((System.Drawing.Image)(resources.GetObject("btnPacotes.Image")));
             this.btnPacotes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPacotes.Name = "btnPacotes";
-            this.btnPacotes.Size = new System.Drawing.Size(148, 20);
+            this.btnPacotes.Size = new System.Drawing.Size(148, 50);
             this.btnPacotes.Text = "PACOTES BANHOS";
             this.btnPacotes.Click += new System.EventHandler(this.btnPacotes_Click);
             // 
             // btnCadastrarPet
             // 
+            this.btnCadastrarPet.AutoSize = false;
             this.btnCadastrarPet.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCadastrarPet.ForeColor = System.Drawing.Color.White;
             this.btnCadastrarPet.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarPet.Image")));
             this.btnCadastrarPet.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCadastrarPet.Name = "btnCadastrarPet";
-            this.btnCadastrarPet.Size = new System.Drawing.Size(148, 20);
+            this.btnCadastrarPet.Size = new System.Drawing.Size(148, 50);
             this.btnCadastrarPet.Text = "CADASTRAR PET";
             this.btnCadastrarPet.Click += new System.EventHandler(this.btnCadastrarPet_Click);
             // 

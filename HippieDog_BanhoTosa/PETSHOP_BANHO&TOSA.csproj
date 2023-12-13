@@ -52,6 +52,12 @@
     <Reference Include="TelerikCommon, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAdicionar_ContasPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdicionar_ContasPagar.Designer.cs">
+      <DependentUpon>FormAdicionar_ContasPagar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAgenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,12 @@
     <Compile Include="User_Control\UC_AgendaFaltas.Designer.cs">
       <DependentUpon>UC_AgendaFaltas.cs</DependentUpon>
     </Compile>
+    <Compile Include="User_Control\UC_ContasPagar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_Control\UC_ContasPagar.Designer.cs">
+      <DependentUpon>UC_ContasPagar.cs</DependentUpon>
+    </Compile>
     <Compile Include="User_Control\UC_Fornecedores.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,8 +167,17 @@
     <Compile Include="User_Control\UC_HistBanho.Designer.cs">
       <DependentUpon>UC_HistBanho.cs</DependentUpon>
     </Compile>
+    <Compile Include="User_Control\UC_Pacotes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_Control\UC_Pacotes.Designer.cs">
+      <DependentUpon>UC_Pacotes.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdicionar_ContasPagar.resx">
+      <DependentUpon>FormAdicionar_ContasPagar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgenda.resx">
       <DependentUpon>FormAgenda.cs</DependentUpon>
@@ -200,6 +221,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Queries\Query.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -211,11 +233,17 @@
     <EmbeddedResource Include="User_Control\UC_AgendaFaltas.resx">
       <DependentUpon>UC_AgendaFaltas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User_Control\UC_ContasPagar.resx">
+      <DependentUpon>UC_ContasPagar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User_Control\UC_Fornecedores.resx">
       <DependentUpon>UC_Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Control\UC_HistBanho.resx">
       <DependentUpon>UC_HistBanho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Control\UC_Pacotes.resx">
+      <DependentUpon>UC_Pacotes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -241,7 +269,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\988126.png" />
     <Content Include="Queries\ListaAgenda.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

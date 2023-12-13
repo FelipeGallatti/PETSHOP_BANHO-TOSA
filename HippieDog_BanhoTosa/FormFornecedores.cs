@@ -195,67 +195,7 @@ namespace HippieDog_BanhoTosa
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (tbxNome.Text == string.Empty)
-            {
-                MessageBox.Show("Preencha o campo Nome", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxNome.Focus();
-            }
-            else if (tbxEmail.Text == string.Empty)
-            {
-                MessageBox.Show("Preencha o campo Email", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxEmail.Focus();
-            }
-            else if (tbxEndereco.Text == string.Empty)
-            {
-                MessageBox.Show("Preencha o campo Endereço", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxEndereco.Focus();
-            }
-            else if (tbxTelefone.Text == string.Empty)
-            {
-                MessageBox.Show("Preencha o campo Telefone", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxTelefone.Focus();
-            }
-            else if (tbxTelefoneOpcional.Text == string.Empty)
-            {
-                MessageBox.Show("Preencha o campo Telefone", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxTelefoneOpcional.Focus();
-            }
-            else if (tbxProduto.Text == string.Empty)
-            {
-                MessageBox.Show("Preencha o campo Produto", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxProduto.Focus();
-            }
-            else
-            {
-
-                DialogResult = MessageBox.Show("Você tem certeza que deseja alterar?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (DialogResult == DialogResult.Yes)
-                {
-                    try
-                    {
-                        ENTIDADES.TBL_FORNECEDORES ent = new ENTIDADES.TBL_FORNECEDORES();
-                        MontarEntidades();
-                        ent.Id_Fornecedor = Objent.Id_Fornecedor;
-                        ent.Nome = Objent.Nome;
-                        ent.Email = Objent.Email;
-                        ent.Endereco = Objent.Endereco;
-                        ent.Telefone = Objent.Telefone;
-                        ent.TelefoneOpcional = Objent.TelefoneOpcional;
-                        ent.Produto = Objent.Produto;
-                        ObjNeg_Fornecedores.AlterarFornecedor(ent);
-                        MessageBox.Show("A alteração foi realizada com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvFornecedores.DataSource = null;
-                        dgvFornecedores.DataSource = ObjNeg_Fornecedores.ListarFornecedores();
-                    }
-                    catch (Exception ex)
-                    {
-
-                        throw new Exception(ex.Message.ToString());
-                    }
-                }
-
-            }
+           
         }
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="ENTIDADES\TBL_RACA_GRANDE.cs" />
     <Compile Include="ENTIDADES\TBL_RACA_MEDIA.cs" />
     <Compile Include="ENTIDADES\TBL_RACAS.cs" />
+    <Compile Include="TBL_CONTASPAGAR_SERV.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

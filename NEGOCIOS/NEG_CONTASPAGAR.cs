@@ -37,6 +37,19 @@ namespace NEGOCIOS
             }
         }
 
+        public List<ENTIDADES.TBL_CONTASPAGAR_SERV> ListarCategoriaServicos()
+        {
+            try
+            {
+               return ObjDad_ContasPagar.ListarCategoriaServicos();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public void IncluirConta(ENTIDADES.TBL_CONTASPAGAR ent)
         {
             try

@@ -41,6 +41,10 @@
             this.txtProduto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblIdFornecedor = new System.Windows.Forms.Label();
+            this.btnAlterar = new Telerik.WinControls.UI.RadButton();
+            this.btnSair = new Telerik.WinControls.UI.RadButton();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAlterar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSair)).BeginInit();
             this.SuspendLayout();
             // 
             // tbxEmailFornecedor
@@ -148,11 +152,37 @@
             this.lblIdFornecedor.TabIndex = 45;
             this.lblIdFornecedor.Text = "Email";
             // 
+            // btnAlterar
+            // 
+            this.btnAlterar.BackColor = System.Drawing.Color.Green;
+            this.btnAlterar.Font = new System.Drawing.Font("Poppins Medium", 8.25F);
+            this.btnAlterar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAlterar.Location = new System.Drawing.Point(12, 245);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(150, 44);
+            this.btnAlterar.TabIndex = 47;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.Font = new System.Drawing.Font("Poppins Medium", 8.25F);
+            this.btnSair.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSair.Location = new System.Drawing.Point(168, 245);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(150, 44);
+            this.btnSair.TabIndex = 48;
+            this.btnSair.Text = "Sair";
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
             // FormAlterarFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 327);
+            this.Controls.Add(this.btnSair);
+            this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.lblIdFornecedor);
             this.Controls.Add(this.txtProduto);
             this.Controls.Add(this.label1);
@@ -167,8 +197,11 @@
             this.Controls.Add(this.txtEndereco);
             this.Controls.Add(this.label4);
             this.Name = "FormAlterarFornecedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAlterarFornecedor";
             this.Load += new System.EventHandler(this.FormAlterarFornecedor_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.btnAlterar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSair)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +222,7 @@
         private System.Windows.Forms.TextBox txtProduto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblIdFornecedor;
+        private Telerik.WinControls.UI.RadButton btnAlterar;
+        private Telerik.WinControls.UI.RadButton btnSair;
     }
 }

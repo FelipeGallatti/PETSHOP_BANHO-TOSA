@@ -35,15 +35,15 @@
             this.btnAlterar = new Telerik.WinControls.UI.RadButton();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
-            this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
+            this.rgvFornecedores = new Telerik.WinControls.UI.RadGridView();
             this.visualStudio2012LightTheme2 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAdicionarFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAlterar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvFornecedores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvFornecedores.MasterTemplate)).BeginInit();
             this.SuspendLayout();
             // 
             // radLabel1
@@ -90,28 +90,28 @@
             this.radPanel1.Size = new System.Drawing.Size(615, 44);
             this.radPanel1.TabIndex = 46;
             // 
-            // radGridView1
+            // rgvFornecedores
             // 
-            this.radGridView1.Location = new System.Drawing.Point(18, 66);
+            this.rgvFornecedores.Location = new System.Drawing.Point(18, 66);
             // 
             // 
             // 
             gridViewCheckBoxColumn1.HeaderText = "Selecionar";
             gridViewCheckBoxColumn1.Name = "chk";
-            this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            this.rgvFornecedores.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewCheckBoxColumn1});
-            this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition1;
-            this.radGridView1.Name = "radGridView1";
-            this.radGridView1.Size = new System.Drawing.Size(615, 310);
-            this.radGridView1.TabIndex = 52;
-            this.radGridView1.ThemeName = "VisualStudio2012Light";
-            this.radGridView1.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.radGridView1_CellDoubleClick);
+            this.rgvFornecedores.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.rgvFornecedores.Name = "rgvFornecedores";
+            this.rgvFornecedores.Size = new System.Drawing.Size(615, 310);
+            this.rgvFornecedores.TabIndex = 52;
+            this.rgvFornecedores.ThemeName = "VisualStudio2012Light";
+            this.rgvFornecedores.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.radGridView1_CellDoubleClick);
             // 
             // UC_Fornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.radGridView1);
+            this.Controls.Add(this.rgvFornecedores);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.radPanel1);
             this.Name = "UC_Fornecedores";
@@ -122,8 +122,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAlterar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvFornecedores.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgvFornecedores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,7 +135,7 @@
         private Telerik.WinControls.UI.RadButton btnAlterar;
         private Telerik.WinControls.UI.RadPanel radPanel1;
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme1;
-        private Telerik.WinControls.UI.RadGridView radGridView1;
+        private Telerik.WinControls.UI.RadGridView rgvFornecedores;
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme2;
     }
 }

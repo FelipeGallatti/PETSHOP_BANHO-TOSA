@@ -45,17 +45,41 @@ namespace HippieDog_BanhoTosa
 
         private void btnContasPagar_Click(object sender, EventArgs e)
         {
-            FormContasPagar formContasPagar = new FormContasPagar();
-            formContasPagar.MdiParent = this;
-            formContasPagar.Show();
+
+            try
+            {
+                UC_ContasPagar ucContasPagar = new UC_ContasPagar();
+                // Remove o UserControl atual, se houver algum
+                if (splitPanel1.Controls.Count > 0)
+                {
+                    splitPanel1.Controls[0].Dispose();
+                }
+
+                splitPanel1.Controls.Add(ucContasPagar);
+                ucContasPagar.Dock = DockStyle.Fill;
+                ucContasPagar.Show();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
             
         }
 
         private void btnPacotes_Click(object sender, EventArgs e)
         {
-            FormPacotes formPacotes = new FormPacotes();
-            formPacotes.MdiParent = this;
-            formPacotes.Show();
+            UC_Pacotes ucPacotes = new UC_Pacotes();
+
+            // Remove o UserControl atual, se houver algum
+            if (splitPanel1.Controls.Count > 0)
+            {
+                splitPanel1.Controls[0].Dispose();
+            }
+
+            splitPanel1.Controls.Add(ucPacotes);
+            ucPacotes.Dock = DockStyle.Fill;
+            ucPacotes.Show();
         }
 
         private void btnCadastrarPet_Click(object sender, EventArgs e)
