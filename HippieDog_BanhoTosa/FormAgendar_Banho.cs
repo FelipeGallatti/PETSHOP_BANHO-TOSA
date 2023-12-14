@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ENTIDADES;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,10 @@ namespace HippieDog_BanhoTosa
     {
         ENTIDADES.TBL_AGENDA ObjEnt = new ENTIDADES.TBL_AGENDA();
         NEGOCIOS.NEG_BANHOETOSA ObjNeg = new NEGOCIOS.NEG_BANHOETOSA();
+
+
+        int porteSelecionado = 0;
+
         public FormAgendar_Banho()
         {
             InitializeComponent();
@@ -23,7 +28,7 @@ namespace HippieDog_BanhoTosa
         private void CarregarComboRaca()
         {
             cbRaca.DisplayMember = "NOME";
-            cbRaca.ValueMember = "PORTE";
+            cbRaca.ValueMember = "ID_RACA";
             cbRaca.DataSource = ObjNeg.ListarRacas();
             cbRaca.SelectedIndex = -1;
         }
@@ -92,15 +97,6 @@ namespace HippieDog_BanhoTosa
         }
 
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
 
         private void FormAgendar_Banho_Load(object sender, EventArgs e)
         {
@@ -118,10 +114,34 @@ namespace HippieDog_BanhoTosa
             try
             {
 
-                int idtiposervico = Convert.ToInt32(cbServico.SelectedValue); // Mantenha cbServico
-                int idporte = Convert.ToInt32(cbRaca.SelectedValue);
+                if (cbRaca.SelectedItem != null)
+                {
+                    // Obtém o índice selecionado na ComboBox
+                    int indiceSelecionado = cbRaca.SelectedIndex;
 
-                tbxValor.Text = Convert.ToString(ObjNeg.CalcularValorServico(idtiposervico, idporte));
+                    // Verifica se o índice selecionado é válido
+                    if (indiceSelecionado >= 0)
+                    {
+                        // Supondo que você tem uma lista de objetos Racas com propriedades ID_RACA, NOME_RACA e PORTE
+                        List<TBL_RACAS> listaRacas = ObjNeg.ListarRacas(); // Função hipotética para obter a lista de raças
+
+                        // Obtém o porte correspondente ao índice selecionado na ComboBox
+                        porteSelecionado = listaRacas[indiceSelecionado].PORTE;
+
+                        // Faça o que deseja com o valor do porte selecionado
+                        Console.WriteLine("Porte selecionado: " + porteSelecionado);
+                    }
+                }
+
+
+
+
+
+
+                int idtiposervico = Convert.ToInt32(cbServico.SelectedValue); // Mantenha cbServico
+                
+
+                tbxValor.Text = Convert.ToString(ObjNeg.CalcularValorServico(idtiposervico, porteSelecionado));
             }
             catch (Exception ex)
             {
@@ -133,9 +153,9 @@ namespace HippieDog_BanhoTosa
         private void cbServico_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idtiposervico = Convert.ToInt32(cbServico.SelectedValue); // Mantenha cbServico
-            int idporte = Convert.ToInt32(cbRaca.SelectedValue);
+            
 
-            tbxValor.Text = Convert.ToString(ObjNeg.CalcularValorServico(idtiposervico, idporte));
+            tbxValor.Text = Convert.ToString(ObjNeg.CalcularValorServico(idtiposervico, porteSelecionado));
         }
     }
 }

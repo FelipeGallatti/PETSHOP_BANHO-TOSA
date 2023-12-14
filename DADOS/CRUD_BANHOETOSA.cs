@@ -124,31 +124,106 @@ namespace DADOS
             try
             {
                 int valor = 0;
-
+                //Banho
                 if (idservico == 1 && porteraca == 1)
                 {
                     valor = 20;
                 }
+                //Tosa
                 else if (idservico == 2 && porteraca == 1)
                 {
                     valor = 25;
                 }
+                //BT na Tesoura
                 else if (idservico == 3 && porteraca == 1)
                 {
-                    valor = 60;
+                    valor = 50;
                 }
+                //Tosa na Tesoura
                 else if (idservico == 4 && porteraca == 1)
                 {
                     valor = 40;
                 }
+                //Banho e Tosa Higiênica
                 else if (idservico == 5 && porteraca == 1)
                 {
-                    valor = 40;
+                    valor = 30;
                 }
+                //Banho e Tosa Completo
                 else if (idservico == 6 && porteraca == 1)
                 {
                     valor = 35;
                 }
+
+                //Serviços Raças Médias
+
+                //Banho
+                if (idservico == 1 && porteraca == 2)
+                {
+                    valor = 30;
+                }
+                //Tosa
+                else if (idservico == 2 && porteraca == 2)
+                {
+                    valor = 35;
+                }
+                //BT na Tesoura
+                else if (idservico == 3 && porteraca == 2)
+                {
+                    valor = 65;
+                }
+                //Tosa na Tesoura
+                else if (idservico == 4 && porteraca == 2)
+                {
+                    valor = 50;
+                }
+                //Banho e Tosa Higiênica
+                else if (idservico == 5 && porteraca == 2)
+                {
+                    valor = 40;
+                }
+                //Banho e Tosa Completo
+                else if (idservico == 6 && porteraca == 2)
+                {
+                    valor = 50;
+                }
+
+                //Serviços Raças Grandes
+
+                //Banho
+                if (idservico == 1 && porteraca == 2)
+                {
+                    valor = 40;
+                }
+                //Tosa
+                else if (idservico == 2 && porteraca == 2)
+                {
+                    valor = 45;
+                }
+                //BT na Tesoura
+                else if (idservico == 3 && porteraca == 2)
+                {
+                    valor = 85;
+                }
+                //Tosa na Tesoura
+                else if (idservico == 4 && porteraca == 2)
+                {
+                    valor = 70;
+                }
+                //Banho e Tosa Higiênica
+                else if (idservico == 5 && porteraca == 2)
+                {
+                    valor = 50;
+                }
+                //Banho e Tosa Completo
+                else if (idservico == 6 && porteraca == 2)
+                {
+                    valor = 60;
+                }
+
+
+
+
 
                 return valor;
             }
