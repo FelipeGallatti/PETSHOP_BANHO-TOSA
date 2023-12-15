@@ -33,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,9 +49,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.WinControls, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.GridView, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Light, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2023.2.713.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7" />
     <Reference Include="TelerikCommon, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +154,12 @@
     <Compile Include="User_Control\UC_AgendaFaltas.Designer.cs">
       <DependentUpon>UC_AgendaFaltas.cs</DependentUpon>
     </Compile>
+    <Compile Include="User_Control\UC_Cadastrar_Pet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_Control\UC_Cadastrar_Pet.Designer.cs">
+      <DependentUpon>UC_Cadastrar_Pet.cs</DependentUpon>
+    </Compile>
     <Compile Include="User_Control\UC_ContasPagar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -232,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User_Control\UC_AgendaFaltas.resx">
       <DependentUpon>UC_AgendaFaltas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Control\UC_Cadastrar_Pet.resx">
+      <DependentUpon>UC_Cadastrar_Pet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Control\UC_ContasPagar.resx">
       <DependentUpon>UC_ContasPagar.cs</DependentUpon>

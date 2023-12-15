@@ -123,7 +123,7 @@ namespace HippieDog_BanhoTosa
                     if (indiceSelecionado >= 0)
                     {
                         // Supondo que você tem uma lista de objetos Racas com propriedades ID_RACA, NOME_RACA e PORTE
-                        List<TBL_RACAS> listaRacas = ObjNeg.ListarRacas(); // Função hipotética para obter a lista de raças
+                        List<TBL_RACAS> listaRacas = ObjNeg.ListarRacas(); // Função  para obter a lista de raças
 
                         // Obtém o porte correspondente ao índice selecionado na ComboBox
                         porteSelecionado = listaRacas[indiceSelecionado].PORTE;

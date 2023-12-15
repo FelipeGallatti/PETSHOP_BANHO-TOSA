@@ -25,5 +25,45 @@ namespace NEGOCIOS
             }
         }
 
+        public List<TBL_RACAS> ListarRacasPequenas()
+        {
+            try
+            {
+                return objDad_CadastrarPet.ListarRacasPequenas();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public List<TBL_RACAS> ListarRacasMedia()
+        {
+            try
+            {
+                return objDad_CadastrarPet.ListarRacasMedia();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public List<TBL_RACAS> ListarRacasGrande()
+        {
+            try
+            {
+                return objDad_CadastrarPet.ListarRacasGrande();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+
     }
 }

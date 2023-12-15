@@ -191,32 +191,32 @@ namespace DADOS
                 //Serviços Raças Grandes
 
                 //Banho
-                if (idservico == 1 && porteraca == 2)
+                if (idservico == 1 && porteraca == 3)
                 {
                     valor = 40;
                 }
                 //Tosa
-                else if (idservico == 2 && porteraca == 2)
+                else if (idservico == 2 && porteraca == 3)
                 {
                     valor = 45;
                 }
                 //BT na Tesoura
-                else if (idservico == 3 && porteraca == 2)
+                else if (idservico == 3 && porteraca == 3)
                 {
                     valor = 85;
                 }
                 //Tosa na Tesoura
-                else if (idservico == 4 && porteraca == 2)
+                else if (idservico == 4 && porteraca == 3)
                 {
                     valor = 70;
                 }
                 //Banho e Tosa Higiênica
-                else if (idservico == 5 && porteraca == 2)
+                else if (idservico == 5 && porteraca == 3)
                 {
                     valor = 50;
                 }
                 //Banho e Tosa Completo
-                else if (idservico == 6 && porteraca == 2)
+                else if (idservico == 6 && porteraca == 3)
                 {
                     valor = 60;
                 }

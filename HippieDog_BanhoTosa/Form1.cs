@@ -84,9 +84,17 @@ namespace HippieDog_BanhoTosa
 
         private void btnCadastrarPet_Click(object sender, EventArgs e)
         {
-            FormCadastrar_Pet formCadastrar = new FormCadastrar_Pet();
-            formCadastrar.MdiParent = this;
-            formCadastrar.Show();
+            UC_Cadastrar_Pet ucCadastrarPet = new UC_Cadastrar_Pet();
+
+            // Remove o UserControl atual, se houver algum
+            if (splitPanel1.Controls.Count > 0)
+            {
+                splitPanel1.Controls[0].Dispose();
+            }
+
+            splitPanel1.Controls.Add(ucCadastrarPet);
+            ucCadastrarPet.Dock = DockStyle.Fill;
+            ucCadastrarPet.Show();
         }
 
         private void btnAgendaFaltas_Click(object sender, EventArgs e)
