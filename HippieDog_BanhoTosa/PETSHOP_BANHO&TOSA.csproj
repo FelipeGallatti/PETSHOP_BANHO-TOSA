@@ -57,6 +57,9 @@
     <Reference Include="TelerikCommon, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Botao.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormAdicionar_ContasPagar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +187,12 @@
     <Compile Include="User_Control\UC_Pacotes.Designer.cs">
       <DependentUpon>UC_Pacotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="User_Control\UC_Pets_Cadastrados.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_Control\UC_Pets_Cadastrados.Designer.cs">
+      <DependentUpon>UC_Pets_Cadastrados.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +268,9 @@
     <EmbeddedResource Include="User_Control\UC_Pacotes.resx">
       <DependentUpon>UC_Pacotes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User_Control\UC_Pets_Cadastrados.resx">
+      <DependentUpon>UC_Pets_Cadastrados.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -285,6 +297,9 @@
   <ItemGroup>
     <Content Include="Images\988126.png" />
     <Content Include="Queries\ListaAgenda.txt" />
+    <None Include="Resources\adicionar-botao.png" />
+    <None Include="Resources\png_add_button.png" />
+    <None Include="Resources\dogface.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

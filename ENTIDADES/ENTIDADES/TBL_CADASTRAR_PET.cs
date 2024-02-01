@@ -24,6 +24,16 @@ namespace ENTIDADES
 
         [Column(Name = "RACA")]
         public int RACA { get; set; }
+
+        [Column(Name = "OBSERVACOES")]
+        public string OBSERVACOES { get; set; }
+
+        [Column(Name = "FOTO")]
+        public byte[] FOTO { get; set; }
+
+        [Column(Name = "DATA_CADASTRO")]
+        public DateTime DATA_CADASTRO { get; set; }
+
     }
 }
 

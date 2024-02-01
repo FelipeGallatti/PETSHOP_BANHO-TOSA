@@ -84,5 +84,15 @@ namespace DADOS.Queries {
                 return ResourceManager.GetString("ListaAgenda", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a SELECT cadpet.DONO, cadpet.ENDERECO, cadpet.PET, cadpet.TELEFONE, tbraca.NOME, cadpet.DATA_CADASTRO FROM TBL_CADASTRAR_PET AS cadpet
+        ///INNER JOIN TBL_RACAS AS tbraca ON cadpet.RACA = tbraca.ID_RACA.
+        /// </summary>
+        internal static string ListarPetsCadastrados {
+            get {
+                return ResourceManager.GetString("ListarPetsCadastrados", resourceCulture);
+            }
+        }
     }
 }

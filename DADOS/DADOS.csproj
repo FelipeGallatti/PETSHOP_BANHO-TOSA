@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Queries\ListaAgenda.txt" />
+    <None Include="Queries\ListaAgenda1.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Queries\Query.resx">

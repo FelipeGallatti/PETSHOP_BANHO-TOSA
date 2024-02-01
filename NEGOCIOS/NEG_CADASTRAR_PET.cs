@@ -25,6 +25,32 @@ namespace NEGOCIOS
             }
         }
 
+        public void CadastrarPet(string dono, string pet, string endereco, string telefone, int raca, byte[] caminhoDaImagem, DateTime dtCadastro)
+        {
+            try
+            {
+                objDad_CadastrarPet.CadastrarPet(dono, pet, endereco, telefone, raca, caminhoDaImagem, dtCadastro);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public List<ENTIDADES.TBL_CADASTRAR_PET> ListarPetsCadastrados()
+        {
+            try
+            {
+                return objDad_CadastrarPet.ListarPetsCadastrados1();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public List<TBL_RACAS> ListarRacasPequenas()
         {
             try

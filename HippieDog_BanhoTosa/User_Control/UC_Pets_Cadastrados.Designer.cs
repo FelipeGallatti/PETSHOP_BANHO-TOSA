@@ -1,6 +1,6 @@
 ﻿namespace HippieDog_BanhoTosa.User_Control
 {
-    partial class UC_Cadastrar_Pet
+    partial class tbxRaca
     {
         /// <summary> 
         /// Variável de designer necessária.
@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
-            this.btnAdicionar = new Telerik.WinControls.UI.RadButton();
-            this.lblTitulo = new Telerik.WinControls.UI.RadLabel();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
-            this.btnAddFoto = new System.Windows.Forms.PictureBox();
             this.cbRaca = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.chkMedio = new System.Windows.Forms.RadioButton();
@@ -52,54 +50,34 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
-            this.radPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAdicionar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lblTitulo)).BeginInit();
+            this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnRetroceder = new Telerik.WinControls.UI.RadButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
+            this.btnAvancar = new Telerik.WinControls.UI.RadButton();
+            this.lblTitulo = new Telerik.WinControls.UI.RadLabel();
+            this.btnTeste = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAddFoto)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
             this.radPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtCadastro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radRichTextEditor1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
+            this.radPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRetroceder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAvancar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblTitulo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // radPanel2
-            // 
-            this.radPanel2.Controls.Add(this.btnAdicionar);
-            this.radPanel2.Location = new System.Drawing.Point(18, 383);
-            this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(615, 44);
-            this.radPanel2.TabIndex = 48;
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.BackColor = System.Drawing.Color.Green;
-            this.btnAdicionar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAdicionar.Font = new System.Drawing.Font("Poppins Medium", 8.25F);
-            this.btnAdicionar.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionar.Location = new System.Drawing.Point(0, 0);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(615, 44);
-            this.btnAdicionar.TabIndex = 2;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.Font = new System.Drawing.Font("Poppins Medium", 12F);
-            this.lblTitulo.Location = new System.Drawing.Point(268, 12);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(116, 26);
-            this.lblTitulo.TabIndex = 47;
-            this.lblTitulo.Text = "Cadastro Pet";
             // 
             // radPanel1
             // 
-            this.radPanel1.Controls.Add(this.btnAddFoto);
             this.radPanel1.Controls.Add(this.cbRaca);
+            this.radPanel1.Controls.Add(this.panel1);
             this.radPanel1.Controls.Add(this.radPanel3);
             this.radPanel1.Controls.Add(this.dtCadastro);
             this.radPanel1.Controls.Add(this.label8);
@@ -114,32 +92,36 @@
             this.radPanel1.Controls.Add(this.label5);
             this.radPanel1.Controls.Add(this.label3);
             this.radPanel1.Controls.Add(this.pictureBox1);
-            this.radPanel1.Location = new System.Drawing.Point(18, 47);
+            this.radPanel1.Location = new System.Drawing.Point(18, 53);
             this.radPanel1.Name = "radPanel1";
             this.radPanel1.Size = new System.Drawing.Size(615, 330);
-            this.radPanel1.TabIndex = 0;
-            // 
-            // btnAddFoto
-            // 
-            this.btnAddFoto.BackgroundImage = global::HippieDog_BanhoTosa.Properties.Resources.adicionar_botao;
-            this.btnAddFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddFoto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddFoto.Location = new System.Drawing.Point(160, 150);
-            this.btnAddFoto.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAddFoto.Name = "btnAddFoto";
-            this.btnAddFoto.Size = new System.Drawing.Size(35, 35);
-            this.btnAddFoto.TabIndex = 68;
-            this.btnAddFoto.TabStop = false;
-            this.btnAddFoto.Click += new System.EventHandler(this.btnAddFoto_Click);
+            this.radPanel1.TabIndex = 49;
             // 
             // cbRaca
             // 
             this.cbRaca.FormattingEnabled = true;
-            this.cbRaca.Location = new System.Drawing.Point(227, 130);
+            this.cbRaca.Location = new System.Drawing.Point(227, 129);
             this.cbRaca.Name = "cbRaca";
             this.cbRaca.Size = new System.Drawing.Size(150, 21);
-            this.cbRaca.TabIndex = 0;
+            this.cbRaca.TabIndex = 66;
             this.cbRaca.SelectedIndexChanged += new System.EventHandler(this.cbRaca_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Location = new System.Drawing.Point(39, 167);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(168, 27);
+            this.panel1.TabIndex = 65;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(46, 7);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Atualizar foto";
             // 
             // radPanel3
             // 
@@ -309,39 +291,117 @@
             this.pictureBox1.TabIndex = 50;
             this.pictureBox1.TabStop = false;
             // 
-            // UC_Cadastrar_Pet
+            // radPanel2
+            // 
+            this.radPanel2.Controls.Add(this.button1);
+            this.radPanel2.Controls.Add(this.btnRetroceder);
+            this.radPanel2.Controls.Add(this.label7);
+            this.radPanel2.Controls.Add(this.radTextBox1);
+            this.radPanel2.Controls.Add(this.btnAvancar);
+            this.radPanel2.Location = new System.Drawing.Point(18, 389);
+            this.radPanel2.Name = "radPanel2";
+            this.radPanel2.Size = new System.Drawing.Size(615, 44);
+            this.radPanel2.TabIndex = 51;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(360, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.TabIndex = 57;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnRetroceder
+            // 
+            this.btnRetroceder.Location = new System.Drawing.Point(414, 11);
+            this.btnRetroceder.Name = "btnRetroceder";
+            this.btnRetroceder.Size = new System.Drawing.Size(80, 24);
+            this.btnRetroceder.TabIndex = 1;
+            this.btnRetroceder.Text = "Retroceder";
+            this.btnRetroceder.Click += new System.EventHandler(this.btnRetroceder_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(38, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.TabIndex = 56;
+            this.label7.Text = "Pesquisar:";
+            // 
+            // radTextBox1
+            // 
+            this.radTextBox1.Location = new System.Drawing.Point(97, 11);
+            this.radTextBox1.Name = "radTextBox1";
+            this.radTextBox1.Size = new System.Drawing.Size(257, 24);
+            this.radTextBox1.TabIndex = 1;
+            // 
+            // btnAvancar
+            // 
+            this.btnAvancar.Location = new System.Drawing.Point(500, 11);
+            this.btnAvancar.Name = "btnAvancar";
+            this.btnAvancar.Size = new System.Drawing.Size(80, 24);
+            this.btnAvancar.TabIndex = 0;
+            this.btnAvancar.Text = "Avançar";
+            this.btnAvancar.Click += new System.EventHandler(this.btnAvancar_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Font = new System.Drawing.Font("Poppins Medium", 12F);
+            this.lblTitulo.Location = new System.Drawing.Point(268, 18);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(159, 26);
+            this.lblTitulo.TabIndex = 50;
+            this.lblTitulo.Text = "Pet\'s Cadastrados";
+            // 
+            // btnTeste
+            // 
+            this.btnTeste.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnTeste.FlatAppearance.BorderSize = 0;
+            this.btnTeste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTeste.Location = new System.Drawing.Point(518, 18);
+            this.btnTeste.Name = "btnTeste";
+            this.btnTeste.Size = new System.Drawing.Size(100, 50);
+            this.btnTeste.TabIndex = 52;
+            this.btnTeste.Text = "button2";
+            this.btnTeste.UseVisualStyleBackColor = false;
+            // 
+            // tbxRaca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnTeste);
             this.Controls.Add(this.radPanel1);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.lblTitulo);
-            this.Name = "UC_Cadastrar_Pet";
+            this.Name = "tbxRaca";
             this.Size = new System.Drawing.Size(650, 450);
-            this.Load += new System.EventHandler(this.UC_Cadastrar_Pet_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
-            this.radPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnAdicionar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lblTitulo)).EndInit();
+            this.Load += new System.EventHandler(this.UC_Pets_Cadastrados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             this.radPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAddFoto)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
             this.radPanel3.ResumeLayout(false);
             this.radPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtCadastro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radRichTextEditor1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
+            this.radPanel2.ResumeLayout(false);
+            this.radPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRetroceder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAvancar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblTitulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Telerik.WinControls.UI.RadPanel radPanel2;
-        private Telerik.WinControls.UI.RadButton btnAdicionar;
-        private Telerik.WinControls.UI.RadLabel lblTitulo;
+
         private Telerik.WinControls.UI.RadPanel radPanel1;
         private Telerik.WinControls.UI.RadPanel radPanel3;
         private System.Windows.Forms.Label label2;
@@ -361,7 +421,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.UI.RadPanel radPanel2;
+        private Telerik.WinControls.UI.RadButton btnRetroceder;
+        private System.Windows.Forms.Label label7;
+        private Telerik.WinControls.UI.RadTextBox radTextBox1;
+        private Telerik.WinControls.UI.RadButton btnAvancar;
+        private Telerik.WinControls.UI.RadLabel lblTitulo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbRaca;
-        private System.Windows.Forms.PictureBox btnAddFoto;
+        private System.Windows.Forms.Button btnTeste;
     }
 }
