@@ -1,4 +1,5 @@
 ﻿using ENTIDADES;
+using HippieDog_BanhoTosa.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,32 +12,44 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls.UI;
 
 namespace HippieDog_BanhoTosa.User_Control
 {
     public partial class tbxRaca : UserControl
     {
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
         private List<ENTIDADES.TBL_CADASTRAR_PET> listaPets;
         private int indiceAtual;
 
         NEGOCIOS.NEG_CADASTRAR_PET objNeg_CadastrarPet = new NEGOCIOS.NEG_CADASTRAR_PET();
         NEGOCIOS.NEG_BANHOETOSA ObjNeg_BanhoTosa = new NEGOCIOS.NEG_BANHOETOSA();
+
+
+        byte[] bytesDaImagem;
+        string caminhoDaImagem;
+
+        int idPet;
+
         public tbxRaca()
         {
             InitializeComponent();
+        }
+        private void ArredondarBordas()
+        {
+            try
+            {
+                Borda_Botao borderBotao = new Borda_Botao();
+                borderBotao.AdicionarBotaoArredondado(btnAvancar, 10);
+                borderBotao.AdicionarBotaoArredondado(btnRetroceder, 10);
+                borderBotao.AdicionarBotaoArredondado(btnAlterar, 10);
 
 
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
         }
 
         private void CarregarComboRaca()
@@ -48,11 +61,7 @@ namespace HippieDog_BanhoTosa.User_Control
 
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            btnTeste.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnTeste.Width, btnTeste.Height, 10, 10));
 
-        }
 
         private Image DeBytePraImagem(byte[] byteArray)
         {
@@ -68,6 +77,7 @@ namespace HippieDog_BanhoTosa.User_Control
             if (listaPets.Count > 0 && indiceAtual >= 0 && indiceAtual < listaPets.Count)
             {
                 ENTIDADES.TBL_CADASTRAR_PET petAtual = listaPets[indiceAtual];
+                idPet = petAtual.ID;
                 tbxDono.Text = petAtual.DONO.ToString();
                 tbxEndereco.Text = petAtual.ENDERECO;
                 tbxPet.Text = petAtual.PET;
@@ -93,6 +103,7 @@ namespace HippieDog_BanhoTosa.User_Control
             listaPets = objNeg_CadastrarPet.ListarPetsCadastrados();
             CarregarComboRaca();
             ExibirPetAtual();
+            ArredondarBordas();
         }
 
         private void btnRetroceder_Click(object sender, EventArgs e)
@@ -156,6 +167,84 @@ namespace HippieDog_BanhoTosa.User_Control
 
                         break;
                 }
+            }
+        }
+
+        private void btnAtualizarFoto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+
+                openFileDialog.Filter = "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.gif;*.bmp|Todos os Arquivos|*.*";
+                openFileDialog.Title = "Selecione uma imagem para o pet";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    caminhoDaImagem = openFileDialog.FileName;
+
+                    // Carregar a imagem para um objeto Image
+                    Image imagemDoPet = Image.FromFile(caminhoDaImagem);
+
+                    // Converter a imagem para um array de bytes
+
+                    using (MemoryStream stream = new MemoryStream())
+                    {
+                        imagemDoPet.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        bytesDaImagem = stream.ToArray();
+                    }
+
+                    pictureBox1.Image = imagemDoPet;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+            finally
+            {
+                objNeg_CadastrarPet.AtualizarFoto(idPet, bytesDaImagem);
+                MessageBox.Show("Foto Atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+
+                    ENTIDADES.TBL_CADASTRAR_PET buscaPet = new TBL_CADASTRAR_PET();
+                    buscaPet = objNeg_CadastrarPet.BuscarPetCadastrado(tbxBuscar.Text);
+
+                    if (listaPets.Count > 0 && indiceAtual >= 0 && indiceAtual < listaPets.Count)
+                    {
+                        idPet = buscaPet.ID;
+                        tbxDono.Text = buscaPet.DONO.ToString();
+                        tbxEndereco.Text = buscaPet.ENDERECO;
+                        tbxPet.Text = buscaPet.PET;
+                        tbxTelefone.Text = buscaPet.TELEFONE;
+                        cbRaca.SelectedValue = buscaPet.RACA;
+                        dtCadastro.Value = buscaPet.DATA_CADASTRO;
+                        // Exibir a imagem no PictureBox
+                        if (buscaPet.FOTO != null && buscaPet.FOTO.Length > 0)
+                        {
+                            Image imagem = DeBytePraImagem(buscaPet.FOTO);
+                            pictureBox1.Image = imagem;
+                        }
+                        else
+                        {
+                            // Caso a coluna de FOTO esteja vazia, você pode definir uma imagem padrão ou limpar o PictureBox
+                            pictureBox1.Image = null;
+                        }
+                    }
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
             }
         }
     }

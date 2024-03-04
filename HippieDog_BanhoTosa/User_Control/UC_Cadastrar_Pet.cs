@@ -1,4 +1,5 @@
 ﻿using ENTIDADES;
+using HippieDog_BanhoTosa.Classes;
 using HippieDog_BanhoTosa.Properties;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,32 @@ namespace HippieDog_BanhoTosa.User_Control
         {
             InitializeComponent();
         }
+
+        private void ArredondarBordas()
+        {
+            try
+            {
+                Borda_Botao borderBotao = new Borda_Botao();
+                borderBotao.AdicionarBotaoArredondado(btnAdicionar, 10);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
         private void CarregarComboRaca()
         {
             cbRaca.DataSource = ObjNeg_BanhoTosa.ListarRacas();
             cbRaca.ValueMember = "ID_RACA";
             cbRaca.DisplayMember = "NOME";
             cbRaca.SelectedIndex = -1;
+
+
+            
+            chkGrande.Checked = false;
+            chkMedio.Checked = false;
+            chkPequena.Checked = false;
 
         }
 
@@ -69,6 +90,7 @@ namespace HippieDog_BanhoTosa.User_Control
                 tbxPet.Text = string.Empty;
                 tbxEndereco.Text = string.Empty;
                 tbxTelefone.Text = string.Empty;
+                radRichTextEditor1.Text = string.Empty;
                 cbRaca.SelectedIndex = -1;
                 pictureBox1.Image = Resources.dogface;
                     
@@ -87,9 +109,17 @@ namespace HippieDog_BanhoTosa.User_Control
             {
                 if (validarCampos())
                 {
-                    ObjNeg_CadastrarPet.CadastrarPet(tbxDono.Text, tbxPet.Text, tbxEndereco.Text, tbxTelefone.Text, cbRaca.SelectedIndex, bytesDaImagem, dtCadastro.Value);
-                    MessageBox.Show($"{tbxPet.Text} cadastrado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos();
+                    DialogResult result = MessageBox.Show($"Você deseja cadastrar o {tbxPet.Text}?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        ObjNeg_CadastrarPet.CadastrarPet(tbxDono.Text, tbxPet.Text, tbxEndereco.Text, tbxTelefone.Text, cbRaca.SelectedIndex, bytesDaImagem, dtCadastro.Value);
+                        MessageBox.Show($"{tbxPet.Text} cadastrado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparCampos();
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
             catch (Exception ex)
@@ -102,8 +132,7 @@ namespace HippieDog_BanhoTosa.User_Control
         private void UC_Cadastrar_Pet_Load(object sender, EventArgs e)
         {
             CarregarComboRaca();
-            // Configurar o PictureBox com a imagem de fundo
- 
+            ArredondarBordas();
         }
 
         private void cbRaca_SelectedIndexChanged(object sender, EventArgs e)

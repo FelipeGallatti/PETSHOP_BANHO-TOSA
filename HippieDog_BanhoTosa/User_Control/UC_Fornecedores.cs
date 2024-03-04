@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HippieDog_BanhoTosa.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace HippieDog_BanhoTosa.User_Control
@@ -45,7 +47,21 @@ namespace HippieDog_BanhoTosa.User_Control
         //    }
         //}
 
+        private void ArredondarBordas()
+        {
+            try
+            {
+                Borda_Botao borderBotao = new Borda_Botao();
+                borderBotao.AdicionarBotaoArredondado(btnAdicionarFornecedor, 10);
+                borderBotao.AdicionarBotaoArredondado(btnAlterar, 10);
 
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
 
         public void LAYOUT_GRID()
         {
@@ -61,6 +77,10 @@ namespace HippieDog_BanhoTosa.User_Control
                 rgvFornecedores.Columns["Produto"].TextAlignment = ContentAlignment.MiddleCenter;
                 rgvFornecedores.Columns["Nome"].Width = 148;
                 rgvFornecedores.Columns["Produto"].Width = 400;
+
+                rgvFornecedores.Columns["Nome"].HeaderText = "NOME";
+                rgvFornecedores.Columns["Produto"].HeaderText = "PRODUTO";
+
 
                 foreach (GridViewColumn column in rgvFornecedores.Columns)
                 {
@@ -103,6 +123,7 @@ namespace HippieDog_BanhoTosa.User_Control
         {
             //rgvFornecedores.DataSource = ObjNegFornecedores.ListarFornecedores();
             rgvFornecedores.DataSource = ObjNegFornecedores.ListarFornecedores();
+            ArredondarBordas();
             LAYOUT_GRID();
             //var cadastroFornecedor = new FormCadastrar_Fornecedor();
             //cadastroFornecedor.FornecedorCadastradoComSucesso += CadastroFornecedor_FornecedorCadastradoComSucesso;
@@ -165,7 +186,13 @@ namespace HippieDog_BanhoTosa.User_Control
                         // Pare o loop se encontrou a linha selecionada
                         break;
                     }
+                    else
+                    {
+                        MessageBox.Show("Selecione um fornecedor antes de alterar.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
                 }
+                
             }
             catch (Exception ex)
             {

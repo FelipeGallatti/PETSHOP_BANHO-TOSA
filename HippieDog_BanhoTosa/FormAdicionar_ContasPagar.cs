@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HippieDog_BanhoTosa.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,21 @@ namespace HippieDog_BanhoTosa
         public FormAdicionar_ContasPagar()
         {
             InitializeComponent();
+        }
+        private void ArredondarBordas()
+        {
+            try
+            {
+                Borda_Botao borderBotao = new Borda_Botao();
+                borderBotao.AdicionarBotaoArredondado(btnSair, 10);
+                borderBotao.AdicionarBotaoArredondado(btnAlterar, 10);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -41,6 +57,7 @@ namespace HippieDog_BanhoTosa
                 cbCategoria.SelectedIndex = -1;
 
                 cbCategoria.DataSource = ObjNeg_ContaSPagar.ListarCategoriaServicos();
+                ArredondarBordas();
             }
             catch (Exception ex)
             {
@@ -48,5 +65,7 @@ namespace HippieDog_BanhoTosa
                 throw new Exception(ex.Message.ToString());
             }
         }
+
+
     }
 }

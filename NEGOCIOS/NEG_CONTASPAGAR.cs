@@ -11,7 +11,7 @@ namespace NEGOCIOS
     {
         DADOS.CRUD_CONTASPAGAR ObjDad_ContasPagar = new CRUD_CONTASPAGAR();
 
-        public List<ENTIDADES.TBL_CONTASPAGAR> ListarContas_Pendentes()
+        public List<object> ListarContas_Pendentes()
         {
             try
             {
@@ -24,7 +24,7 @@ namespace NEGOCIOS
             }
         }
 
-        public List<ENTIDADES.TBL_CONTASPAGAR> ListarContas_Pagas()
+        public List<object> ListarContas_Pagas()
         {
             try
             {
@@ -63,11 +63,11 @@ namespace NEGOCIOS
             }
         }
 
-        public ENTIDADES.TBL_CONTASPAGAR PagarConta(ENTIDADES.TBL_CONTASPAGAR Ent)
+        public ENTIDADES.TBL_CONTASPAGAR PagarConta(int idCP)
         {
             try
             {
-                return ObjDad_ContasPagar.PagarConta(Ent);
+                return ObjDad_ContasPagar.PagarConta(idCP);
             }
             catch (Exception ex)
             {

@@ -45,6 +45,7 @@
     <Compile Include="NEG_CADASTRAR_PET.cs" />
     <Compile Include="NEG_CONTASPAGAR.cs" />
     <Compile Include="NEG_FORNECEDORES.cs" />
+    <Compile Include="NEG_LOGIN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

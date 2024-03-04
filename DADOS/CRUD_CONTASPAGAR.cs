@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ENTIDADES;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,38 +12,78 @@ namespace DADOS
         private string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
 
 
-		public List<ENTIDADES.TBL_CONTASPAGAR> ListarContas_Pendentes()
+        public List<object> ListarContas_Pendentes()
+        {
+            try
+            {
+                using (var DB = new conexao(connectionString))
+                {
+                    var ListarContas = (from tbl in DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>()
+                                        where tbl.Pagamento == false
+                                        select new
+                                        {
+                                            ID_CP = tbl.ID_CP,
+                                            Descricao = tbl.Descricao,
+                                            Categoria = tbl.Categoria,
+                                            Data_Vencimento = tbl.Data_Vencimento,
+                                            Pagamento = tbl.Pagamento,
+											Valor = tbl.Valor
+										}).ToList();
+
+                    // Agora, formate o valor para ter duas casas decimais no lado do cliente
+                    var ListaFormatada = ListarContas.Select(item => new
+                    {
+                        item.ID_CP,
+                        item.Descricao,
+                        item.Categoria,
+                        Data_vencimento = item.Data_Vencimento.ToShortDateString(),
+                        item.Pagamento,
+						Valor = item.Valor.ToString("N2")
+					}).ToList<object>();
+
+
+                    return ListaFormatada;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+
+        public List<object>ListarContas_Pagas()
 		{
 			try
 			{
 				using (var DB = new conexao(connectionString))
 				{
-					List<ENTIDADES.TBL_CONTASPAGAR> ListarContas = (from tbl in DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>()
-																	where tbl.Pagamento == false
-																	select tbl).ToList();
+					var listarContasPagar = (from tbl in DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>()
+                                             where tbl.Pagamento == true
+                                             select new
+											 {
+                                                 ID_CP = tbl.ID_CP,
+                                                 Descricao = tbl.Descricao,
+                                                 Categoria = tbl.Categoria,
+                                                 Data_Vencimento = tbl.Data_Vencimento,
+                                                 Pagamento = tbl.Pagamento,
+                                                 Valor = tbl.Valor
+                                             }).ToList();
 
-					return ListarContas;
-				}
-			}
-			catch (Exception ex)
-			{
+                    // Agora, formate o valor para ter duas casas decimais no lado do cliente
+                    var ListaFormatada = listarContasPagar.Select(item => new
+                    {
+                        item.ID_CP,
+                        item.Descricao,
+                        item.Categoria,
+                        Data_Vencimento =  item.Data_Vencimento.ToShortDateString(),
+                        item.Pagamento,
+                        VALOR = item.Valor.ToString("N2")
+                    }).ToList<object>();
 
-				throw new Exception(ex.Message.ToString());
-			}
-		}
+                    return ListaFormatada;
 
-		public List<ENTIDADES.TBL_CONTASPAGAR>ListarContas_Pagas()
-		{
-			try
-			{
-				using (var DB = new conexao(connectionString))
-				{
-					List<ENTIDADES.TBL_CONTASPAGAR> listarContaSPagas = (from tbl in DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>()
-																		 where tbl.Pagamento == true 
-																		 select tbl).ToList();
-
-					return listarContaSPagas;
-				}
+                }
 			}
 			catch (Exception ex)
 			{
@@ -87,19 +128,19 @@ namespace DADOS
 			}
         }
 
-		public ENTIDADES.TBL_CONTASPAGAR PagarConta(ENTIDADES.TBL_CONTASPAGAR Ent)
+		public ENTIDADES.TBL_CONTASPAGAR PagarConta(int idCP)
 		{
 			try
 			{
 				using (var DB = new conexao(connectionString))
 				{
 					ENTIDADES.TBL_CONTASPAGAR listaAtualizar = (from tbl in DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>()
-																	  where tbl.ID_CP == Ent.ID_CP
+																	  where tbl.ID_CP == idCP
 																	  select  tbl).FirstOrDefault();
 
 					if (listaAtualizar != null)
 					{
-						listaAtualizar.Pagamento = Ent.Pagamento;
+						listaAtualizar.Pagamento = true;
 					}
 
 					DB.SubmitChanges();

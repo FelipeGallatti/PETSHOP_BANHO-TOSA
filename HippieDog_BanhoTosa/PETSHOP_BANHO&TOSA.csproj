@@ -57,20 +57,12 @@
     <Reference Include="TelerikCommon, Version=2023.2.718.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Botao.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Classes\Borda_Botao.cs" />
     <Compile Include="FormAdicionar_ContasPagar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAdicionar_ContasPagar.Designer.cs">
       <DependentUpon>FormAdicionar_ContasPagar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormAgenda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAgenda.Designer.cs">
-      <DependentUpon>FormAgenda.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAgendar_Banho.cs">
       <SubType>Form</SubType>
@@ -78,11 +70,11 @@
     <Compile Include="FormAgendar_Banho.Designer.cs">
       <DependentUpon>FormAgendar_Banho.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAlterarFornecedor.cs">
       <SubType>Form</SubType>
@@ -96,35 +88,11 @@
     <Compile Include="FormCadastrar_Fornecedor.Designer.cs">
       <DependentUpon>FormCadastrar_Fornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCadastrar_Pet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormCadastrar_Pet.Designer.cs">
-      <DependentUpon>FormCadastrar_Pet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormContasPagar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormContasPagar.Designer.cs">
-      <DependentUpon>FormContasPagar.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormContasPagas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormContasPagas.Designer.cs">
       <DependentUpon>FormContasPagas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormFinanceiro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormFinanceiro.Designer.cs">
-      <DependentUpon>FormFinanceiro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormFornecedores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormFornecedores.Designer.cs">
-      <DependentUpon>FormFornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInfoFornecedores.cs">
       <SubType>Form</SubType>
@@ -132,11 +100,11 @@
     <Compile Include="FormInfoFornecedores.Designer.cs">
       <DependentUpon>FormInfoFornecedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPacotes.cs">
+    <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPacotes.Designer.cs">
-      <DependentUpon>FormPacotes.cs</DependentUpon>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,26 +149,17 @@
     <Compile Include="User_Control\UC_HistBanho.Designer.cs">
       <DependentUpon>UC_HistBanho.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Control\UC_Pacotes.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User_Control\UC_Pacotes.Designer.cs">
-      <DependentUpon>UC_Pacotes.cs</DependentUpon>
-    </Compile>
     <Compile Include="User_Control\UC_Pets_Cadastrados.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="User_Control\UC_Pets_Cadastrados.Designer.cs">
       <DependentUpon>UC_Pets_Cadastrados.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdicionar_ContasPagar.resx">
       <DependentUpon>FormAdicionar_ContasPagar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAgenda.resx">
-      <DependentUpon>FormAgenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgendar_Banho.resx">
       <DependentUpon>FormAgendar_Banho.cs</DependentUpon>
@@ -211,26 +170,14 @@
     <EmbeddedResource Include="FormCadastrar_Fornecedor.resx">
       <DependentUpon>FormCadastrar_Fornecedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCadastrar_Pet.resx">
-      <DependentUpon>FormCadastrar_Pet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormContasPagar.resx">
-      <DependentUpon>FormContasPagar.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormContasPagas.resx">
       <DependentUpon>FormContasPagas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormFinanceiro.resx">
-      <DependentUpon>FormFinanceiro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormFornecedores.resx">
-      <DependentUpon>FormFornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInfoFornecedores.resx">
       <DependentUpon>FormInfoFornecedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPacotes.resx">
-      <DependentUpon>FormPacotes.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -265,9 +212,6 @@
     <EmbeddedResource Include="User_Control\UC_HistBanho.resx">
       <DependentUpon>UC_HistBanho.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Control\UC_Pacotes.resx">
-      <DependentUpon>UC_Pacotes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="User_Control\UC_Pets_Cadastrados.resx">
       <DependentUpon>UC_Pets_Cadastrados.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +241,25 @@
   <ItemGroup>
     <Content Include="Images\988126.png" />
     <Content Include="Queries\ListaAgenda.txt" />
+    <None Include="Resources\gradient %286%29.jpeg" />
+    <None Include="Resources\gradient %285%29.jpeg" />
+    <None Include="Resources\BackgroundMenu.png" />
+    <None Include="Resources\BackgroundLogin %281%29.png" />
+    <None Include="Resources\BackgroundLogin.png" />
+    <None Include="Resources\manage_search_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\Group 6.jpg" />
+    <None Include="Resources\OIG4-removebg-preview.png" />
+    <None Include="Resources\OIG4.png" />
+    <None Include="Resources\10855914.jpg" />
+    <None Include="Resources\gradient %284%29.jpeg" />
+    <None Include="Resources\gradient %283%29.jpeg" />
+    <None Include="Resources\gradient %282%29.jpeg" />
+    <None Include="Resources\gradient %281%29.jpeg" />
+    <None Include="Resources\gradient.jpeg" />
+    <None Include="Resources\desktop-wallpaper-light-blue-gradient-light-blue-gradient-png-backgrounds-for-powerpoint-templates-light-blue-gradient-thumbnail.jpg" />
+    <None Include="Resources\Capturar1.JPG" />
+    <None Include="Resources\Capturar.JPG" />
+    <None Include="Resources\blue-wide-background-with-radial-blurred-gradient-free-vector.jpg" />
     <None Include="Resources\adicionar-botao.png" />
     <None Include="Resources\png_add_button.png" />
     <None Include="Resources\dogface.jpg" />

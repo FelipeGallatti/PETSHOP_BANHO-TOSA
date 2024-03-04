@@ -38,6 +38,32 @@ namespace NEGOCIOS
             }
         }
 
+        public ENTIDADES.TBL_CADASTRAR_PET BuscarPetCadastrado(string busca)
+        {
+            try
+            {
+                return objDad_CadastrarPet.BuscarPetCadastrado(busca);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public void AtualizarFoto(int id, byte[] caminhoImg)
+        {
+            try
+            {
+               objDad_CadastrarPet.AtualizarFoto(id, caminhoImg);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public List<ENTIDADES.TBL_CADASTRAR_PET> ListarPetsCadastrados()
         {
             try

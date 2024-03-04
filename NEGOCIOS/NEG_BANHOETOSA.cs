@@ -26,24 +26,11 @@ namespace NEGOCIOS
             }
         }
 
-        public List<ENTIDADES.ENT_APOIO.ListaAgenda> ListaAgenda1()
-        {
-            try
-            {
-
-                return objdad_Agenda.ListaAgenda1();
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message.ToString());
-            }
-        }
-
         public List<object> ListaAgenda()
         {
             try
             {
+
                 return objdad_Agenda.ListaAgenda();
             }
             catch (Exception ex)
@@ -52,6 +39,21 @@ namespace NEGOCIOS
                 throw new Exception(ex.Message.ToString());
             }
         }
+
+        public void RemoverBanho(int idBanho)
+        {
+            try
+            {
+                objdad_Agenda.RemoverBanho(idBanho);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+
 
         public List<object> ListarHistoricoFalta()
         {
@@ -105,7 +107,7 @@ namespace NEGOCIOS
             }
         }
 
-        public int CalcularValorServico(int idservico, int porteraca)
+        public double CalcularValorServico(int idservico, int porteraca)
         {
             try
             {

@@ -29,10 +29,11 @@ namespace HippieDog_BanhoTosa.User_Control
                 //rgvAgenda.Columns["Detalhes"].IsVisible = false;
                 //rgvAgenda.Columns["Data"].IsVisible = false;
                 //rgvAgenda.Columns["Hora"].IsVisible = false;
-                rgvHistBanhos.Columns["ID_AGENDA"].IsVisible = false;
-                
+                //rgvHistBanhos.Columns["ID_AGENDA"].IsVisible = false;
 
 
+
+                rgvHistBanhos.Columns["Data"].FormatString = "{0:dd-MM-yyyy}";
 
                 rgvHistBanhos.Columns["Valor"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
                 rgvHistBanhos.Columns["Dono"].TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -54,38 +55,61 @@ namespace HippieDog_BanhoTosa.User_Control
 
         private void UC_HistBanho_Load(object sender, EventArgs e)
         {
-            LAYOUT_GRID_AGENDA();
-
-
-            if (radMes.IsChecked == true)
+            try
             {
-                radSemana.IsChecked = false;
+                LAYOUT_GRID_AGENDA();
+
+
+                if (radMes.IsChecked == true)
+                {
+                    radSemana.IsChecked = false;
+                }
             }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+
         }
 
         private void radMes_CheckStateChanging(object sender, Telerik.WinControls.UI.CheckStateChangingEventArgs args)
         {
-            radSemana.IsChecked = false;
-            rgvHistBanhos.DataSource = ObjNeg_BanhoTosa.ListarHistoricoMensal();
-            lblQtMes.Text = ObjNeg_BanhoTosa.ListarHistoricoMensal().Count.ToString();
-            lblValorRMensal.Text = ObjNeg_BanhoTosa.RetornarValorMensal().ToString();
-            lblQtSemana.Text = string.Empty;
-            lblValorRSemanal.Text = string.Empty;
+            try
+            {
+                radSemana.IsChecked = false;
+                rgvHistBanhos.DataSource = ObjNeg_BanhoTosa.ListarHistoricoMensal();
+                lblQtMes.Text = ObjNeg_BanhoTosa.ListarHistoricoMensal().Count.ToString();
+                lblValorRMensal.Text = "R$" + ObjNeg_BanhoTosa.RetornarValorMensal().ToString() + ",00"; ;
+                lblQtSemana.Text = string.Empty;
+                lblValorRSemanal.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
 
-
+                throw new Exception(ex.Message.ToString());
+            }
         }
 
 
 
         private void radSemana_CheckStateChanging(object sender, Telerik.WinControls.UI.CheckStateChangingEventArgs args)
         {
-            radMes.IsChecked = false;
-            rgvHistBanhos.DataSource = ObjNeg_BanhoTosa.ListarHistoricoSemanal();
-            lblQtSemana.Text = ObjNeg_BanhoTosa.ListarHistoricoSemanal().Count.ToString();
-            lblValorRSemanal.Text = ObjNeg_BanhoTosa.RetornarValorSemanal().ToString();
+            try
+            {
+                radMes.IsChecked = false;
+                rgvHistBanhos.DataSource = ObjNeg_BanhoTosa.ListarHistoricoSemanal();
+                lblQtSemana.Text = ObjNeg_BanhoTosa.ListarHistoricoSemanal().Count.ToString();
+                lblValorRSemanal.Text = "R$" + ObjNeg_BanhoTosa.RetornarValorSemanal().ToString() + ",00";
 
-            lblQtMes.Text = string.Empty;
-            lblValorRMensal.Text = string.Empty;
+                lblQtMes.Text = string.Empty;
+                lblValorRMensal.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+
         }
     }
 }

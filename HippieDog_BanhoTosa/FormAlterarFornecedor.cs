@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HippieDog_BanhoTosa.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,17 +23,33 @@ namespace HippieDog_BanhoTosa
 
         }
 
+        private void ArredondarBordas()
+        {
+            try
+            {
+                Borda_Botao borderBotao = new Borda_Botao();
+                borderBotao.AdicionarBotaoArredondado(btnSair, 10);
+                borderBotao.AdicionarBotaoArredondado(btnAlterar, 10);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public void CarregarInformacoesForm(int idFornecedor, string nomeFornecedor, string emailFornecedor, string telefoneFornecedor, string telefoneOpcional, string Produto, string Endereco)
         {
             try
             {
                 lblIdFornecedor.Text = idFornecedor.ToString();
-                txtNomeFornecedor.Text = nomeFornecedor;
-                txtEmail.Text = emailFornecedor;
-                txtTelefone.Text = telefoneFornecedor;
-                txtTelefoneOpc.Text = telefoneOpcional;
-                txtProduto.Text = Produto;
-                txtEndereco.Text = Endereco;
+                tbxNome.Text = nomeFornecedor;
+                tbxEmail.Text = emailFornecedor;
+                tbxTelefone.Text = telefoneFornecedor;
+                tbxTelefoneOpcional.Text = telefoneOpcional;
+                tbxProduto.Text = Produto;
+                tbxEndereco.Text = Endereco;
 
             }
             catch (Exception)
@@ -46,6 +63,7 @@ namespace HippieDog_BanhoTosa
         {
             try
             {
+                ArredondarBordas();
             }
             catch (Exception ex)
             {
@@ -59,35 +77,35 @@ namespace HippieDog_BanhoTosa
             try
             {
 
-                if (txtNomeFornecedor.Text == string.Empty)
+                if (tbxNome.Text == string.Empty)
                 {
                     MessageBox.Show("Preencha o campo Nome", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtNomeFornecedor.Focus();
+                    tbxNome.Focus();
                 }
-                else if (txtEmail.Text == string.Empty)
+                else if (tbxEmail.Text == string.Empty)
                 {
                     MessageBox.Show("Preencha o campo Email", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtEmail.Focus();
+                    tbxEmail.Focus();
                 }
-                else if (txtEndereco.Text == string.Empty)
+                else if (tbxEndereco.Text == string.Empty)
                 {
                     MessageBox.Show("Preencha o campo Endereço", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtEndereco.Focus();
+                    tbxEndereco.Focus();
                 }
-                else if (txtTelefone.Text == string.Empty)
+                else if (tbxTelefone.Text == string.Empty)
                 {
                     MessageBox.Show("Preencha o campo Telefone", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtTelefone.Focus();
+                    tbxTelefone.Focus();
                 }
-                else if (txtTelefoneOpc.Text == string.Empty)
+                else if (tbxTelefoneOpcional.Text == string.Empty)
                 {
                     MessageBox.Show("Preencha o campo Telefone", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtTelefoneOpc.Focus();
+                    tbxTelefoneOpcional.Focus();
                 }
-                else if (txtProduto.Text == string.Empty)
+                else if (tbxProduto.Text == string.Empty)
                 {
                     MessageBox.Show("Preencha o campo Produto", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtProduto.Focus();
+                    tbxProduto.Focus();
                 }
                 else
                 {
@@ -98,7 +116,7 @@ namespace HippieDog_BanhoTosa
                     {
                         try
                         {
-                            ObjNeg_Fornecedores.AlterarFornecedor(Convert.ToInt32(lblIdFornecedor.Text), txtNomeFornecedor.Text, tbxEmailFornecedor.Text, txtEndereco.Text, txtTelefone.Text, txtTelefoneOpc.Text, txtProduto.Text);
+                            ObjNeg_Fornecedores.AlterarFornecedor(Convert.ToInt32(lblIdFornecedor.Text), tbxNome.Text, tbxEmail.Text, tbxEndereco.Text, tbxTelefone.Text, tbxTelefoneOpcional.Text, tbxProduto.Text);
                             MessageBox.Show("Fornecedor cadastrado com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception ex)

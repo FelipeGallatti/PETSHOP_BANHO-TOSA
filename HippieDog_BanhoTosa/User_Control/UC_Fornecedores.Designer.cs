@@ -30,38 +30,30 @@
         {
             Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.btnAdicionarFornecedor = new Telerik.WinControls.UI.RadButton();
             this.btnAlterar = new Telerik.WinControls.UI.RadButton();
-            this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
             this.rgvFornecedores = new Telerik.WinControls.UI.RadGridView();
             this.visualStudio2012LightTheme2 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.btnAdicionarFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAlterar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
-            this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgvFornecedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvFornecedores.MasterTemplate)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(257, 13);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(138, 26);
-            this.radLabel1.TabIndex = 51;
-            this.radLabel1.Text = "Fornecedores";
             // 
             // btnAdicionarFornecedor
             // 
             this.btnAdicionarFornecedor.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnAdicionarFornecedor.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAdicionarFornecedor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdicionarFornecedor.Font = new System.Drawing.Font("Poppins Medium", 8.25F);
             this.btnAdicionarFornecedor.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionarFornecedor.Location = new System.Drawing.Point(311, 0);
+            this.btnAdicionarFornecedor.Location = new System.Drawing.Point(18, 384);
             this.btnAdicionarFornecedor.Name = "btnAdicionarFornecedor";
             this.btnAdicionarFornecedor.Size = new System.Drawing.Size(304, 44);
             this.btnAdicionarFornecedor.TabIndex = 7;
@@ -70,62 +62,88 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.BackColor = System.Drawing.Color.Green;
-            this.btnAlterar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAlterar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(110)))), ((int)(((byte)(167)))));
+            this.btnAlterar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAlterar.Font = new System.Drawing.Font("Poppins Medium", 8.25F);
             this.btnAlterar.ForeColor = System.Drawing.Color.White;
-            this.btnAlterar.Location = new System.Drawing.Point(0, 0);
+            this.btnAlterar.Location = new System.Drawing.Point(322, 384);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(311, 44);
             this.btnAlterar.TabIndex = 8;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
-            // radPanel1
-            // 
-            this.radPanel1.Controls.Add(this.btnAlterar);
-            this.radPanel1.Controls.Add(this.btnAdicionarFornecedor);
-            this.radPanel1.Location = new System.Drawing.Point(18, 382);
-            this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(615, 44);
-            this.radPanel1.TabIndex = 46;
-            // 
             // rgvFornecedores
             // 
-            this.rgvFornecedores.Location = new System.Drawing.Point(18, 66);
+            this.rgvFornecedores.Location = new System.Drawing.Point(1, 1);
             // 
             // 
             // 
-            gridViewCheckBoxColumn1.HeaderText = "Selecionar";
+            this.rgvFornecedores.MasterTemplate.AllowAddNewRow = false;
+            gridViewCheckBoxColumn1.HeaderText = "";
             gridViewCheckBoxColumn1.Name = "chk";
             this.rgvFornecedores.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewCheckBoxColumn1});
+            this.rgvFornecedores.MasterTemplate.EnableGrouping = false;
             this.rgvFornecedores.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.rgvFornecedores.Name = "rgvFornecedores";
-            this.rgvFornecedores.Size = new System.Drawing.Size(615, 310);
+            this.rgvFornecedores.Size = new System.Drawing.Size(613, 321);
             this.rgvFornecedores.TabIndex = 52;
             this.rgvFornecedores.ThemeName = "VisualStudio2012Light";
             this.rgvFornecedores.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.radGridView1_CellDoubleClick);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.rgvFornecedores);
+            this.panel1.Location = new System.Drawing.Point(18, 55);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(615, 323);
+            this.panel1.TabIndex = 54;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel4.BackgroundImage = global::HippieDog_BanhoTosa.Properties.Resources.gradient__4_;
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.radLabel1);
+            this.panel4.Font = new System.Drawing.Font("Poppins Medium", 8.25F);
+            this.panel4.Location = new System.Drawing.Point(18, 19);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(615, 34);
+            this.panel4.TabIndex = 53;
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.Font = new System.Drawing.Font("Poppins Medium", 14F);
+            this.radLabel1.Location = new System.Drawing.Point(222, 2);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(157, 30);
+            this.radLabel1.TabIndex = 51;
+            this.radLabel1.Text = "FORNECEDORES";
             // 
             // UC_Fornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.rgvFornecedores);
-            this.Controls.Add(this.radLabel1);
-            this.Controls.Add(this.radPanel1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Controls.Add(this.btnAlterar);
+            this.Controls.Add(this.btnAdicionarFornecedor);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel4);
             this.Name = "UC_Fornecedores";
             this.Size = new System.Drawing.Size(650, 450);
             this.Load += new System.EventHandler(this.UC_Fornecedores_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAdicionarFornecedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAlterar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
-            this.radPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rgvFornecedores.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvFornecedores)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -133,9 +151,10 @@
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadButton btnAdicionarFornecedor;
         private Telerik.WinControls.UI.RadButton btnAlterar;
-        private Telerik.WinControls.UI.RadPanel radPanel1;
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme1;
         private Telerik.WinControls.UI.RadGridView rgvFornecedores;
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel1;
     }
 }

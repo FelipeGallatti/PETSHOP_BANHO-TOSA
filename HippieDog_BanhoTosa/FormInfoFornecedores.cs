@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HippieDog_BanhoTosa.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,11 +25,25 @@ namespace HippieDog_BanhoTosa
         int IDFornecedor;
         string NOMEFornecedor;
 
+        private void ArredondarBordas()
+        {
+            try
+            {
+                Borda_Botao borderBotao = new Borda_Botao();
+                borderBotao.AdicionarBotaoArredondado(btnRemover, 10);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public void CarregarInformacoesForm(int idFornecedor, string nomeFornecedor, string emailFornecedor, string telefoneFornecedor, string telefoneOpcional, string Produto, string Endereco)
         {
             try
             {
-                lblIdFornecedor.Text = idFornecedor.ToString();
+                //lblIdFornecedor.Text = idFornecedor.ToString();
                 lblNomeFornecedor.Text = nomeFornecedor;
                 lblEmailFornecedor.Text = emailFornecedor;
                 lblTelefoneFornecedor.Text = telefoneFornecedor;
@@ -57,6 +72,19 @@ namespace HippieDog_BanhoTosa
                     ObjNegFornecedores.ExcluirFornecedor(IDFornecedor);
                     MessageBox.Show($"{NOMEFornecedor} removido com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        private void FormInfoFornecedores_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                ArredondarBordas();
             }
             catch (Exception ex)
             {

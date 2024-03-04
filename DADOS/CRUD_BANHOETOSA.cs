@@ -42,8 +42,7 @@ namespace DADOS
                     var lista = from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                 join raca in DB.GetTable<ENTIDADES.TBL_RACAS>()
                                 on tbl.RACA equals raca.ID_RACA
-                                where tbl.FALTOU == false &&
-                                tbl.BANHO_REALIZADO == false
+                                where tbl.FALTOU == false && tbl.BANHO_REALIZADO == false
                                 select new
                                 {
                                     ID_AGENDA = tbl.ID_AGENDA,
@@ -57,34 +56,29 @@ namespace DADOS
                                     PRESENCA = tbl.FALTOU
                                 };
 
-                    return lista.ToList<object>();
+                    var listaFormatada = lista.AsEnumerable().Select(item => new
+                    {
+                        ID_AGENDA = item.ID_AGENDA,
+                        DONO = item.DONO,
+                        PET = item.PET,
+                        RACA = item.RACA,
+                        DATA = item.DATA,
+                        HORA = item.HORA.Length >= 5 ? item.HORA.Substring(0, 5) : item.HORA,
+                        VALOR = item.VALOR.ToString("N2"),
+                        SERVICO = item.SERVICO,
+                        PRESENCA = item.PRESENCA
+                    }).ToList<object>();
+
+                    return listaFormatada;
                 }
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message.ToString());
             }
         }
 
-        public List<ENTIDADES.ENT_APOIO.ListaAgenda> ListaAgenda1()
-        {
-            try
-            {
-
-                using (var DB = new conexao(connectionString))
-                {
-                    string query = string.Format(Queries.Query.ListaAgenda);
-                    List<ENTIDADES.ENT_APOIO.ListaAgenda> mov = new conexao(connectionString).ExecuteQuery<ENTIDADES.ENT_APOIO.ListaAgenda>(query).ToList();
-                    return mov;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message.ToString());
-            }
-        }
+        
 
         public List<object> ListarHistoricoFalta()
         {
@@ -93,8 +87,7 @@ namespace DADOS
                 using (var db = new conexao(connectionString))
                 {
                     var historico = (from agenda in db.GetTable<TBL_AGENDA>()
-                                     join raca in db.GetTable<TBL_RACAS>()
-                                     on agenda.RACA equals raca.ID_RACA
+                                     join raca in db.GetTable<TBL_RACAS>() on agenda.RACA equals raca.ID_RACA
                                      where agenda.FALTOU == true
                                      select new
                                      {
@@ -109,50 +102,64 @@ namespace DADOS
                                          PRESENCA = agenda.FALTOU
                                      }).ToList();
 
-                    return historico.ToList<object>();
+                    // Agora, formate a data e o valor para ter a apresentação desejada
+                    var historicoFormatado = historico.Select(item => new
+                    {
+                        ID_AGENDA = item.ID_AGENDA,
+                        DONO = item.DONO,
+                        PET = item.PET,
+                        RACA = item.RACA,
+                        DATA = item.DATA.ToShortDateString(),
+                        HORA = item.HORA.Length >= 5 ? item.HORA.Substring(0, 5) : item.HORA,
+                        VALOR = item.VALOR.ToString("N2"),
+                        SERVICO = item.SERVICO,
+                        PRESENCA = item.PRESENCA
+                    }).ToList<object>();
+
+                    return historicoFormatado;
                 }
+
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message.ToString());
             }
         }
 
-        public int CalcularValorServico(int idservico, int porteraca)
+        public double CalcularValorServico(int idservico, int porteraca)
         {
             try
             {
-                int valor = 0;
+                double valor = 0;
                 //Banho
                 if (idservico == 1 && porteraca == 1)
                 {
-                    valor = 20;
+                    valor = 20.00;
                 }
                 //Tosa
                 else if (idservico == 2 && porteraca == 1)
                 {
-                    valor = 25;
+                    valor = 25.0;
                 }
                 //BT na Tesoura
                 else if (idservico == 3 && porteraca == 1)
                 {
-                    valor = 50;
+                    valor = 50.0;
                 }
                 //Tosa na Tesoura
                 else if (idservico == 4 && porteraca == 1)
                 {
-                    valor = 40;
+                    valor = 40.0;
                 }
                 //Banho e Tosa Higiênica
                 else if (idservico == 5 && porteraca == 1)
                 {
-                    valor = 30;
+                    valor = 30.0;
                 }
                 //Banho e Tosa Completo
                 else if (idservico == 6 && porteraca == 1)
                 {
-                    valor = 35;
+                    valor = 35.0;
                 }
 
                 //Serviços Raças Médias
@@ -160,32 +167,32 @@ namespace DADOS
                 //Banho
                 if (idservico == 1 && porteraca == 2)
                 {
-                    valor = 30;
+                    valor = 30.0;
                 }
                 //Tosa
                 else if (idservico == 2 && porteraca == 2)
                 {
-                    valor = 35;
+                    valor = 35.0;
                 }
                 //BT na Tesoura
                 else if (idservico == 3 && porteraca == 2)
                 {
-                    valor = 65;
+                    valor = 65.0;
                 }
                 //Tosa na Tesoura
                 else if (idservico == 4 && porteraca == 2)
                 {
-                    valor = 50;
+                    valor = 50.0;
                 }
                 //Banho e Tosa Higiênica
                 else if (idservico == 5 && porteraca == 2)
                 {
-                    valor = 40;
+                    valor = 40.0;
                 }
                 //Banho e Tosa Completo
                 else if (idservico == 6 && porteraca == 2)
                 {
-                    valor = 50;
+                    valor = 50.0;
                 }
 
                 //Serviços Raças Grandes
@@ -193,32 +200,32 @@ namespace DADOS
                 //Banho
                 if (idservico == 1 && porteraca == 3)
                 {
-                    valor = 40;
+                    valor = 40.0;
                 }
                 //Tosa
                 else if (idservico == 2 && porteraca == 3)
                 {
-                    valor = 45;
+                    valor = 45.0;
                 }
                 //BT na Tesoura
                 else if (idservico == 3 && porteraca == 3)
                 {
-                    valor = 85;
+                    valor = 85.0;
                 }
                 //Tosa na Tesoura
                 else if (idservico == 4 && porteraca == 3)
                 {
-                    valor = 70;
+                    valor = 70.0;
                 }
                 //Banho e Tosa Higiênica
                 else if (idservico == 5 && porteraca == 3)
                 {
-                    valor = 50;
+                    valor = 50.0;
                 }
                 //Banho e Tosa Completo
                 else if (idservico == 6 && porteraca == 3)
                 {
-                    valor = 60;
+                    valor = 60.0;
                 }
 
 
@@ -258,53 +265,103 @@ namespace DADOS
         {
             using (var DB = new conexao(connectionString))
             {
-                List<object> historicoBanho = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                               where agenda.FALTOU == false &&
-                                               agenda.BANHO_REALIZADO == true
-                                               join raca in DB.GetTable<TBL_RACAS>() on
-                                               agenda.RACA equals raca.ID_RACA
-                                               select new
-                                               {
-                                                   ID_AGENDA = agenda.ID_AGENDA,
-                                                   DONO = agenda.DONO,
-                                                   PET = agenda.PET,
-                                                   RACA = raca.NOME,
-                                                   DATA = agenda.DATA,
-                                                   VALOR = agenda.VALOR,
-                                               }).ToList<object>();
-                return historicoBanho;
+                var historicoBanho = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                      where agenda.FALTOU == false && agenda.BANHO_REALIZADO == true
+                                      join raca in DB.GetTable<TBL_RACAS>() on agenda.RACA equals raca.ID_RACA
+                                      select new
+                                      {
+                                          DONO = agenda.DONO,
+                                          PET = agenda.PET,
+                                          RACA = raca.NOME,
+                                          DATA = agenda.DATA,
+                                          VALOR = agenda.VALOR,
+                                      }).ToList();
+
+                // Agora, formate o valor para ter duas casas decimais no lado do cliente
+                var historicoFormatado = historicoBanho.Select(item => new
+                {
+                    item.DONO,
+                    item.PET,
+                    item.RACA,
+                    DATA = item.DATA.ToShortDateString(),
+                    VALOR = item.VALOR.ToString("N2"),
+                }).ToList<object>();
+
+                return historicoFormatado;
+            }
+        }
+
+        public void RemoverBanho(int idBanho)
+        {
+            try
+            {
+                ENTIDADES.TBL_AGENDA Ent = new TBL_AGENDA();
+
+                using (var db = new conexao(connectionString))
+                {
+                    var listaDeletar = (from tbl in db.GetTable<ENTIDADES.TBL_AGENDA>()
+                                 where tbl.ID_AGENDA == idBanho
+                                 select tbl).FirstOrDefault();
+
+                    if (listaDeletar != null)
+                    {
+                        db.GetTable<ENTIDADES.TBL_AGENDA>().DeleteOnSubmit(listaDeletar);
+                        db.SubmitChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
             }
         }
 
         public List<object> ListarHistoricoMensal()
         {
-            // Obtém a data atual
-            var dataAtual = DateTime.Now;
-
-            // Obtém a data do início do mês
-            var dataInicioMes = dataAtual.AddDays(-dataAtual.Day);
-
-            // Obtém a data do final do mês
-            var dataFimMes = dataAtual.AddDays(-1);
-
-            using (var DB = new conexao(connectionString))
+            try
             {
-                List<object> historicoBanho = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                               where agenda.FALTOU == false &&
-                                               agenda.BANHO_REALIZADO == true &&
-                                               agenda.DATA >= dataInicioMes && agenda.DATA <= dataFimMes
-                                               join raca in DB.GetTable<TBL_RACAS>() on
-                                               agenda.RACA equals raca.ID_RACA
-                                               select new
-                                               {
-                                                   ID_AGENDA = agenda.ID_AGENDA,
-                                                   DONO = agenda.DONO,
-                                                   PET = agenda.PET,
-                                                   RACA = raca.NOME,
-                                                   DATA = agenda.DATA,
-                                                   VALOR = agenda.VALOR,
-                                               }).ToList<object>();
-                return historicoBanho;
+                // Obtém a data atual
+                var dataAtual = DateTime.Now;
+
+                // Obtém a data do início do mês
+                var dataInicioMes = dataAtual.AddDays(-dataAtual.Day);
+
+                // Obtém a data do final do mês
+                var dataFimMes = dataAtual.AddDays(-1);
+
+                using (var DB = new conexao(connectionString))
+                {
+                    var historico = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                     where agenda.FALTOU == false &&
+                                           agenda.BANHO_REALIZADO == true &&
+                                           agenda.DATA >= dataInicioMes && agenda.DATA <= dataFimMes
+                                     join raca in DB.GetTable<TBL_RACAS>() on agenda.RACA equals raca.ID_RACA
+                                     select new
+                                     {
+                                         DONO = agenda.DONO,
+                                         PET = agenda.PET,
+                                         RACA = raca.NOME,
+                                         DATA = agenda.DATA,
+                                         VALOR = agenda.VALOR,
+                                     }).ToList();
+
+                    // Agora, formate o valor para ter duas casas decimais no lado do cliente
+                    var historicoFormatado = historico.Select(item => new
+                    {
+                        item.DONO,
+                        item.PET,
+                        item.RACA,
+                        DATA = item.DATA.ToShortDateString(),
+                        VALOR = item.VALOR.ToString("N2"),
+                    }).ToList<object>();
+
+                    return historicoFormatado;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
             }
         }
 
@@ -341,34 +398,49 @@ namespace DADOS
 
         public List<object> ListarHistoricoSemanal()
         {
-            // Obtém a data atual
-            var dataAtual = DateTime.Now;
-
-            // Obtém a data do início da semana
-            var dataInicioSemana = dataAtual.AddDays(-(int)dataAtual.DayOfWeek);
-
-            // Obtém a data do fim da semana
-            var dataFimSemana = dataInicioSemana.AddDays(6);
-            using (var DB = new conexao(connectionString))
+            try
             {
+                // Obtém a data atual
+                var dataAtual = DateTime.Now;
 
-                // Filtra os resultados para que estejam entre as datas
-                List<object> historicoBanho = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
-                                               where agenda.FALTOU == false &&
-                                               agenda.BANHO_REALIZADO == true &&
-                                               agenda.DATA >= dataInicioSemana && agenda.DATA <= dataFimSemana
-                                               join raca in DB.GetTable<TBL_RACAS>() on
-                                               agenda.RACA equals raca.ID_RACA
-                                               select new
-                                               {
-                                                   ID_AGENDA = agenda.ID_AGENDA,
-                                                   DONO = agenda.DONO,
-                                                   PET = agenda.PET,
-                                                   RACA = raca.NOME,
-                                                   DATA = agenda.DATA,
-                                                   VALOR = agenda.VALOR,
-                                               }).ToList<object>();
-                return historicoBanho;
+                // Obtém a data do início da semana
+                var dataInicioSemana = dataAtual.AddDays(-(int)dataAtual.DayOfWeek);
+
+                // Obtém a data do fim da semana
+                var dataFimSemana = dataInicioSemana.AddDays(6);
+
+                using (var DB = new conexao(connectionString))
+                {
+                    var historico = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
+                                     where agenda.FALTOU == false &&
+                                           agenda.BANHO_REALIZADO == true &&
+                                           agenda.DATA >= dataInicioSemana && agenda.DATA <= dataFimSemana
+                                     join raca in DB.GetTable<TBL_RACAS>() on agenda.RACA equals raca.ID_RACA
+                                     select new
+                                     {
+                                         DONO = agenda.DONO,
+                                         PET = agenda.PET,
+                                         RACA = raca.NOME,
+                                         DATA = agenda.DATA,
+                                         VALOR = agenda.VALOR,
+                                     }).ToList();
+
+                    // Agora, formate o valor para ter duas casas decimais no lado do cliente
+                    var historicoFormatado = historico.Select(item => new
+                    {
+                        item.DONO,
+                        item.PET,
+                        item.RACA,
+                        DATA = item.DATA.ToShortDateString(),
+                        VALOR = item.VALOR.ToString("N2"),
+                    }).ToList<object>();
+
+                    return historicoFormatado;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
             }
         }
 

@@ -145,6 +145,27 @@ namespace DADOS
         }
 
 
+		public ENTIDADES.TBL_CADASTRAR_PET BuscarPetCadastrado(string busca)
+		{
+			try
+			{
+				using (var db = new conexao(connectionString))
+				{
+					var lista = (from tbl in db.GetTable<ENTIDADES.TBL_CADASTRAR_PET>()
+								 where tbl.PET.Contains($"{busca}")
+								 select tbl).FirstOrDefault();
+
+					return lista;
+				}
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message.ToString());
+			}
+		}
+
+
         public List<TBL_RACAS> ListarRacasPequenas()
 		{
 			try

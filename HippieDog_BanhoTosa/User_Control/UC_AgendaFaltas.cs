@@ -19,6 +19,7 @@ namespace HippieDog_BanhoTosa.User_Control
             {
 
                 rgvHistFaltas.DataSource = ObjNeg_BanhoTosa.ListarHistoricoFalta();
+                lblQtFalta.Text = ObjNeg_BanhoTosa.ListarHistoricoFalta().Count.ToString();
                 //rgvAgenda.Columns["ID_Agenda"].IsVisible = false;
                 //rgvAgenda.Columns["Telefone"].IsVisible = false;
                 //rgvAgenda.Columns["Detalhes"].IsVisible = false;
@@ -47,7 +48,7 @@ namespace HippieDog_BanhoTosa.User_Control
 
         private void UC_AgendaFaltas_Load(object sender, EventArgs e)
         {
-            lblValorFalta.Text = ObjNeg_BanhoTosa.ValorTotalFaltas().ToString();
+            lblValorFalta.Text = "R$" + ObjNeg_BanhoTosa.ValorTotalFaltas().ToString() + ",00"; ;
             LAYOUT_GRID_AGENDA();
         }
 
@@ -74,6 +75,33 @@ namespace HippieDog_BanhoTosa.User_Control
                 ObjNeg_BanhoTosa.RemoverFalta(falta, idAgenda);
                 MessageBox.Show("Falta removida com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LAYOUT_GRID_AGENDA();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        private void rgvHistFaltas_CellClick_1(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    // Obtenha a linha selecionada
+                    var row = rgvHistFaltas.Rows[e.RowIndex];
+
+                    lblPet.Visible = true;
+                    lblRaca.Visible = true;
+                    lblValor.Visible = true;
+
+                    //txtNomeTarefa.Text = row.Cells["Nome_Tarefa"].Value.ToString();
+                    lblPet.Text = row.Cells["PET"].Value.ToString();
+                    lblRaca.Text = row.Cells["RACA"].Value.ToString();
+                    lblValor.Text = row.Cells["VALOR"].Value.ToString();
+                    idAgenda = Convert.ToInt32(row.Cells["ID_AGENDA"].Value);
+                }
             }
             catch (Exception ex)
             {

@@ -20,10 +20,8 @@ namespace ENTIDADES
         public DateTime Data_Vencimento { get; set; }
 
         [Column(Name = "Valor")]
-        public int Valor { get; set; }
+        public decimal Valor { get; set; }
 
-        [Column(Name = "Status")]
-        public string Status { get; set; }
 
         [Column(Name = "Pagamento")]
         public bool Pagamento { get; set; }
