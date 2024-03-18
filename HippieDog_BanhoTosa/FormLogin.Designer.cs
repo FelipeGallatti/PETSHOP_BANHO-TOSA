@@ -36,6 +36,8 @@
             this.btnSair = new Telerik.WinControls.UI.RadButton();
             this.btnEntrar = new Telerik.WinControls.UI.RadButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.messageBoxControl1 = new ModernWPF.Controls.MessageBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.btnSair)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEntrar)).BeginInit();
             this.SuspendLayout();
@@ -114,6 +116,16 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Esqueceu a senha?";
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(0, 0);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(347, 358);
+            this.elementHost1.TabIndex = 8;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.messageBoxControl1;
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +134,7 @@
             this.BackgroundImage = global::HippieDog_BanhoTosa.Properties.Resources.BackgroundLogin__1_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(347, 358);
+            this.Controls.Add(this.elementHost1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbxUsuario);
@@ -150,5 +163,7 @@
         private Telerik.WinControls.UI.RadButton btnEntrar;
         private Telerik.WinControls.UI.RadButton btnSair;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private ModernWPF.Controls.MessageBoxControl messageBoxControl1;
     }
 }
