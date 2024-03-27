@@ -13,6 +13,7 @@ using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Ink;
 
 namespace HippieDog_BanhoTosa
 {
@@ -40,6 +41,8 @@ namespace HippieDog_BanhoTosa
                 AdicionarBotaoArredondado(btnContasPagar, 10);
                 AdicionarBotaoArredondado(btnPetsCadastrados, 10);
                 AdicionarBotaoArredondado(btnCadastrarPet, 10);
+                AdicionarBotaoArredondado(btnAdm, 10);
+
             }
             catch (Exception ex)
             {
@@ -57,7 +60,23 @@ namespace HippieDog_BanhoTosa
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            try
+            {
+                this.Text = ENTIDADES.ENT_APOIO.InfoUsuario._nome;
+
+                if (ENTIDADES.ENT_APOIO.InfoUsuario._permissao == 3)
+                {
+                    btnAdm.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
         }
+
         GraphicsPath GetRoundPath(RectangleF Rect, int radius)
         {
             float r2 = radius / 2f;
@@ -531,6 +550,25 @@ namespace HippieDog_BanhoTosa
             }
             finally { this.Cursor = Cursors.Default;}
 
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnAdm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormAdministrador formAdm = new FormAdministrador();
+                formAdm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
         }
     }
 }

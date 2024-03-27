@@ -36,6 +36,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnAdm = new System.Windows.Forms.Button();
             this.btnCadastrarPet = new System.Windows.Forms.Button();
             this.btnPetsCadastrados = new System.Windows.Forms.Button();
             this.btnContasPagar = new System.Windows.Forms.Button();
@@ -43,6 +44,7 @@
             this.btnHisBanho = new System.Windows.Forms.Button();
             this.btnAgendaFaltas = new System.Windows.Forms.Button();
             this.btnAgenda = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,6 +106,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(177)))), ((int)(((byte)(201)))));
             this.panel3.BackgroundImage = global::HippieDog_BanhoTosa.Properties.Resources.gradient;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel3.Controls.Add(this.btnAdm);
             this.panel3.Controls.Add(this.btnCadastrarPet);
             this.panel3.Controls.Add(this.btnPetsCadastrados);
             this.panel3.Controls.Add(this.btnContasPagar);
@@ -114,8 +117,29 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(148, 450);
+            this.panel3.Size = new System.Drawing.Size(148, 467);
             this.panel3.TabIndex = 0;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // btnAdm
+            // 
+            this.btnAdm.BackColor = System.Drawing.Color.White;
+            this.btnAdm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdm.BackgroundImage")));
+            this.btnAdm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdm.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAdm.FlatAppearance.BorderSize = 0;
+            this.btnAdm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdm.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Bold);
+            this.btnAdm.ForeColor = System.Drawing.Color.Black;
+            this.btnAdm.Location = new System.Drawing.Point(8, 435);
+            this.btnAdm.Name = "btnAdm";
+            this.btnAdm.Size = new System.Drawing.Size(131, 27);
+            this.btnAdm.TabIndex = 7;
+            this.btnAdm.Text = "ADMINISTRADOR";
+            this.btnAdm.UseVisualStyleBackColor = false;
+            this.btnAdm.Visible = false;
+            this.btnAdm.Click += new System.EventHandler(this.btnAdm_Click);
             // 
             // btnCadastrarPet
             // 
@@ -250,11 +274,20 @@
             this.btnAgenda.UseVisualStyleBackColor = false;
             this.btnAgenda.Click += new System.EventHandler(this.btnAgenda_Click);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.panel4.Location = new System.Drawing.Point(149, 450);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(650, 28);
+            this.panel4.TabIndex = 2;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 467);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelFormulario);
             this.Controls.Add(this.panel3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -282,6 +315,8 @@
         private System.Windows.Forms.Button btnAgendaFaltas;
         private System.Windows.Forms.Button btnAgenda;
         private System.Windows.Forms.Button btnCadastrarPet;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnAdm;
     }
 }
 

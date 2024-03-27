@@ -24,5 +24,11 @@ namespace ENTIDADES
         [Column(Name = "NOME_USUARIO")]
         public string NOME_USUARIO { get; set; }
 
+        [Column(Name = "STATUS")]
+        public int STATUS { get; set; }
+
+        [Column(Name = "PERMISSAO")]
+        public int PERMISSAO { get; set; }
+
     }
 }

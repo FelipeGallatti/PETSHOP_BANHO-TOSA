@@ -23,10 +23,6 @@ namespace HippieDog_BanhoTosa.User_Control
             InitializeComponent();
         }
 
-        public void AtualizarDataGridView()
-        {
-            rgvContasPagas.DataSource = ObjNeg.ListarHistorico();
-        }
 
         //GraphicsPath GetRoundPath(RectangleF Rect, int radius)
         //{
@@ -62,6 +58,13 @@ namespace HippieDog_BanhoTosa.User_Control
         //        }
         //    };
         //}
+
+
+        public void AtualizarDataGridView()
+        {
+            rgvContasPagas.DataSource = ObjNeg.ListaAgenda();
+        }
+
 
         private void LAYOUT_GRID_AGENDA()
         {
@@ -114,6 +117,7 @@ namespace HippieDog_BanhoTosa.User_Control
 
         private void UC_Agenda_Load(object sender, EventArgs e)
         {
+            AtualizarDataGridView();
             LAYOUT_GRID_AGENDA();
             ArredondarBordas();
         }
@@ -143,7 +147,7 @@ namespace HippieDog_BanhoTosa.User_Control
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            FormAgendar_Banho formAgendarBanho = new FormAgendar_Banho();
+            FormAgendar_Banho formAgendarBanho = new FormAgendar_Banho(this);
             formAgendarBanho.Show();
         }
 

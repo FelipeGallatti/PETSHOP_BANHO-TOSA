@@ -1,5 +1,6 @@
 ﻿using ENTIDADES;
 using HippieDog_BanhoTosa.Classes;
+using HippieDog_BanhoTosa.User_Control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,13 +18,20 @@ namespace HippieDog_BanhoTosa
     {
         ENTIDADES.TBL_AGENDA ObjEnt = new ENTIDADES.TBL_AGENDA();
         NEGOCIOS.NEG_BANHOETOSA ObjNeg = new NEGOCIOS.NEG_BANHOETOSA();
-
+        private UC_Agenda ucAgenda;
 
         int porteSelecionado = 0;
 
         public FormAgendar_Banho()
         {
             InitializeComponent();
+        }
+
+        public FormAgendar_Banho(UC_Agenda ucAgenda)
+        {
+            InitializeComponent();
+            this.ucAgenda = ucAgenda;
+
         }
 
         private void CarregarComboRaca()
@@ -94,6 +102,9 @@ namespace HippieDog_BanhoTosa
 
 
                     ObjNeg.AgendarBanho(tbxDono.Text, tbxTelefone.Text, cbServico.Text, tbxPet.Text, tbxDetalhes.Text, dtData.Value, selectedTime.ToString(), Convert.ToDecimal(tbxValor.Text), Convert.ToInt32(cbRaca.SelectedValue));
+
+                    ucAgenda.AtualizarDataGridView();
+
                     MessageBox.Show("O banho foi agendado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
 

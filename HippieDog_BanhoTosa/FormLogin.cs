@@ -38,6 +38,21 @@ namespace HippieDog_BanhoTosa
             }
         }
 
+        private void CapturarUsuario(string usuario)
+        {
+            try
+            {
+                ObjNeg_Login.CapturarUsuario(usuario);
+                //ENTIDADES.ENT_APOIO.InfoUsuario._usuario = usuario;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString()) ;
+            }
+        }
+
         private bool validarCampos()
         {
             try
@@ -80,8 +95,9 @@ namespace HippieDog_BanhoTosa
                 if (validarCampos())
                 {
                     this.Cursor = Cursors.WaitCursor;
-                    if (ObjNeg_Login.VerificarLogin(tbxUsuario.Text, tbxSenha.Text))
+                    if (ObjNeg_Login.VerificarLogin(Convert.ToString(tbxUsuario.Text).Trim(), Convert.ToString(tbxSenha.Text).Trim()))
                     {
+                        CapturarUsuario(tbxUsuario.Text);
                         Menu form = new Menu();
                         form.ShowDialog();
                         this.Close();

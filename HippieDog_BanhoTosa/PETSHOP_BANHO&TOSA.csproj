@@ -78,6 +78,12 @@
     <Compile Include="FormAdicionar_ContasPagar.Designer.cs">
       <DependentUpon>FormAdicionar_ContasPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdministrador.Designer.cs">
+      <DependentUpon>FormAdministrador.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAgendar_Banho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     <Compile Include="User_Control\UC_Pets_Cadastrados.Designer.cs">
       <DependentUpon>UC_Pets_Cadastrados.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormAdministrador.resx">
+      <DependentUpon>FormAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>

@@ -6,30 +6,16 @@ namespace DADOS
 {
     public class conexao : DataContext
     {
-        string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
+        private static string _connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
+
         private SqlConnection cn;
 
-        public conexao(string connectionString) : base(connectionString)
+        public conexao() : base(_connectionString)
         {
-            cn = new SqlConnection(connectionString);
-
+            cn = new SqlConnection(_connectionString);
         }
 
-        public SqlConnection Conectar()
-        {
-            if (cn.State == System.Data.ConnectionState.Closed)
-            {
-                cn.Open();
-            }
-            return cn;
-        }
 
-        public void Desconectar()
-        {
-            if (cn.State == System.Data.ConnectionState.Open)
-            {
-                cn.Close();
-            }
-        }
+
     }
 }

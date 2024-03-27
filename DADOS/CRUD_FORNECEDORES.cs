@@ -10,14 +10,14 @@ namespace DADOS
 {
     public class CRUD_FORNECEDORES
     {
-        private string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
+        
 
 
         public List<ENTIDADES.TBL_FORNECEDORES> ListarFornecedores()
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     List<ENTIDADES.TBL_FORNECEDORES> listarTabela = (from tbl in DB.GetTable<ENTIDADES.TBL_FORNECEDORES>()
                                                                      select tbl).ToList();
@@ -36,7 +36,7 @@ namespace DADOS
         //{
         //    try
         //    {
-        //        using (var DB = new conexao(connectionString))
+        //        using (var DB = new conexao())
         //        {
         //            DB.GetTable<ENTIDADES.TBL_FORNECEDORES>().InsertOnSubmit(ent);
         //            DB.SubmitChanges();
@@ -55,7 +55,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
 
                     ent.Nome = nomeFornecedor;
@@ -84,7 +84,7 @@ namespace DADOS
         {
             try
             {
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     ENTIDADES.TBL_FORNECEDORES updateList = (from tbl in db.GetTable<ENTIDADES.TBL_FORNECEDORES>()
                                                              where tbl.Id_Fornecedor == idFornecedor
@@ -114,7 +114,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                    
                     ENTIDADES.TBL_FORNECEDORES listaDeletar = (from tbl in DB.GetTable<ENTIDADES.TBL_FORNECEDORES>()

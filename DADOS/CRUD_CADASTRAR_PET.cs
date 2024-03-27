@@ -9,7 +9,7 @@ namespace DADOS
 {
     public class CRUD_CADASTRAR_PET
     {
-        private string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
+        
 
 
 
@@ -17,7 +17,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (var DB = new conexao(connectionString))
+				using (var DB = new conexao())
 				{
 					DB.GetTable<TBL_CADASTRAR_PET>().InsertOnSubmit(ent);
 					DB.SubmitChanges();
@@ -34,7 +34,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (var db = new conexao(connectionString))
+				using (var db = new conexao())
 				{
 					ENTIDADES.TBL_CADASTRAR_PET TBL_CAD = (from tbl in db.GetTable<ENTIDADES.TBL_CADASTRAR_PET>()
 														   where tbl.ID == id
@@ -67,7 +67,7 @@ namespace DADOS
 				ent.FOTO = caminhoDaImagem;
 				ent.DATA_CADASTRO = dtCadastro;
 
-				using (var db = new conexao(connectionString))
+				using (var db = new conexao())
 				{
 					db.GetTable<TBL_CADASTRAR_PET>().InsertOnSubmit(ent);
 					db.SubmitChanges();
@@ -85,10 +85,10 @@ namespace DADOS
             try
             {
 
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     string query = string.Format(Queries.Query.ListarPetsCadastrados);
-                    List<ENTIDADES.TBL_CADASTRAR_PET> mov = new conexao(connectionString).ExecuteQuery<ENTIDADES.TBL_CADASTRAR_PET>(query).ToList();
+                    List<ENTIDADES.TBL_CADASTRAR_PET> mov = new conexao().ExecuteQuery<ENTIDADES.TBL_CADASTRAR_PET>(query).ToList();
 
 
                     return mov;
@@ -105,7 +105,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     var resultados = (from tbl in DB.GetTable<ENTIDADES.TBL_CADASTRAR_PET>()
                                       select new
@@ -149,7 +149,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (var db = new conexao(connectionString))
+				using (var db = new conexao())
 				{
 					var lista = (from tbl in db.GetTable<ENTIDADES.TBL_CADASTRAR_PET>()
 								 where tbl.PET.Contains($"{busca}")
@@ -170,7 +170,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (var db = new conexao(connectionString))
+				using (var db = new conexao())
 				{
 					List<TBL_RACAS> listarPequena = (from tbl in db.GetTable<TBL_RACAS>()
 													 where tbl.PORTE == 1
@@ -191,7 +191,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (conexao db = new conexao(connectionString))
+				using (conexao db = new conexao())
 				{
                     List<TBL_RACAS> listarMedia = (from tbl in db.GetTable<TBL_RACAS>()
 												   where tbl.PORTE == 2
@@ -212,7 +212,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (conexao db = new conexao(connectionString))
+				using (conexao db = new conexao())
 				{
 					List<TBL_RACAS> listarMedia = (from tbl in db.GetTable<TBL_RACAS>()
 												   where tbl.PORTE == 3

@@ -13,13 +13,13 @@ namespace DADOS
 {
     public class CRUD_BANHOETOSA
     {
-        private string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
+        
 
         public List<ENTIDADES.TBL_RACAS> ListarRacas()
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     var lista = (from tbl in DB.GetTable<TBL_RACAS>()
                                  select tbl).Distinct().ToList();
@@ -37,7 +37,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     var lista = from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                 join raca in DB.GetTable<ENTIDADES.TBL_RACAS>()
@@ -84,7 +84,7 @@ namespace DADOS
         {
             try
             {
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     var historico = (from agenda in db.GetTable<TBL_AGENDA>()
                                      join raca in db.GetTable<TBL_RACAS>() on agenda.RACA equals raca.ID_RACA
@@ -246,7 +246,7 @@ namespace DADOS
         {
             try
             {
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     var listaServicos = (from tbl in db.GetTable<ENTIDADES.TBL_SERVICOS>()
                                          select tbl).ToList();
@@ -263,7 +263,7 @@ namespace DADOS
 
         public List<object> ListarHistorico()
         {
-            using (var DB = new conexao(connectionString))
+            using (var DB = new conexao())
             {
                 var historicoBanho = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                       where agenda.FALTOU == false && agenda.BANHO_REALIZADO == true
@@ -297,7 +297,7 @@ namespace DADOS
             {
                 ENTIDADES.TBL_AGENDA Ent = new TBL_AGENDA();
 
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     var listaDeletar = (from tbl in db.GetTable<ENTIDADES.TBL_AGENDA>()
                                  where tbl.ID_AGENDA == idBanho
@@ -322,20 +322,23 @@ namespace DADOS
             try
             {
                 // Obtém a data atual
-                var dataAtual = DateTime.Now;
+                var dataAtual = DateTime.Today;
 
-                // Obtém a data do início do mês
-                var dataInicioMes = dataAtual.AddDays(-dataAtual.Day);
 
-                // Obtém a data do final do mês
-                var dataFimMes = dataAtual.AddDays(-1);
+                var mesAtual = DateTime.Now.Month;
+                var anoAtual = DateTime.Now.Year;
+                int datafinalMes = DateTime.DaysInMonth(anoAtual,mesAtual);
+                DateTime dataInicioMes = Convert.ToDateTime($"01/{mesAtual}/{anoAtual}");
+                DateTime dataFinalMes = Convert.ToDateTime($"{datafinalMes}/{mesAtual}/{anoAtual}");
 
-                using (var DB = new conexao(connectionString))
+
+
+                using (var DB = new conexao())
                 {
                     var historico = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                      where agenda.FALTOU == false &&
                                            agenda.BANHO_REALIZADO == true &&
-                                           agenda.DATA >= dataInicioMes && agenda.DATA <= dataFimMes
+                                           agenda.DATA >= dataInicioMes && agenda.DATA <= dataFinalMes
                                      join raca in DB.GetTable<TBL_RACAS>() on agenda.RACA equals raca.ID_RACA
                                      select new
                                      {
@@ -368,21 +371,22 @@ namespace DADOS
         public decimal RetornarValorMensal()
         {
             // Obtém a data atual
-            var dataAtual = DateTime.Now;
+            var dataAtual = DateTime.Today;
 
-            // Obtém a data do início do mês
-            var dataInicioMes = dataAtual.AddDays(-dataAtual.Day);
 
-            // Obtém a data do final do mês
-            var dataFimMes = dataAtual.AddDays(-1);
+            var mesAtual = DateTime.Now.Month;
+            var anoAtual = DateTime.Now.Year;
+            int datafinalMes = DateTime.DaysInMonth(anoAtual, mesAtual);
+            DateTime dataInicioMes = Convert.ToDateTime($"01/{mesAtual}/{anoAtual}");
+            DateTime dataFinalMes = Convert.ToDateTime($"{datafinalMes}/{mesAtual}/{anoAtual}");
 
-            using (var DB = new conexao(connectionString))
+            using (var DB = new conexao())
             {
                 List<ENTIDADES.TBL_AGENDA> valorMensal = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                                where agenda.FALTOU == false &&
                                                agenda.BANHO_REALIZADO == true &&
-                                               agenda.DATA >= dataInicioMes && agenda.DATA <= dataFimMes
-                                               join raca in DB.GetTable<TBL_RACAS>() on
+                                               agenda.DATA >= dataInicioMes && agenda.DATA <= dataFinalMes
+                                                          join raca in DB.GetTable<TBL_RACAS>() on
                                                agenda.RACA equals raca.ID_RACA
                                                select agenda).ToList();
                 decimal somaTotal = 0;
@@ -409,7 +413,7 @@ namespace DADOS
                 // Obtém a data do fim da semana
                 var dataFimSemana = dataInicioSemana.AddDays(6);
 
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     var historico = (from agenda in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                      where agenda.FALTOU == false &&
@@ -454,7 +458,7 @@ namespace DADOS
 
             // Obtém a data do fim da semana
             var dataFimSemana = dataInicioSemana.AddDays(6);
-            using (var DB = new conexao(connectionString))
+            using (var DB = new conexao())
             {
 
                 // Filtra os resultados para que estejam entre as datas
@@ -485,7 +489,7 @@ namespace DADOS
             try
             {
                 ENTIDADES.TBL_AGENDA ent = new TBL_AGENDA();
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     ent.DONO = dono;
                     ent.TELEFONE = telefone;
@@ -515,7 +519,7 @@ namespace DADOS
             {
                 bool confirmarBanho = true;
 
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     TBL_AGENDA lista = (from agenda in db.GetTable<ENTIDADES.TBL_AGENDA>()
                                         where agenda.ID_AGENDA == idAgenda &&
@@ -541,7 +545,7 @@ namespace DADOS
         {
             try
             {
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     TBL_AGENDA AtualizarFalta = (from agenda in db.GetTable<TBL_AGENDA>()
                                                  where agenda.ID_AGENDA == idAgenda
@@ -566,7 +570,7 @@ namespace DADOS
         {
             try
             {
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     TBL_AGENDA lista = (from agenda in db.GetTable<TBL_AGENDA>()
                                         where agenda.ID_AGENDA == idAgenda
@@ -592,7 +596,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     List<ENTIDADES.TBL_AGENDA> calcularGanho = (from ganhos in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                                                 where ganhos.DATA == DateTime.Today
@@ -617,7 +621,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     List<ENTIDADES.TBL_AGENDA> calcularGanho = (from ganhos in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                                                 where ganhos.DATA == DateTime.Today && ganhos.FALTOU == false
@@ -638,7 +642,7 @@ namespace DADOS
         {
             try
             {
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     //var lista = (from agenda in db.GetTable<TBL_AGENDA>()
                     //             where agenda.FALTOU == false
@@ -668,7 +672,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     List<ENTIDADES.TBL_AGENDA> calcularGanho = (from ganhos in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                                                 where ganhos.DATA >= dataInicio && ganhos.DATA <= DataFinal
@@ -695,7 +699,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     List<ENTIDADES.TBL_AGENDA> calcularGanhos = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                                                  where tbl.DATA >= dataInicio && tbl.DATA <= DataFinal
@@ -722,7 +726,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     List<ENTIDADES.TBL_AGENDA> banhosSemanais = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                                                  where tbl.DATA >= dataInicio && tbl.DATA <= DataFinal
@@ -744,7 +748,7 @@ namespace DADOS
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     List<ENTIDADES.TBL_AGENDA> banhosMensais = (from tbl in DB.GetTable<ENTIDADES.TBL_AGENDA>()
                                                                 where tbl.DATA >= dataInicio && tbl.DATA <= dataFinal && tbl.FALTOU == false

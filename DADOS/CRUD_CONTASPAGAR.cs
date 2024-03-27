@@ -9,14 +9,14 @@ namespace DADOS
 {
     public class CRUD_CONTASPAGAR
     {
-        private string connectionString = @"Data Source=DESKTOP-ECFLCP7;Initial Catalog=HippeDog;Integrated Security=True";
+        
 
 
         public List<object> ListarContas_Pendentes()
         {
             try
             {
-                using (var DB = new conexao(connectionString))
+                using (var DB = new conexao())
                 {
                     var ListarContas = (from tbl in DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>()
                                         where tbl.Pagamento == false
@@ -56,7 +56,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (var DB = new conexao(connectionString))
+				using (var DB = new conexao())
 				{
 					var listarContasPagar = (from tbl in DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>()
                                              where tbl.Pagamento == true
@@ -96,7 +96,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (var db = new conexao(connectionString))
+				using (var db = new conexao())
 				{
 					List<ENTIDADES.TBL_CONTASPAGAR_SERV> lista = (from tblcp in db.GetTable<ENTIDADES.TBL_CONTASPAGAR_SERV>()
 																  select tblcp).ToList();
@@ -115,7 +115,7 @@ namespace DADOS
         {
 			try
 			{
-				using (var DB = new conexao(connectionString))
+				using (var DB = new conexao())
 				{
 					DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>().InsertOnSubmit(ent);
 					DB.SubmitChanges();
@@ -132,7 +132,7 @@ namespace DADOS
 		{
 			try
 			{
-				using (var DB = new conexao(connectionString))
+				using (var DB = new conexao())
 				{
 					ENTIDADES.TBL_CONTASPAGAR listaAtualizar = (from tbl in DB.GetTable<ENTIDADES.TBL_CONTASPAGAR>()
 																	  where tbl.ID_CP == idCP
@@ -162,7 +162,7 @@ namespace DADOS
         {
             try
             {
-                using (var db = new conexao(connectionString))
+                using (var db = new conexao())
                 {
                     var lista = (from tbl in db.GetTable<ENTIDADES.TBL_AGENDA>()
                                  where tbl.FALTOU == false

@@ -8,6 +8,23 @@ using System.Xml.Linq;
 
 namespace ENTIDADES.ENT_APOIO
 {
+   
+
+    public static class InfoUsuario
+    {
+        public static int _idUsuario;
+
+        public static string _usuario;
+
+        public static string _nome;
+
+        public static int _status;
+
+        public static int _permissao;
+    }
+
+
+
     public class ListaAgenda
     {
         public int ID_AGENDA { get; set; }
